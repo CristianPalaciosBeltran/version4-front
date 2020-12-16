@@ -41,7 +41,7 @@ export const errorHandler = (error) => {
         break;
       case 401:
         setLocalStorage();
-        window.open(`http://localhost:3000/login-expired`, "_self");
+        window.open(`https://version4-front.azurewebsites.net/login-expired`, "_self");
         break;
       default:
         messageError = errorResponse(error.response.data);
@@ -143,7 +143,7 @@ export const axios_api = async (
 export const signOff = (e) => {
   e.preventDefault();
   setLocalStorage();
-  window.open(`http://localhost:3000/`, "_self");
+  window.open(`https://version4-front.azurewebsites.net`, "_self");
 };
 
 // Metodo para manejar las rutas del api
