@@ -26,25 +26,16 @@ export const Navbars = () => {
   return (
       <Navbar expand="md" className="fixed-top bg-white border-bottom">
         <Container>
-        <NavbarBrand href="/" className="text-dark font-weight-bold">Templune</NavbarBrand>
+        <NavbarBrand href="/" className="text-dark font-weight-bold">Version 4</NavbarBrand>
         <NavbarToggler onClick={toggle}><FaIcons.FaBars className="lead" /></NavbarToggler>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem className="mr-2">
-              <NavLink className="text-dark">Portafolio</NavLink>
-            </NavItem>
-            <NavItem className="mr-2">
-              <NavLink href="https://www.youtube.com/channel/UCj_JuLDPgqkQ40RWFsRrzgg" target="_blank" className="text-dark">Youtube</NavLink>
-            </NavItem>
             <NavItem className="d-flex mr-2">
               <NavLink href="/login"className="btn btn-outline-secondary align-self-center">Inicia sesión</NavLink>
             </NavItem>
             <NavItem className="d-flex">
               <NavLink href="/sign-up"className="btn btn-primary align-self-center">Regístrate</NavLink>
             </NavItem>
-            {/* <NavItem>
-              <Button href="https://github.com/reactstrap/reactstrap" className="btn btn-primary">Registrate</Button>
-            </NavItem> */}
           </Nav>
         </Collapse>
         </Container>
@@ -58,7 +49,7 @@ export const NavbarAdmin = () => {
   return (
       <Navbar light className="bg-white" expand="md">
         <Container>
-        <NavbarBrand href="/admin-dashboard" className="text-dark">Templune</NavbarBrand>
+        <NavbarBrand href="/admin-dashboard" className="text-dark">Version 4</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -87,7 +78,7 @@ export const User = () => {
   return (
       <Navbar color="light" light expand="md">
         <Container>
-        <NavbarBrand href="/user-dashboard">Templune</NavbarBrand>
+        <NavbarBrand href="/user-dashboard">Version 4</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>

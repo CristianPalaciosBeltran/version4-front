@@ -34,11 +34,11 @@ class Indicators extends Component {
         } = this.props.analyticsReducer;
         const cardAnalytics = [
             {
-                id: '1-a',
-                title: 'Productos',
-                number: cargando ? <Loader activate={cargando}></Loader> : count_products,
-                icon: <FaIcons.FaDiceD6 className="mr-2" />,
-                href: '/admin-dashboard/products'
+                id: '4-a',
+                title: 'Admins',
+                number:  cargando ? <Loader activate={cargando}></Loader> : count_admins,
+                icon: <FaIcons.FaUserAlt className="mr-2" />,
+                href: '/admin-dashboard/admins'
             },
             {
                 id: '2-a',
@@ -48,19 +48,12 @@ class Indicators extends Component {
                 href: '/admin-dashboard/users'
             },
             {
-                id: '3-a',
-                title: 'Cursos',
-                number:  cargando ? <Loader activate={cargando}></Loader> : count_courses,
-                icon: <FaIcons.FaVideo className="mr-2" />,
-                href: '/admin-dashboard/courses'
-            },
-            {
-                id: '4-a',
-                title: 'Admins',
-                number:  cargando ? <Loader activate={cargando}></Loader> : count_admins,
-                icon: <FaIcons.FaUserAlt className="mr-2" />,
-                href: '/admin-dashboard/admins'
-            }
+                id: '1-a',
+                title: 'Empresas',
+                number: cargando ? <Loader activate={cargando}></Loader> : count_products,
+                icon: <FaIcons.FaDiceD6 className="mr-2" />,
+                href: '/admin-dashboard'
+            },       
         ] 
         return(
             <>

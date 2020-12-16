@@ -19,7 +19,7 @@ export const ListOfUsers = () => {
 export const ListOfAdmins = () => {
     return (
         <>
-            <ListOfUsers 
+            <Users 
                 roleName='Admin' 
                 title='Administradores'
                 create='/create-admin'

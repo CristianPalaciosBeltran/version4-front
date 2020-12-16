@@ -1,6 +1,6 @@
 import React from 'react'
 import Cristian from './cristian.jpg';
-import Diego from './diego.jpg';
+import Jesus from './Jesus.jpg';
 import ProductDefault from './product.jpg'
 
 
@@ -14,8 +14,8 @@ export const ImgCristian = ({className}) =>(
     <Img src={Cristian} alt='Cristian photo' className={className}/>
 )
 
-export const ImgDiego = ({className}) =>(
-    <Img src={Diego} alt='diego photo' className={className}/>
+export const ImgJesus = ({className}) =>(
+    <Img src={Jesus} alt='jesus photo' className={className}/>
 )
 
 export const ImgProduct = ({uri = '', className}) =>(

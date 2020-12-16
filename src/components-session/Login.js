@@ -30,7 +30,7 @@ class LoginForm extends Component {
         window.open(`/user-dashboard`, "_self");
       }
       if (!localStorage.getItem("role")) {
-        window.open(`http://localhost:3000/`, "_self");
+        window.open(`/`, "_self");
       }
     }
   };

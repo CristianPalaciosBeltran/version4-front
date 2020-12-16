@@ -148,7 +148,7 @@ export const signOff = (e) => {
 
 // Metodo para manejar las rutas del api
 export const setPathApi = () => {
-  const option = 2;
+  const option = 1;
   let route = "";
   switch (option) {
     case 1:
@@ -157,15 +157,15 @@ export const setPathApi = () => {
       break;
     case 2:
       // Develop
-      route = "https://templune-back.azurewebsites.net/";
+      route = "https://version4-back.azurewebsites.net";
       break;
     case 3:
       // Production
-      route = "https://templune-back.azurewebsites.net/";
+      route = "https://version4-back.azurewebsites.net";
       break;
     default:
       // Develop
-      route = "https://templune-back.azurewebsites.net/";
+      route = "https://version4-back.azurewebsites.net";
       break;
   }
 

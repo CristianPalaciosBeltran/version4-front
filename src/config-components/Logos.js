@@ -4,6 +4,6 @@ import {Link} from 'react-router-dom'
 
 export const LogoNavbar = ({href = '/', className=''}) => {
     return (
-        <h6 className={`font-weight-bold ${className}`}> <Link to='/' className="text-dark">Templune</Link> </h6>
+        <h6 className={`font-weight-bold ${className}`}> <Link to='/' className="text-dark">Version 4</Link> </h6>
     )
 }
