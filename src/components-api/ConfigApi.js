@@ -157,15 +157,15 @@ export const setPathApi = () => {
       break;
     case 2:
       // Develop
-      route = "https://version4-back.azurewebsites.net";
+      route = "https://version4-back.azurewebsites.net/";
       break;
     case 3:
       // Production
-      route = "https://version4-back.azurewebsites.net";
+      route = "https://version4-back.azurewebsites.net/";
       break;
     default:
       // Develop
-      route = "https://version4-back.azurewebsites.net";
+      route = "https://version4-back.azurewebsites.net/";
       break;
   }
 
