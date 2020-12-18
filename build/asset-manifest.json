@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.8ce360af.chunk.css",
-    "main.js": "/static/js/main.009d598c.chunk.js",
-    "main.js.map": "/static/js/main.009d598c.chunk.js.map",
+    "main.js": "/static/js/main.07e3ff1d.chunk.js",
+    "main.js.map": "/static/js/main.07e3ff1d.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.7f473892.js",
     "runtime-main.js.map": "/static/js/runtime-main.7f473892.js.map",
     "static/css/2.20aa2d7b.chunk.css": "/static/css/2.20aa2d7b.chunk.css",
@@ -22,6 +22,7 @@
     "static/media/app.scss": "/static/media/hero.a73c9040.png",
     "static/media/html5.22817d53.svg": "/static/media/html5.22817d53.svg",
     "static/media/organigrama.b28e5e03.jpeg": "/static/media/organigrama.b28e5e03.jpeg",
+    "static/media/procesos.19e7ff14.jpeg": "/static/media/procesos.19e7ff14.jpeg",
     "static/media/product.d9246254.jpg": "/static/media/product.d9246254.jpg",
     "static/media/puestos.6832c674.jpeg": "/static/media/puestos.6832c674.jpeg",
     "static/media/tab-1.22cb2b5b.png": "/static/media/tab-1.22cb2b5b.png",
@@ -35,6 +36,6 @@
     "static/css/2.20aa2d7b.chunk.css",
     "static/js/2.52a9b95a.chunk.js",
     "static/css/main.8ce360af.chunk.css",
-    "static/js/main.009d598c.chunk.js"
+    "static/js/main.07e3ff1d.chunk.js"
   ]
 }
