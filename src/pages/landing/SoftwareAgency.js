@@ -5,18 +5,14 @@ import { Container, Row, Col, Card, CardBody, CardHeader, CardFooter, } from 're
 
 // Imports de config-components.
 import {Navbars} from '../../config-components/Navbars'
-import Example from '../../config-components/Tabs'
 
 import { A, AWhatsapp } from '../../config-components'
 // } from 'components-links'
 
 // Imports de assets.
-import Blog from '../../img/test.jpg'
 import Heroxs from '../../img/hero-xs.png'
 import { ImgOrganigrama, ImgPuestos, ImgDescripciones, ImgProcesos} from '../../img'
-import Figma from '../../img/figma.svg'
 import WebApps from '../../img/vscode.svg'
-import HTML5 from '../../img/html5.svg'
 import * as FaIcons from "react-icons/fa"
 
 function Landing() {
@@ -30,7 +26,7 @@ function Landing() {
                         
                     </Col>
                     <Col lg="6">
-                        <h1 className="display-4 font-weight-bold mb-3">Somos expertos en Organización empresarial.</h1>
+                        <h1 className="display-4 font-weight-bold mb-3">Somos expertos en organizar empresas</h1>
                         <p className="text-muted mb-4">Creamos la Organización en tu empresa con las mejores herramientas tecnologicas, tenemos más de 40 años de experiencia</p>
                         
                     </Col>
@@ -71,7 +67,7 @@ function Landing() {
                     </Col>
                     <Col lg="6" className="d-flex">
                         <div className="align-self-center p-4">
-                            <h2 className="display-4 font-weight-bold mb-4">Compesaciones<span className="text-primary">.</span></h2>
+                            <h2 className="display-4 font-weight-bold mb-4">Perfiles<span className="text-primary">.</span></h2>
                             <p className="text-muted mb-4">Define claramente tus procesos y logra sitematizarlos</p>
                            
                         </div>
@@ -101,20 +97,20 @@ function Landing() {
             </Container>
         </section>    */}
        
-        {/* <section className="py-7">
+        <section className="py-7">
             <Container>
                 <div className="w-75 mx-auto text-center mb-5">
                     <h2 className="display-4 font-weight-bold">
                         <AWhatsapp 
                             phone='+525533333279' 
-                            message={`Hola, Quiero información para un proyecto`} 
+                            message={`Hola, Quiero más información`} 
                             className="text-dark"
                         >Contáctanos ahora</AWhatsapp>
                     </h2>
                     <p className="lead text-muted">Comienza  y empieza a mejorar tu empresa.</p>
                 </div>
             </Container>
-        </section> */}
+        </section>
         <footer className="py-3">
             <Container>
                 <Row>
