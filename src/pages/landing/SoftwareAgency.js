@@ -86,7 +86,8 @@ function Landing() {
                         </div>
                     </Col>
                     <Col lg="6">
-                        <img src={WebApps} className="img-fluid rounded my-4" />
+                                              <ImgDescripciones className="img-fluid rounded my-4" />
+
                     </Col>
                 </Row>
             </Container>
