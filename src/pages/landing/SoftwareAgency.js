@@ -13,7 +13,7 @@ import { A, AWhatsapp } from '../../config-components'
 // Imports de assets.
 import Blog from '../../img/test.jpg'
 import Heroxs from '../../img/hero-xs.png'
-import { ImgOrganigrama, ImgPuestos, ImgDescripciones} from '../../img'
+import { ImgOrganigrama, ImgPuestos, ImgDescripciones, ImgProcesos} from '../../img'
 import Figma from '../../img/figma.svg'
 import WebApps from '../../img/vscode.svg'
 import HTML5 from '../../img/html5.svg'
@@ -86,13 +86,13 @@ function Landing() {
                         </div>
                     </Col>
                     <Col lg="6">
-                                              <ImgDescripciones className="img-fluid rounded my-4" />
+                        <ImgProcesos className="img-fluid rounded my-4" />
 
                     </Col>
                 </Row>
             </Container>
         </section>  
-        
+         
         {/* <section className="py-6">
             <Container>
                 <div className="tab-container bg-light py-4 px-5">

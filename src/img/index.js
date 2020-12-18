@@ -6,6 +6,8 @@ import Logo from './version-4-logo.svg'
 import Organigrama from './organigrama.jpeg'
 import Puestos from './puestos.jpeg'
 import Descripciones from './descripciones.jpeg'
+import Procesos from './procesos.jpeg'
+   
 
 
 
@@ -25,6 +27,10 @@ export const ImgJesus = ({className}) =>(
 
 export const ImgOrganigrama = ({className}) =>(
     <Img src={Organigrama} alt='Organigrama' className={className}/>
+)
+
+export const ImgProcesos = ({className}) =>(
+    <Img src={Procesos} alt='Procesos' className={className}/>
 )
 
 export const ImgPuestos = ({className}) =>(
