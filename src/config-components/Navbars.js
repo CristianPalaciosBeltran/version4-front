@@ -35,9 +35,9 @@ export const Navbars = () => {
             <NavItem className="d-flex mr-2">
               <NavLink href="/login"className="btn btn-outline-secondary align-self-center">Inicia sesión</NavLink>
             </NavItem>
-            <NavItem className="d-flex">
+            {/* <NavItem className="d-flex">
               <NavLink href="/sign-up"className="btn btn-primary align-self-center">Regístrate</NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </Collapse>
         </Container>
