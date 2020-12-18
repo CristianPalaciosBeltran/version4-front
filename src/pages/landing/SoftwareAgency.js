@@ -26,7 +26,7 @@ function Landing() {
                         
                     </Col>
                     <Col lg="6">
-                        <h1 className="display-4 font-weight-bold mb-3">Somos expertos en organizar empresas</h1>
+                        <h1 className="display-4 font-weight-bold mb-3">Somos expertos en Organización de empresas</h1>
                         <p className="text-muted mb-4">Creamos la Organización en tu empresa con las mejores herramientas tecnologicas, tenemos más de 40 años de experiencia</p>
                         
                     </Col>
