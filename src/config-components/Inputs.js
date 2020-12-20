@@ -62,6 +62,9 @@ export const InputText = ({forName,
         if(validateRE && e.target.value === '' && isMandatory){
             validateRE = false;
         }
+        if(!validateRE && e.target.value === '' && !isMandatory){
+            validateRE = '';
+        }
         onChange(e.target, validateRE);
     }
 
