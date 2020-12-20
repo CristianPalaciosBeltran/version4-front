@@ -22,7 +22,8 @@ import {
   AdminSectionsPages, 
   AdminCoursesPages,
   AdminProductPages,
-  AdminDashboardPages
+  AdminDashboardPages,
+  AdminCompanyPages
 }from './pages/admin'
 
 /* Imports de Páginas de usario */
@@ -50,8 +51,10 @@ function App() {
           <Route  exact path="/admin-dashboard/:indicator" component={AdminDashboardPages.Dashboard}></Route>
           <Route  exact path="/admin-dashboard-read-user/:userId" component={AdminUsersPages.ReadUser}></Route>
           <Route  exact path="/admin-dashboard-read-admin/:userId" component={AdminUsersPages.ReadAdmin}></Route>
-          { /* crud productos para admins */ }
-          <Route  exact path="/admin-dashboard/product/:productId/" component={AdminProductPages.EditProduct}></Route>
+          { /* crud empresas */ }
+          <Route  exact path="/admin-dashboard/create-company/:userId" component={AdminCompanyPages.CreateCompany}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId" component={AdminCompanyPages.Indicators}></Route>
+
           <Route  exact path="/admin-dashboard/product/:productId/:section" component={AdminProductPages.EditProduct}></Route>
           { /* crud videos para admins */ }
           <Route  exact path="/admin-dashboard/course/:courseId" component={AdminCoursesPages.EditCourse}></Route>

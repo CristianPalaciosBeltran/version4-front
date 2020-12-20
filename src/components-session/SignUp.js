@@ -28,6 +28,7 @@ class SignUp extends Component {
           TypeUser
         },
       },
+      role,
       reDirect,
       history,
       token
@@ -47,8 +48,11 @@ class SignUp extends Component {
     await signUpMethods(ModelSignUp, token);
    
     if (this.props.signUpReducer.data.Id) {
+        role === 'User' 
+        ? history.push(`${reDirect}/${this.props.signUpReducer.data.Id}`)
+        : history.push(reDirect) 
         signUpCleanState();
-        history.push(reDirect)     
+           
     }
   };
 

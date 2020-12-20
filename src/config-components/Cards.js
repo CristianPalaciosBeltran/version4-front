@@ -14,7 +14,7 @@ export const CardAnalytics = ({title, number, icon}) => {
             <CardBody>
                 <p className="text-muted mb-2">{rIcon} {rTitle}</p>
                 <h5 className="display-4 text-dark">{rNumber}</h5>
-                <div className="d-inline-block text-success mr-2"><FaIcons.FaArrowUp className="mr-2" />0%</div><p className="text-dark d-inline-block mb-0">vs los últimos 7 días</p>
+                {/* <div className="d-inline-block text-success mr-2"><FaIcons.FaArrowUp className="mr-2" />0%</div><p className="text-dark d-inline-block mb-0">vs los últimos 7 días</p> */}
             </CardBody>
         </Card>   
     )

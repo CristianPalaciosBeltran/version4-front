@@ -10,7 +10,7 @@ import {NavbarAdmin} from '../../config-components/Navbars'
 import Indicators from '../../components-admin/Indicators'
 
 import {
-    AdminUsersPages, AdminCoursesPages, AdminProductPages
+    AdminUsersPages, AdminCoursesPages, AdminProductPages, AdminCompanyPages
 } from './index'
 
 export const Dashboard = () => {
@@ -24,21 +24,15 @@ export const Dashboard = () => {
                 return <AdminUsersPages.CreateAdmin />
             case 'admins':
                 return <AdminUsersPages.ListOfAdmins reDirect={'admin'} history={history} />
-
             case 'create-user':
                 return <AdminUsersPages.CreateUser />
             case 'users':
                 return <AdminUsersPages.ListOfUsers reDirect={'section'} history={history} />
-                
-            case 'create-course':
-                return <AdminCoursesPages.CreateCourse />
-            case 'courses':
-                return <AdminCoursesPages.ListOfCourses reDirect={'section'} history={history} />
-            
+                 
             case 'create-product':
                 return <AdminProductPages.CreateProduct />
-            case 'products':
-                return <AdminProductPages.ListOfProducts />
+            case 'companies':
+                return <AdminCompanyPages.ListOfCompanies />
             
             default:
                 return <>

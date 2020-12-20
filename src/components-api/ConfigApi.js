@@ -148,7 +148,7 @@ export const signOff = (e) => {
 
 // Metodo para manejar las rutas del api
 export const setPathApi = () => {
-  const option = 2;
+  const option = 1;
   let route = "";
   switch (option) {
     case 1:

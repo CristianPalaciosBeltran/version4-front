@@ -5,7 +5,8 @@ import {
     ANALYTICS_COUNT_PRODUCTS,
     ANALYTICS_COUNT_COURSES,
     ANALYTICS_COUNT_USERS,
-    ANALYTICS_COUNT_ADMINS
+    ANALYTICS_COUNT_ADMINS,
+    ANALYTICS_COUNT_COMPANIES
   } from "./analyticsTypes";
   
   import { axios_api, errorHandler } from "../../components-api/ConfigApi";
@@ -39,6 +40,10 @@ import {
         case "count_admins":
           answer = await axios_api(`api/Account/UsersCount?roleName=Admin&isConfirmed=false`, true, "get");
           type = ANALYTICS_COUNT_ADMINS;
+          break;
+        case "count_companies":
+          answer = await axios_api(`api/CountCompanies`, true, "get");
+          type = ANALYTICS_COUNT_COMPANIES;
           break;
         default:
             break

@@ -86,7 +86,7 @@ export const CreateUser = () => {
                     <Card className="border-0">
                         <CardBody className="card-body">
                             <h5 className="font-weight-bold mb-3">Crea un Usuario</h5>
-                            <SignUp history={history} role='User' reDirect={'/admin-dashboard/users'} token={true}/>
+                            <SignUp history={history} role='User' reDirect={'/admin-dashboard/create-company'} token={true}/>
                         </CardBody>
                     </Card>
                 </Col>
