@@ -15,6 +15,7 @@ import {
   DropdownMenu
 } from 'reactstrap';
 
+import {Logo} from './Logos'
 // Imports de components-api.
 import {signOff} from '../components-api/ConfigApi'
 // FontAwesome Icons
@@ -26,16 +27,17 @@ export const Navbars = () => {
   return (
       <Navbar expand="md" className="fixed-top bg-white border-bottom">
         <Container>
-        <NavbarBrand href="/" className="text-dark font-weight-bold">Version 4</NavbarBrand>
+        {/* <NavbarBrand href="/" className="text-dark font-weight-bold">Version 4</NavbarBrand> */}
+        <Logo />
         <NavbarToggler onClick={toggle}><FaIcons.FaBars className="lead" /></NavbarToggler>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem className="d-flex mr-2">
               <NavLink href="/login"className="btn btn-outline-secondary align-self-center">Inicia sesión</NavLink>
             </NavItem>
-            <NavItem className="d-flex">
+            {/* <NavItem className="d-flex">
               <NavLink href="/sign-up"className="btn btn-primary align-self-center">Regístrate</NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </Collapse>
         </Container>
