@@ -6,7 +6,8 @@ import {
     ANALYTICS_COUNT_COURSES,
     ANALYTICS_COUNT_USERS,
     ANALYTICS_COUNT_ADMINS,
-    ANALYTICS_COUNT_COMPANIES
+    ANALYTICS_COUNT_COMPANIES,
+    ANALYTICS_COUNT_POSITIONS
   } from "./analyticsTypes";
   
   const INITIAL_STATE = {
@@ -18,7 +19,8 @@ import {
     count_courses: 0,
     count_users: 0,
     count_admins: 0,
-    count_companies: 0
+    count_companies: 0,
+    count_positions: 0
   };
   
   const reducer = (state = INITIAL_STATE, action) => {
@@ -106,6 +108,17 @@ import {
             error: "",
           },
           count_companies: action.payload,
+        };
+      case ANALYTICS_COUNT_POSITIONS:
+        debugger
+        return {
+          ...state,
+          api_actions: {
+            ...state.api_actions,
+            cargando: false,
+            error: "",
+          },
+          count_positions: action.payload,
         };
       default:
         return { ...state };

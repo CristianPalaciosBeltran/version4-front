@@ -18,30 +18,27 @@ import * as FaIcons from "react-icons/fa"
 class Indicators extends Component {
     componentDidMount = async () => {
         const {analyticsMethods, companyMethods, companyId} = this.props;
-        await analyticsMethods('count_products')
-        await analyticsMethods('count_courses', {Id:6})
-        await analyticsMethods('count_users')
-        await analyticsMethods('count_admins')
+        await analyticsMethods('count_positions', {companyId})
         await companyMethods({Id:companyId},'GetCompany')
     }
     render(){
         const {
+            count_positions,
             count_products,
-            count_courses,
-            count_users,
-            count_admins,
             api_actions:{
                 cargando,
-            }
+            },
+            
         } = this.props.analyticsReducer;
+        
         const cardAnalytics = [
             
             {
                 id: '1-p',
                 title: 'Puestos',
-                number:  cargando ? <Loader activate={cargando}></Loader> : count_users,
+                number:  cargando ? <Loader activate={cargando}></Loader> : count_positions,
                 icon: <FaIcons.FaUserAlt className="mr-2" />,
-                href: '/admin-dashboard/company/positions'
+                href: `/admin-dashboard/company/${this.props.companyId}/positions`
             },
             {
                 id: '2-p',
@@ -55,7 +52,7 @@ class Indicators extends Component {
                 title: 'Organigrama',
                 number: 'Ver',
                 icon: <FaIcons.FaDiceD6 className="mr-2" />,
-                href: '/admin-dashboard/company/organization-chart'
+                href: '/organigrama-prueba'
             },      
         ] 
         return(

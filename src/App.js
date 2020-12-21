@@ -23,11 +23,14 @@ import {
   AdminCoursesPages,
   AdminProductPages,
   AdminDashboardPages,
-  AdminCompanyPages
+  AdminCompanyPages,
+  AdminPositionsPages
 }from './pages/admin'
 
 /* Imports de Páginas de usario */
 import {DashboardUserPage} from './pages/user'
+
+import {OrganizationChart} from './components-organization-chart'
 
 function App() {
   return (
@@ -54,6 +57,9 @@ function App() {
           { /* crud empresas */ }
           <Route  exact path="/admin-dashboard/create-company/:userId" component={AdminCompanyPages.CreateCompany}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId" component={AdminCompanyPages.Indicators}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/positions" component={AdminPositionsPages.ListOfPositions}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/create-position" component={AdminPositionsPages.CreatePosition}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/update-position/:positionId" component={AdminPositionsPages.UpdatePosition}></Route>
 
           <Route  exact path="/admin-dashboard/product/:productId/:section" component={AdminProductPages.EditProduct}></Route>
           { /* crud videos para admins */ }
@@ -63,6 +69,9 @@ function App() {
 
           {/* Páginas para dashboard de usuarios */}
           <Route  exact path="/user-dashboard" component={DashboardUserPage}></Route>
+
+          <Route  exact path="/organigrama-prueba" component={OrganizationChart}></Route>
+
 
           {/* Vista pare ver un video de un curso */}
           <Route path="*" component={NotFoundPage} />

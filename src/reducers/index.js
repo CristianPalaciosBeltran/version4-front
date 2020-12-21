@@ -8,6 +8,7 @@ import changePasswordReducer from "../components-session/change-password/reducer
 
 // Components
 import companyReducer from '../components-company/reducer/companyReducer'
+import positionReducer from '../components-position/reducer/positionReducer'
 
 // Components que tienen que ver con producto.
 import categoryReducer from '../components-category/reducer/categoryReducer'
@@ -36,6 +37,7 @@ export default combineReducers({
     signUpReducer,
     // Components.
     companyReducer,
+    positionReducer,
     categoryReducer,
     categoryProductReducer,
     productReducer,

@@ -50,7 +50,7 @@ export const DeleteCompany = async(data)=> {
     const  answer = await axios_api(
         `api/Company?id=${data.Id}`,
         true,
-        "get"
+        "delete"
       );
     return {res:answer, type: COMPANY_CRUD};
 }
