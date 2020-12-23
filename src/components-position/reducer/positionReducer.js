@@ -20,10 +20,16 @@ import {
       Name:'',
       Description: "",
       CompanyId:'',
+      Objective:'',
+      Knowledge:'',
+      Salary:''
     },
     validations: {
       Name: "",
       Description:'',
+      Objective:'',
+      Knowledge:'',
+      Salary:''
     },
     list_positions: [],
   };
@@ -86,10 +92,16 @@ import {
             Name:'',
             Description: "",
             CompanyId:'',
+            Objective:'',
+            Knowledge:'',
+            Salary:''
           },
           validations: {
             Name: "",
             Description:'',
+            Objective:'',
+            Knowledge:'',
+            Salary:''
           },
           list_positions: [],
         };
@@ -108,10 +120,16 @@ import {
             Name: action.payload.Name,
             Description: action.payload.Description,
             CompanyId: action.payload.CompanyId,
+            Objective: action.payload.Objective,
+            Knowledge: action.payload.Knowledge,
+            Salary: action.payload.Salary
           },
           validations: {
-            Name: true,
-            Description: true,
+            Name: action.payload.Name ? true : '',
+            Description: action.payload.Description ? true : '',
+            Objective: action.payload.Objective ? true: '',
+            Knowledge: action.payload.Knowledge ? action.payload.Knowledge: '',
+            Salary: action.payload.Salary ? true: ''
           },
           list_positions: [],
         };
@@ -127,7 +145,7 @@ import {
           list_positions: action.payload,
         };
   
-      case "product_put":
+      case "position_put":
         return {
           ...state,
           api_actions: {

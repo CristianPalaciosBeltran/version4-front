@@ -1,4 +1,4 @@
-import {Position, ListOfPositions as Positions} from '../../components-position'
+import {Position, ListOfPositions as Positions, ListOfResponsabilities} from '../../components-position'
 import {useSelector} from 'react-redux'
 import {useHistory, useParams} from 'react-router-dom'
 import {
@@ -33,6 +33,14 @@ export const CreatePosition = () => {
                             </CardBody>
                         </Card>
                     </Col>
+                    <Col lg="6">
+                        <Card className="border-0">
+                            <CardBody className="card-body">
+                                <h5 className="font-weight-bold mb-3">Responsabilidades</h5>
+                                <ListOfResponsabilities />      
+                            </CardBody>
+                        </Card>
+                    </Col>
                 </Row>
             </AdminDashboardPages.TemplateDashboardAdmin>
         </>
@@ -51,6 +59,15 @@ export const UpdatePosition = () => {
                             <CardBody className="card-body">
                                 <h5 className="font-weight-bold mb-3">Actualiza este Puesto</h5>
                                 <Position positionId={positionId} companyId={companyId} history={history} reDirect={`/admin-dashboard/company/${companyId}/positions`} />
+                            </CardBody>
+                        </Card>
+                    </Col>
+                    <Col lg="6">
+                        <Card className="border-0">
+                            <CardBody className="card-body">
+                                <h5 className="font-weight-bold mb-3">Responsabilidades</h5>
+                                <ListOfResponsabilities />
+                                
                             </CardBody>
                         </Card>
                     </Col>

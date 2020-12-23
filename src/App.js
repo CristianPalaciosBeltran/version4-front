@@ -24,7 +24,8 @@ import {
   AdminProductPages,
   AdminDashboardPages,
   AdminCompanyPages,
-  AdminPositionsPages
+  AdminPositionsPages,
+  AdminOrganizationChart
 }from './pages/admin'
 
 /* Imports de Páginas de usario */
@@ -60,6 +61,9 @@ function App() {
           <Route  exact path="/admin-dashboard/company/:companyId/positions" component={AdminPositionsPages.ListOfPositions}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/create-position" component={AdminPositionsPages.CreatePosition}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/update-position/:positionId" component={AdminPositionsPages.UpdatePosition}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/organization-chart" component={AdminOrganizationChart.OrgainaztionChart}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/organization-chart/node/:nodeId" component={AdminOrganizationChart.UpdateCurrent}></Route>
+          {/* <Route  exact path="/admin-dashboard/company/:companyId/organization-chart" component={OrganizationChart}></Route> */}
 
           <Route  exact path="/admin-dashboard/product/:productId/:section" component={AdminProductPages.EditProduct}></Route>
           { /* crud videos para admins */ }

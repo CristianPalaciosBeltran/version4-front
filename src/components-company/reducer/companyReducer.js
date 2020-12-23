@@ -145,7 +145,7 @@ import {
           list_companies: action.payload,
         };
   
-      case "product_put":
+      case "company_put":
         return {
           ...state,
           api_actions: {

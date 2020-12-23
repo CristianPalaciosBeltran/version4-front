@@ -52,7 +52,7 @@ class Indicators extends Component {
                 title: 'Organigrama',
                 number: 'Ver',
                 icon: <FaIcons.FaDiceD6 className="mr-2" />,
-                href: '/organigrama-prueba'
+                href: `/admin-dashboard/company/${this.props.companyId}/organization-chart`
             },      
         ] 
         return(

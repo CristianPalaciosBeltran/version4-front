@@ -25,6 +25,9 @@ class Position extends Component {
                 Name,
                 Description,
                 CompanyId,
+                Objective,
+                Knowledge,
+                Salary
             }},
             companyId
         } = this.props
@@ -34,6 +37,9 @@ class Position extends Component {
             Name: Name ? Name : '',
             Description: Description ? Description : '',
             CompanyId: CompanyId ? CompanyId : companyId,
+            Objective: Objective ? Objective : '',
+            Knowledge: Knowledge ? Knowledge : '',
+            Salary: Salary ? Salary : ''
         }
         await positionMethods(model, action);
     }
@@ -71,7 +77,9 @@ class Position extends Component {
                 data : {
                     Id, 
                     Name,
-                    Description, 
+                    Description,
+                    Objective,
+                    Salary
                 },
                 api_actions: {cargando, error},
                 validations,
@@ -105,7 +113,21 @@ class Position extends Component {
                 />
                 <InputText 
                     classLabel='font-weight-bold'
-                    textLabel='Descripción'
+                    textLabel='Objetivo'
+                    isMandatory='*'
+                    classMandatory=''
+                    inputType='textarea'
+                    inputName={'Objective'}
+                    placeHolder={'Introduce el objetivo del puesto'}
+                    inputValue={Objective}
+                    onChange={positionHandleChange}
+                    maxLength={500}
+                    RE={RE_EMPTY}
+                    validateRE={validations.Objective}
+                />
+                <InputText 
+                    classLabel='font-weight-bold'
+                    textLabel='Responsabilidades'
                     isMandatory='*'
                     classMandatory=''
                     inputType='textarea'
@@ -116,6 +138,20 @@ class Position extends Component {
                     maxLength={500}
                     RE={RE_EMPTY}
                     validateRE={validations.Description}
+                />
+                <InputText 
+                    classLabel='font-weight-bold'
+                    textLabel='Sueldo'
+                    isMandatory='*'
+                    classMandatory=''
+                    inputType='number'
+                    inputName={'Salary'}
+                    placeHolder={'Introduce un sueldo'}
+                    inputValue={Salary}
+                    onChange={positionHandleChange}
+                    maxLength={50}
+                    RE={RE_EMPTY}
+                    validateRE={validations.Salary}
                 />
             </Form1>
             </>

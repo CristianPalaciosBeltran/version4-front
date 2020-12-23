@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import { Tree, TreeNode } from 'react-organizational-chart';
 import { Card,  CardBody, CardTitle, CardSubtitle,
@@ -7,7 +8,13 @@ import { Card,  CardBody, CardTitle, CardSubtitle,
     ModalHeader,
     ModalBody,
     ModalFooter
-  } from 'reactstrap'
+} from 'reactstrap'
+import {ReadPosition} from '../components-position'
+import {connect} from 'react-redux'
+import * as organizationChartActions from './reducer/organizationChartActions'
+
+import * as FaIcons from "react-icons/fa"
+
 
 const StyledNode = styled.div`
   padding: 5px;
@@ -15,56 +22,80 @@ const StyledNode = styled.div`
   display: inline-block;
 `;
 
-export const Modals = ({children, modalTitle, name}) => {
+export const Modals = ({positionId, children, modalTitle, name}) => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
     return (
-      <div>
-        <div role="button" onClick={toggle}>{children}</div>
+      <>
+        <span role="button" onClick={toggle}>{children}</span>
         <Modal isOpen={modal} toggle={toggle} >
           <ModalHeader toggle={toggle}>{modalTitle}</ModalHeader>
           <ModalBody>
             <h3>{name}</h3>
-            Descripción del puestoLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <ReadPosition positionId={positionId} />
           </ModalBody>
-          <ModalFooter>
+          {/* <ModalFooter>
             <Button color="danger" onClick={toggle}>Quitar puesto</Button>{' '}
             <Button color="primary" onClick={toggle}>Cerrar</Button>
-          </ModalFooter>
+          </ModalFooter> */}
         </Modal>
-      </div>
+      </>
     );
   }
 
-export const CardNode = ({name, position}) => {
-    return(<Modals modalTitle={position} name={name}>
+
+export const CardNode = ({positionId,name, description, addChild, updateNode,deleteChild}) => {
+    return(
+        
         <Card>
           <CardBody>
           <CardSubtitle className='text-muted' >
             {name}
           </CardSubtitle>
-          <CardTitle className='text-dark'>
-            {position}
-          </CardTitle>
+          {/* <CardTitle className='text-dark'>
+            {description}
+          </CardTitle> */}
+          <Modals positionId={positionId} modalTitle={name} name={name} description={description}>
+            <FaIcons.FaEye className="mr-2 text-primary" />
+          </Modals>
+          <FaIcons.FaPlusCircle className="mr-2 text-success" onClick={addChild}/>
+          <FaIcons.FaEdit className="mr-2 text-secondary" onClick={updateNode}/>
+          {deleteChild && <FaIcons.FaMinusCircle className='text-danger' onClick={deleteChild}/>}
+          
           </CardBody>
         </Card>
-      </Modals>
     )
   }
 
  
 class OrganizationChart extends React.Component {
 
+    state = {
+        tree: ''
+    }
+    async componentDidMount() {
+        const {organizationChartMethods, companyId} = this.props;
+        await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId');
+      
+    }
 
-    createOrganigrama = (organigrama) => {
+   
 
-        let children = organigrama?.children
-        if(children?.length === 0 || children === undefined || !children){
+    createOrganigrama =  (organigrama) => {
+        let OrganizationChart1 = organigrama?.OrganizationChart1
+        if(OrganizationChart1?.length === 0 || OrganizationChart1 === undefined || !OrganizationChart1){
             
             return <TreeNode 
                 label={
                 <StyledNode>
-                    <CardNode name={organigrama?.name} position={organigrama?.puesto}/>
+                    <CardNode 
+                        positionId = {organigrama?.Position?.Id}
+                        name={organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
+                        description={organigrama?.Position?.Description}
+                        addChild={() => this.addChild(organigrama?.Id)}
+                        deleteChild={() => this.deleteChild(organigrama?.Id)}
+                        updateNode={() => this.updateNode(organigrama?.Id)}
+                    />
                 </StyledNode>
                 }
             />
@@ -73,96 +104,87 @@ class OrganizationChart extends React.Component {
         return <TreeNode 
             label={
                 <StyledNode>
-                    <CardNode name={organigrama?.name} position={organigrama?.puesto}/>
+                    <CardNode 
+                        positionId = {organigrama?.Position?.Id}
+                        name = {organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
+                    
+                        addChild={() => this.addChild(organigrama?.Id)}
+                        updateNode={() => this.updateNode(organigrama?.Id)}
+                    />
                 </StyledNode>
             }
         >
             {
-                children.map(child => {
+                OrganizationChart1.map((child) => {           
                     return this.createOrganigrama(child)
                 })
             }
         </TreeNode>
     }
 
+    createOrigin = async () => {
+        const {organizationChartMethods, companyId} = this.props;
+        await organizationChartMethods({CompanyId: companyId},'PostOrganizationChart')
+        await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId')
+    }
+
+    addChild = async (parentId) => {
+        debugger
+        const {organizationChartMethods, companyId} = this.props;
+        await organizationChartMethods({CompanyId: companyId, PositionChartId: parentId },'PostOrganizationChart')
+        await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId')
+    }
+
+    deleteChild = async (parentId) => {
+        debugger
+        const {organizationChartMethods, companyId} = this.props;
+        await organizationChartMethods({Id: parentId },'DeleteOrganizationChart')
+        await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId')
+    }
+
+    updateNode = (nodeId) => {
+        const {history, companyId} = this.props;
+        history.push(`/admin-dashboard/company/${companyId}/organization-chart/node/${nodeId}`)
+    }
+
     render () {
-        const organigrama = {
-            id: 1,
-            name: 'Miguel Roque',
-            puesto: 'Director',
-            children: [
-                {
-                    id: 2,
-                    name: 'John Nielsen',
-                    puesto: 'Gerente de Sistemas',
-                    children:[
-                        {
-                            id: 4,
-                            name: 'Emilio Lopez',
-                            puesto: 'Programador',
-                        },
-                        {
-                            id: 5,
-                            name: 'Eddy Cortez',
-                            puesto: 'Diseñador',
-                        }
-                    ]
-                },
-                {
-                    id: 6,
-                    name: 'Juan Lopez',
-                    puesto: 'Gerente de contabilidad',
-                    children:[
-                        {
-                            id:7,
-                            name: 'Gonzalo Ruiz',
-                            puesto: 'Contador',
-                            children:[
-                                {
-                                    id:9,
-                                    name: 'Jorge Hernandez',
-                                    puesto: 'Contador Jr',
-                                },
-                                {
-                                    id:10,
-                                    name: 'Aurelio Romano',
-                                    puesto: 'Contador Jr',
-                                }
-                            ]
-                        },
-                        {
-                            id:8,
-                            name: 'Edgar Vival',
-                            puesto: 'Contador',
-                        }
-                    ]
-                },
-                {
-                    id:11,
-                    name: 'Jesús Gomez',
-                    puesto: 'Mentor',
-                }
-            ]
-          }
-        
+
+        const { organizationChartReducer:{data: {Id}}, companyId } = this.props
+
         return(
             <div>
+                <ul className="list-inline mb-4">
+                <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">mis indicadores</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
+                <li className="list-inline-item "><small className="font-weight-bold">Organigrama</small></li>
+            </ul>
+                {
+                    Id 
+                        ? <Tree
+                            lineWidth={'2px'}
+                            lineColor={'gray'}
+                            lineBorderRadius={'10px'}
+                            label={<StyledNode>
+                            <CardNode name={Id} position={'Accionista'} addChild={() => this.addChild(Id)} />
+                            </StyledNode>}
+                        >
+                            {
+                                // this.state.tree
+                                this.createOrganigrama(this.props.organizationChartReducer.data)
+                            }
+                        </Tree>
+                        : <FaIcons.FaPlusCircle className="" onClick={this.createOrigin}/>
+                }
                 
-                <Tree
-                    lineWidth={'2px'}
-                    lineColor={'gray'}
-                    lineBorderRadius={'10px'}
-                    label={<StyledNode>
-                    <CardNode name={'Miguel Roque	'} position={'Accionista'}/>
-                    </StyledNode>}
-                >
-                    {
-                        this.createOrganigrama(organigrama)
-                    }
-                </Tree>
+                
             </div>
         )
     }
 }
+const mapStateToProps = ({organizationChartReducer}) => {
+    return {organizationChartReducer}
+}
 
-export default OrganizationChart;
+const mapDispatchToProps = {
+    ...organizationChartActions,
+}
+export default connect(mapStateToProps, mapDispatchToProps)(OrganizationChart);
