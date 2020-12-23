@@ -114,7 +114,7 @@ class Position extends Component {
                 <InputText 
                     classLabel='font-weight-bold'
                     textLabel='Objetivo'
-                    isMandatory='*'
+                    isMandatory=''
                     classMandatory=''
                     inputType='textarea'
                     inputName={'Objective'}
@@ -128,7 +128,7 @@ class Position extends Component {
                 <InputText 
                     classLabel='font-weight-bold'
                     textLabel='Responsabilidades'
-                    isMandatory='*'
+                    isMandatory=''
                     classMandatory=''
                     inputType='textarea'
                     inputName={'Description'}
@@ -142,7 +142,7 @@ class Position extends Component {
                 <InputText 
                     classLabel='font-weight-bold'
                     textLabel='Sueldo'
-                    isMandatory='*'
+                    isMandatory=''
                     classMandatory=''
                     inputType='number'
                     inputName={'Salary'}
