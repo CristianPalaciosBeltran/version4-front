@@ -7,6 +7,7 @@ export const ANALYTICS_COUNT_USERS = "analytics_count_users";
 export const ANALYTICS_COUNT_ADMINS = "analytics_count_admins";
 export const ANALYTICS_COUNT_COMPANIES = "analytics_count_companies";
 export const ANALYTICS_COUNT_POSITIONS = "analytics_count_positions";
+export const ANALYTICS_COUNT_PERSONAL_DETAILS = "analytics_count_personal_details";
 
 
 

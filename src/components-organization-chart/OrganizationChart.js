@@ -48,21 +48,35 @@ export const CardNode = ({positionId,name, description, addChild, updateNode,del
     return(
         
         <Card>
-          <CardBody>
-          <CardSubtitle className='text-muted' >
-            {name}
-          </CardSubtitle>
-          {/* <CardTitle className='text-dark'>
-            {description}
-          </CardTitle> */}
-          <Modals positionId={positionId} modalTitle={name} name={name} description={description}>
-            <FaIcons.FaEye className="mr-2 text-primary" />
-          </Modals>
-          <FaIcons.FaPlusCircle className="mr-2 text-success" onClick={addChild}/>
-          <FaIcons.FaEdit className="mr-2 text-secondary" onClick={updateNode}/>
-          {deleteChild && <FaIcons.FaMinusCircle className='text-danger' onClick={deleteChild}/>}
-          
-          </CardBody>
+            <CardBody className=' d-flex justify-content-between'>
+                <div className={'mr-5 '}>
+                    <div className='font-weight-bold  mb-2' style={{textAlign: 'start'}}>
+                        {name}
+                    </div>
+                    <div className='text-dark text-start' style={{textAlign: 'start'}}>
+                        empleado
+                    </div> 
+                </div>
+                <div>
+                    <div>
+                        <FaIcons.FaPlusCircle className="text-secondary" onClick={addChild}/>
+                    </div>
+                    <div>
+                        <Modals positionId={positionId} modalTitle={name} name={name} description={description}>
+                            <FaIcons.FaEye className="text-secondary" />
+                        </Modals>
+                    </div>
+                    <div>
+                        <FaIcons.FaUserEdit className="text-secondary" onClick={updateNode}/>
+                    </div>
+                    <div>
+                        <FaIcons.FaPlusCircle className="text-secondary" onClick={addChild}/>
+                    </div>
+                    <div>
+                        {deleteChild && <FaIcons.FaMinusCircle className='text-secondary' onClick={deleteChild}/>}
+                    </div>
+                </div>
+            </CardBody>
         </Card>
     )
   }
@@ -164,7 +178,7 @@ class OrganizationChart extends React.Component {
                             lineColor={'gray'}
                             lineBorderRadius={'10px'}
                             label={<StyledNode>
-                            <CardNode name={Id} position={'Accionista'} addChild={() => this.addChild(Id)} />
+                            <h1>Compañia</h1>
                             </StyledNode>}
                         >
                             {
