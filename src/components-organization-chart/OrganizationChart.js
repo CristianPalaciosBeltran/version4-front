@@ -44,7 +44,7 @@ export const Modals = ({positionId, children, modalTitle, name}) => {
   }
 
 
-export const CardNode = ({positionId,name, description, addChild, updateNode,deleteChild}) => {
+export const CardNode = ({positionId,name, employee, addChild, updateNode,deleteChild}) => {
     return(
         
         <Card>
@@ -54,15 +54,15 @@ export const CardNode = ({positionId,name, description, addChild, updateNode,del
                         {name}
                     </div>
                     <div className='text-dark text-start' style={{textAlign: 'start'}}>
-                        empleado
+                        {employee ? `${employee.Name} ${employee.LastName} ` :'Empleado'}
                     </div> 
                 </div>
                 <div>
-                    <div>
+                    {/* <div>
                         <FaIcons.FaPlusCircle className="text-secondary" onClick={addChild}/>
-                    </div>
+                    </div> */}
                     <div>
-                        <Modals positionId={positionId} modalTitle={name} name={name} description={description}>
+                        <Modals positionId={positionId} modalTitle={name} name={name} >
                             <FaIcons.FaEye className="text-secondary" />
                         </Modals>
                     </div>
@@ -105,7 +105,7 @@ class OrganizationChart extends React.Component {
                     <CardNode 
                         positionId = {organigrama?.Position?.Id}
                         name={organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
-                        description={organigrama?.Position?.Description}
+                        employee = { organigrama.PersonalDetail}
                         addChild={() => this.addChild(organigrama?.Id)}
                         deleteChild={() => this.deleteChild(organigrama?.Id)}
                         updateNode={() => this.updateNode(organigrama?.Id)}
@@ -121,7 +121,7 @@ class OrganizationChart extends React.Component {
                     <CardNode 
                         positionId = {organigrama?.Position?.Id}
                         name = {organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
-                    
+                        employee = { organigrama.PersonalDetail}
                         addChild={() => this.addChild(organigrama?.Id)}
                         updateNode={() => this.updateNode(organigrama?.Id)}
                     />
@@ -139,6 +139,13 @@ class OrganizationChart extends React.Component {
     createOrigin = async () => {
         const {organizationChartMethods, companyId} = this.props;
         await organizationChartMethods({CompanyId: companyId},'PostOrganizationChart')
+        await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId')
+    }
+
+    addUpChild = async (parentId) => {
+        debugger
+        const {organizationChartMethods, companyId} = this.props;
+        await organizationChartMethods({CompanyId: companyId, PositionChartId: parentId },'PostOrganizationChart')
         await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId')
     }
 
