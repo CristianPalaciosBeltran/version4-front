@@ -110,6 +110,7 @@ import {
           list_personal_details: [],
         };
       case PERSONAL_DETAIL_CRUD:
+        debugger
         return {
           ...state,
           api_actions: {
@@ -126,7 +127,7 @@ import {
             SecondLastName: action.payload.SecondLastName,
             CompanyId: action.payload.CompanyId,
             RFC: action.payload.RFC,
-            Birthdate: action.payload.Birthdate.slice(0, 10),
+            Birthdate: action.payload.Birthdate?.slice(0, 10),
             Gender:action.payload.Gender 
           },
           validations: {

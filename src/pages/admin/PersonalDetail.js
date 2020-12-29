@@ -1,11 +1,13 @@
 import React from 'react'
-import {useHistory, useParams} from 'react-router-dom'
+import {useHistory, useParams, Link} from 'react-router-dom'
 import {
     Row, Col,Card, CardBody
 } from 'reactstrap'
 import {useSelector} from 'react-redux'
 import {ListOfPersonDetails as PersonDetails, PersonDetail} from '../../components-personal-detail'
 import {TemplateDashboardAdmin} from './Dashboard'
+import * as FaIcons from "react-icons/fa"
+
 
 export const ListOfPersonDetails = ({reDirect, history}) =>{
     const companyReducer = useSelector(state => state.companyReducer)
@@ -23,7 +25,12 @@ export const CreatePersonDetail = () => {
     const history = useHistory();
     return (
         <>
+            
             <TemplateDashboardAdmin>
+                <ul className="list-inline mb-4">
+                    <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}/employees`} className="text-muted">Empleados</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
+                    <li className="list-inline-item "><small className="font-weight-bold"> Crear Empleado</small></li>
+                </ul>
                 <Row>
                     <Col lg="6">
                         <Card className="border-0">
@@ -45,6 +52,10 @@ export const UpdatePersonDetail = () => {
     return (
         <>
             <TemplateDashboardAdmin>
+                <ul className="list-inline mb-4">
+                    <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}/employees`} className="text-muted">Empleados</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
+                    <li className="list-inline-item "><small className="font-weight-bold"> Actualizar Empleado</small></li>
+                </ul>
                 <Row>
                     <Col lg="6">
                         <Card className="border-0">

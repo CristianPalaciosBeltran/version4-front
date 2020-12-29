@@ -71,6 +71,11 @@ class PersonDetail extends Component {
         }
     }
 
+    componentWillUnmount(){
+        const { personalDetailCleanState } = this.props;
+        personalDetailCleanState();    
+    }
+
     render(){
         const {
             personalDetailHandleValidation,
