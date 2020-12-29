@@ -44,25 +44,39 @@ export const Modals = ({positionId, children, modalTitle, name}) => {
   }
 
 
-export const CardNode = ({positionId,name, description, addChild, updateNode,deleteChild}) => {
+export const CardNode = ({positionId,name, employee, addChild, updateNode,deleteChild}) => {
     return(
         
         <Card>
-          <CardBody>
-          <CardSubtitle className='text-muted' >
-            {name}
-          </CardSubtitle>
-          {/* <CardTitle className='text-dark'>
-            {description}
-          </CardTitle> */}
-          <Modals positionId={positionId} modalTitle={name} name={name} description={description}>
-            <FaIcons.FaEye className="mr-2 text-primary" />
-          </Modals>
-          <FaIcons.FaPlusCircle className="mr-2 text-success" onClick={addChild}/>
-          <FaIcons.FaEdit className="mr-2 text-secondary" onClick={updateNode}/>
-          {deleteChild && <FaIcons.FaMinusCircle className='text-danger' onClick={deleteChild}/>}
-          
-          </CardBody>
+            <CardBody className=' d-flex justify-content-between'>
+                <div className={'mr-5 '}>
+                    <div className='font-weight-bold  mb-2' style={{textAlign: 'start'}}>
+                        {name}
+                    </div>
+                    <div className='text-dark text-start' style={{textAlign: 'start'}}>
+                        {employee ? `${employee.Name} ${employee.LastName} ` :'Empleado'}
+                    </div> 
+                </div>
+                <div>
+                    {/* <div>
+                        <FaIcons.FaPlusCircle className="text-secondary" onClick={addChild}/>
+                    </div> */}
+                    <div>
+                        <Modals positionId={positionId} modalTitle={name} name={name} >
+                            <FaIcons.FaEye className="text-secondary" />
+                        </Modals>
+                    </div>
+                    <div>
+                        <FaIcons.FaUserEdit className="text-secondary" onClick={updateNode}/>
+                    </div>
+                    <div>
+                        <FaIcons.FaPlusCircle className="text-secondary" onClick={addChild}/>
+                    </div>
+                    <div>
+                        {deleteChild && <FaIcons.FaMinusCircle className='text-secondary' onClick={deleteChild}/>}
+                    </div>
+                </div>
+            </CardBody>
         </Card>
     )
   }
@@ -91,7 +105,7 @@ class OrganizationChart extends React.Component {
                     <CardNode 
                         positionId = {organigrama?.Position?.Id}
                         name={organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
-                        description={organigrama?.Position?.Description}
+                        employee = { organigrama.PersonalDetail}
                         addChild={() => this.addChild(organigrama?.Id)}
                         deleteChild={() => this.deleteChild(organigrama?.Id)}
                         updateNode={() => this.updateNode(organigrama?.Id)}
@@ -107,7 +121,7 @@ class OrganizationChart extends React.Component {
                     <CardNode 
                         positionId = {organigrama?.Position?.Id}
                         name = {organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
-                    
+                        employee = { organigrama.PersonalDetail}
                         addChild={() => this.addChild(organigrama?.Id)}
                         updateNode={() => this.updateNode(organigrama?.Id)}
                     />
@@ -125,6 +139,13 @@ class OrganizationChart extends React.Component {
     createOrigin = async () => {
         const {organizationChartMethods, companyId} = this.props;
         await organizationChartMethods({CompanyId: companyId},'PostOrganizationChart')
+        await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId')
+    }
+
+    addUpChild = async (parentId) => {
+        debugger
+        const {organizationChartMethods, companyId} = this.props;
+        await organizationChartMethods({CompanyId: companyId, PositionChartId: parentId },'PostOrganizationChart')
         await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId')
     }
 
@@ -164,7 +185,7 @@ class OrganizationChart extends React.Component {
                             lineColor={'gray'}
                             lineBorderRadius={'10px'}
                             label={<StyledNode>
-                            <CardNode name={Id} position={'Accionista'} addChild={() => this.addChild(Id)} />
+                            <h1>Compañia</h1>
                             </StyledNode>}
                         >
                             {

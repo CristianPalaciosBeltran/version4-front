@@ -36,9 +36,9 @@ export const LoginPage = () => {
             <Container>
                 <Card className="mx-auto card-form border-0">
                     <CardBody>
-                        <h4 className="font-weight-bold mb-4">Iniciar sesión</h4>     
+                        {/* <h4 className="font-weight-bold mb-4">Iniciar sesión</h4>      */}
                         <Login />   
-                        <p className="text-center mb-0">¿No tienes una cuenta? <Link to='/sign-up'>Crea una cuenta</Link></p>
+                        {/* <p className="text-center mb-0">¿No tienes una cuenta? <Link to='/sign-up'>Crea una cuenta</Link></p> */}
                     </CardBody>
                 </Card>
             </Container>

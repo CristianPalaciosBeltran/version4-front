@@ -24,7 +24,8 @@ import {
       AreasId: 0,
       PositionChartId: 0,
       OrganizationChart1: [],
-      Position: {}
+      Position: {},
+      PersonalDetail: {}
     },
     child: {
         Id: 0,
@@ -106,7 +107,8 @@ import {
             AreasId: 0,
             PositionChartId: 0,
             OrganizationChart1: [],
-            Position:{}
+            Position:{},
+            PersonalDetail:{}
           },
           child: {
             Id: 0,
@@ -118,7 +120,8 @@ import {
             AreasId: 0,
             PositionChartId: 0,
             OrganizationChart1: [],
-            Position:{}
+            Position:{},
+            PersonalDetail:{}
           },
           validations: {
             PositionId: "",
@@ -145,7 +148,8 @@ import {
             AreasId: action.payload.AreasId,
             PositionChartId: action.payload.PositionChartId,
             OrganizationChart1: action.payload.OrganizationChart1,
-            Position: action.payload.Position
+            Position: action.payload.Position,
+            PersonalDetail: action.payload.PersonalDetail
           },
           validations: {
             PositionId: "",

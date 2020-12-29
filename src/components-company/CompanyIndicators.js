@@ -19,12 +19,13 @@ class Indicators extends Component {
     componentDidMount = async () => {
         const {analyticsMethods, companyMethods, companyId} = this.props;
         await analyticsMethods('count_positions', {companyId})
+        await analyticsMethods('count_personal_details', {companyId})
         await companyMethods({Id:companyId},'GetCompany')
     }
     render(){
         const {
             count_positions,
-            count_products,
+            count_personal_details,
             api_actions:{
                 cargando,
             },
@@ -43,9 +44,9 @@ class Indicators extends Component {
             {
                 id: '2-p',
                 title: 'Empleados',
-                number: cargando ? <Loader activate={cargando}></Loader> : count_products,
+                number: cargando ? <Loader activate={cargando}></Loader> : count_personal_details,
                 icon: <FaIcons.FaDiceD6 className="mr-2" />,
-                href: '/admin-dashboard/company/employees'
+                href: `/admin-dashboard/company/${this.props.companyId}/employees`
             }, 
             {
                 id: '3-p',

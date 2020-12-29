@@ -7,7 +7,8 @@ import {
     ANALYTICS_COUNT_USERS,
     ANALYTICS_COUNT_ADMINS,
     ANALYTICS_COUNT_COMPANIES,
-    ANALYTICS_COUNT_POSITIONS
+    ANALYTICS_COUNT_POSITIONS,
+    ANALYTICS_COUNT_PERSONAL_DETAILS
   } from "./analyticsTypes";
   
   import { axios_api, errorHandler } from "../../components-api/ConfigApi";
@@ -49,6 +50,10 @@ import {
         case "count_positions":
           answer = await axios_api(`api/CountPositions?companyId=${data.companyId}`, true, "get");
           type = ANALYTICS_COUNT_POSITIONS;
+          break;
+        case "count_personal_details":
+          answer = await axios_api(`api/CountPersonalDetails?companyId=${data.companyId}`, true, "get");
+          type = ANALYTICS_COUNT_PERSONAL_DETAILS;
           break;
         default:
             break
