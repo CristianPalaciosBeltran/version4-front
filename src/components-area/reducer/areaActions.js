@@ -6,7 +6,10 @@ import {
     AREA_HANDLE_VALIDATION, 
     GetAreas,
     GetAreasByCompanyId,
+    GetAreasByCompanyIdWithoutTaken,
+    GetAreasByCompanyIdTaken,
     GetArea,
+    PutAreaTaken,
     PutArea,
     PostArea,
     DeleteArea
@@ -48,9 +51,21 @@ import {
         case "GetAreasByCompanyId":
           answer = await GetAreasByCompanyId(data);
           break;
+
+        case "GetAreasByCompanyIdWithoutTaken":
+          answer = await GetAreasByCompanyIdWithoutTaken(data);
+          break;
+
+        case "GetAreasByCompanyIdTaken":
+          answer = await GetAreasByCompanyIdTaken(data);
+          break;
         
-          case "GetArea":
+        case "GetArea":
           answer = await GetArea(data);
+          break;
+
+        case "PutAreaTaken":
+          answer = await PutAreaTaken(data);
           break;
 
         case "PutArea":

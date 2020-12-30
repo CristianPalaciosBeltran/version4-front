@@ -103,7 +103,7 @@ import {
           count_admins: action.payload,
         };
       case ANALYTICS_COUNT_COMPANIES:
-        debugger
+      
         return {
           ...state,
           api_actions: {
@@ -114,7 +114,7 @@ import {
           count_companies: action.payload,
         };
       case ANALYTICS_COUNT_POSITIONS:
-        debugger
+      
         return {
           ...state,
           api_actions: {
@@ -125,7 +125,7 @@ import {
           count_positions: action.payload,
         };
       case ANALYTICS_COUNT_PERSONAL_DETAILS:
-        debugger
+      
         return {
           ...state,
           api_actions: {
@@ -136,7 +136,7 @@ import {
           count_personal_details: action.payload,
         };
       case ANALYTICS_COUNT_AREAS:
-        debugger
+      
         return {
           ...state,
           api_actions: {

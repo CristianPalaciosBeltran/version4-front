@@ -96,7 +96,6 @@ import {
           list_areas: [],
         };
       case AREA_CRUD:
-        debugger
         return {
           ...state,
           api_actions: {

@@ -10,6 +10,7 @@ import {connect } from 'react-redux'
 import * as organizationChartActions from './reducer/organizationChartActions'
 import * as positionActions from '../components-position/reducer/positionActions'
 import * as personalDetailActions from '../components-personal-detail/reducer/personalDetailActions'
+import * as areaActions from '../components-area/reducer/areaActions'
 
 
 class OrganizationChart extends Component {
@@ -19,12 +20,14 @@ class OrganizationChart extends Component {
             nodeId, 
             organizationChartMethods, 
             personalDetailMethods,
+            areaMethods,
             companyId, 
             positionMethods
         } = this.props;
         nodeId && await organizationChartMethods({Id: nodeId}, 'GetOrganizationChart');
         companyId && await positionMethods({companyId: companyId}, 'GetPositionsByCompanyId')
         companyId && await personalDetailMethods({companyId: companyId}, 'GetPersonalDetailsByCompanyId')
+        companyId && await areaMethods({companyId: companyId, areaId: this.props.organizationChartReducer.data.AreasId}, 'GetAreasByCompanyIdWithoutTaken')
     }
 
     sendAction = async (action) => {
@@ -36,7 +39,8 @@ class OrganizationChart extends Component {
                 PositionId,
                 PositionChartId,
                 CompanyId,
-                PersonDetailId
+                PersonDetailId,
+                AreasId
             }},
             companyId
         } = this.props
@@ -47,16 +51,19 @@ class OrganizationChart extends Component {
             PersonDetailId: PersonDetailId ? PersonDetailId : '',
             PositionChartId: PositionChartId ? PositionChartId : '',
             CompanyId: CompanyId ? CompanyId : companyId,
+            AreasId: AreasId ? AreasId : ''
         }
         await organizationChartMethods(model, action);
     }
 
     actionOrganizationChart = async () => {
         const {
+            areaMethods,
             organizationChartCleanState,
             organizationChartReducer: {
                 data : {
                     Id,
+                    AreasId
                 }
             },
             reDirect,
@@ -65,6 +72,10 @@ class OrganizationChart extends Component {
         } = this.props
         
         if(Id){
+            // if(AreasId){
+                await areaMethods({areaId: AreasId, organizationChartId: Id}, 'PutAreaTaken')
+                //hago taken y hago untaken del area id del organization chart
+            // }
             await this.sendAction('PutOrganizationChart');
         }
         if(this.props.organizationChartReducer.data.Id){
@@ -82,7 +93,8 @@ class OrganizationChart extends Component {
                 data : {
                     Id, 
                     PositionId,
-                    PersonDetailId
+                    PersonDetailId,
+                    AreasId
                 },
                 api_actions: {cargando, error},
                 validations,
@@ -92,6 +104,9 @@ class OrganizationChart extends Component {
             },
             personalDetailReducer: {
                 list_personal_details
+            },
+            areaReducer: {
+                list_areas
             }
 
         } = this.props;
@@ -114,28 +129,43 @@ class OrganizationChart extends Component {
                     classMandatory=''
                     inputType='select'
                     inputName={'PositionId'}
-                    placeHolder={'Selecciona tipo de producto'}
+                    placeHolder={'Selecciona un puesto'}
                     inputValue={PositionId}
                     onChange={organizationChartHandleChange}
                     RE={RE_EMPTY}
                     validateRE={validations.PositionId}
-                    optionPlaceHolder={'Selecciona un tipo de producto'}
+                    optionPlaceHolder={'Selecciona un puesto'}
                     options={list_positions}
                 /> 
                 <InputText 
                     classLabel='font-weight-bold'
-                    textLabel='Selecciona un puesto'
+                    textLabel='Selecciona un Empleado'
                     isMandatory=''
                     classMandatory=''
                     inputType='select'
                     inputName={'PersonDetailId'}
-                    placeHolder={'Selecciona tipo de producto'}
+                    placeHolder={'Selecciona un empleado'}
                     inputValue={PersonDetailId}
                     onChange={organizationChartHandleChange}
                     RE={RE_EMPTY}
                     validateRE={validations.PersonDetailId}
-                    optionPlaceHolder={'Selecciona un tipo de producto'}
+                    optionPlaceHolder={'Selecciona un empleado'}
                     options={list_personal_details}
+                /> 
+                <InputText 
+                    classLabel='font-weight-bold'
+                    textLabel='Selecciona un area'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='select'
+                    inputName={'AreasId'}
+                    placeHolder={'Selecciona una area o departamento'}
+                    inputValue={AreasId}
+                    onChange={organizationChartHandleChange}
+                    RE={RE_EMPTY}
+                    validateRE={validations.AreasId}
+                    optionPlaceHolder={'Selecciona una area o departamento'}
+                    options={list_areas}
                 /> 
             </Form1>
             </>
@@ -143,14 +173,15 @@ class OrganizationChart extends Component {
     }
 }
 
-const mapStateToProps = ({organizationChartReducer, positionReducer, personalDetailReducer}) => {
-    return {organizationChartReducer, positionReducer, personalDetailReducer}
+const mapStateToProps = ({organizationChartReducer, positionReducer, personalDetailReducer, areaReducer}) => {
+    return {organizationChartReducer, positionReducer, personalDetailReducer, areaReducer}
 }
 
 const mapDispatchToProps = {
     ...organizationChartActions,
     ...positionActions,
-    ...personalDetailActions
+    ...personalDetailActions,
+    ...areaActions
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrganizationChart);

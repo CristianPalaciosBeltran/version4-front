@@ -24,6 +24,7 @@ class Area extends Component {
                 DateCreated,
                 Name,
                 CompanyId,
+                Taken,
                 Type,
             }},
             companyId
@@ -33,6 +34,7 @@ class Area extends Component {
             DateCreated: DateCreated ? DateCreated : '0001-01-01T05:50:06.7199222-04:00',
             Name: Name ? Name : '',
             CompanyId: CompanyId ? CompanyId : companyId,
+            Taken: Taken ? Taken : false,
             Type: Type ? Type : '',
         }
         await areaMethods(model, action);
@@ -61,6 +63,11 @@ class Area extends Component {
         }
     }
 
+    componentWillUnmount(){
+        const { areaCleanState } = this.props;
+        areaCleanState();    
+    }
+
     render(){
         const {
             areaHandleValidation,
@@ -74,6 +81,7 @@ class Area extends Component {
                 api_actions: {cargando, error},
                 validations,
             },
+            
         } = this.props;
         return(
             <>

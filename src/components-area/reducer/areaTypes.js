@@ -26,6 +26,24 @@ export const GetAreasByCompanyId = async(data)=> {
   return {res:answer, type: AREAS_LIST};
 }
 
+export const GetAreasByCompanyIdWithoutTaken = async(data)=> {
+  const  answer = await axios_api(
+      `api/AreasByCompanyIdWithoutTaken?companyId=${data.companyId}&areaId=${data.areaId}`,
+      true,
+      "get"
+    );
+  return {res:answer, type: AREAS_LIST};
+}
+
+export const GetAreasByCompanyIdTaken = async(data)=> {
+  const  answer = await axios_api(
+      `api/AreasByCompanyIdTaken?companyId=${data.companyId}`,
+      true,
+      "get"
+    );
+  return {res:answer, type: AREAS_LIST};
+}
+
 
 export const GetArea = async(data)=> {
     const  answer = await axios_api(
@@ -37,8 +55,18 @@ export const GetArea = async(data)=> {
 }
 
 export const PutArea = async(data)=> {
+  const  answer = await axios_api(
+      `api/Area?id=${data.Id}`,
+      true,
+      "put",
+      data
+    );
+  return {res:answer, type: 'area_put'};
+}
+
+export const PutAreaTaken = async(data)=> {
     const  answer = await axios_api(
-        `api/Area?id=${data.Id}`,
+        `api/AreaTaken?areaId=${data.areaId ? data.areaId : 0}&organizationChartId=${data.organizationChartId}`,
         true,
         "put",
         data

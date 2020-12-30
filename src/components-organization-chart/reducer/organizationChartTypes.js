@@ -45,6 +45,15 @@ export const GetOrganizationChartByCompanyId = async(data)=> {
     return {res:answer, type: ORGANIZATION_CHART_CRUD};
 }
 
+export const GetOrganizationChartByArea = async(data)=> {
+    const  answer = await axios_api(
+        `api/OrganizationChartByArea?companyId=${data.companyId}&areaId=${data.areaId}`,
+        true,
+        "get"
+      );
+    return {res:answer, type: ORGANIZATION_CHART_CRUD};
+}
+
 export const PutOrganizationChart = async(data)=> {
     const  answer = await axios_api(
         `api/OrganizationChart?id=${data.Id}`,
