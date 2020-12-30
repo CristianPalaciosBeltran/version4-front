@@ -20,12 +20,14 @@ class Indicators extends Component {
         const {analyticsMethods, companyMethods, companyId} = this.props;
         await analyticsMethods('count_positions', {companyId})
         await analyticsMethods('count_personal_details', {companyId})
+        await analyticsMethods('count_areas', {companyId})
         await companyMethods({Id:companyId},'GetCompany')
     }
     render(){
         const {
             count_positions,
             count_personal_details,
+            count_areas,
             api_actions:{
                 cargando,
             },
@@ -33,7 +35,13 @@ class Indicators extends Component {
         } = this.props.analyticsReducer;
         
         const cardAnalytics = [
-            
+            {
+                id: '3-p',
+                title: 'Organigrama',
+                number: 'Ver',
+                icon: <FaIcons.FaDiceD6 className="mr-2" />,
+                href: `/admin-dashboard/company/${this.props.companyId}/organization-chart`
+            },            
             {
                 id: '1-p',
                 title: 'Puestos',
@@ -49,11 +57,11 @@ class Indicators extends Component {
                 href: `/admin-dashboard/company/${this.props.companyId}/employees`
             }, 
             {
-                id: '3-p',
-                title: 'Organigrama',
-                number: 'Ver',
+                id: '4-p',
+                title: 'Areas',
+                number: cargando ? <Loader activate={cargando}></Loader> : count_areas,
                 icon: <FaIcons.FaDiceD6 className="mr-2" />,
-                href: `/admin-dashboard/company/${this.props.companyId}/organization-chart`
+                href: `/admin-dashboard/company/${this.props.companyId}/areas`
             },      
         ] 
         return(

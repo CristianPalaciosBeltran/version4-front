@@ -13,6 +13,7 @@ import {ReadPosition} from '../components-position'
 import {ApiResponses} from '../components-api'
 import {connect} from 'react-redux'
 import * as organizationChartActions from './reducer/organizationChartActions'
+import * as areaActions from '../components-area/reducer/areaActions'
 
 import * as FaIcons from "react-icons/fa"
 
@@ -45,7 +46,7 @@ export const Modals = ({positionId, children, modalTitle, name}) => {
   }
 
 
-export const CardNode = ({positionId,name, employee, addChild, updateNode,deleteChild}) => {
+export const CardNode = ({positionId,name, employee, area, addChild, updateNode,deleteChild}) => {
     return(
         
         <Card>
@@ -57,6 +58,9 @@ export const CardNode = ({positionId,name, employee, addChild, updateNode,delete
                     <div className='text-dark text-start' style={{textAlign: 'start'}}>
                         {employee ? `${employee.Name} ${employee.LastName} ` :'Empleado'}
                     </div> 
+                    {area && <div className='text-dark text-start' style={{textAlign: 'start'}}>
+                       {`${area.Type}: ${area.Name}`}
+                    </div> }
                 </div>
                 <div>
                     {/* <div>
@@ -64,7 +68,7 @@ export const CardNode = ({positionId,name, employee, addChild, updateNode,delete
                     </div> */}
                     <div>
                         <Modals positionId={positionId} modalTitle={name} name={name} >
-                            <FaIcons.FaEye className="text-secondary" />
+                            <FaIcons.FaEye  className="text-secondary" />
                         </Modals>
                     </div>
                     <div>
@@ -89,12 +93,15 @@ class OrganizationChart extends React.Component {
         tree: ''
     }
     async componentDidMount() {
-        const {organizationChartMethods, companyId} = this.props;
+        const {
+            organizationChartMethods,
+            areaMethods,
+            companyId
+        } = this.props;
         await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId');
+        companyId && await areaMethods({companyId: companyId}, 'GetAreasByCompanyIdTaken')
       
     }
-
-   
 
     createOrganigrama =  (organigrama) => {
         let OrganizationChart1 = organigrama?.OrganizationChart1
@@ -107,6 +114,7 @@ class OrganizationChart extends React.Component {
                         positionId = {organigrama?.Position?.Id}
                         name={organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
                         employee = { organigrama.PersonalDetail}
+                        area = { organigrama.Area}
                         addChild={() => this.addChild(organigrama?.Id)}
                         deleteChild={() => this.deleteChild(organigrama?.Id)}
                         updateNode={() => this.updateNode(organigrama?.Id)}
@@ -123,6 +131,7 @@ class OrganizationChart extends React.Component {
                         positionId = {organigrama?.Position?.Id}
                         name = {organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
                         employee = { organigrama.PersonalDetail}
+                        area = { organigrama.Area}
                         addChild={() => this.addChild(organigrama?.Id)}
                         updateNode={() => this.updateNode(organigrama?.Id)}
                     />
@@ -169,6 +178,19 @@ class OrganizationChart extends React.Component {
         history.push(`/admin-dashboard/company/${companyId}/organization-chart/node/${nodeId}`)
     }
 
+    getOrganizationChartByArea = async(areaId) => {
+        const {companyId, organizationChartMethods} = this.props;
+        await organizationChartMethods({companyId, areaId},'GetOrganizationChartByArea');
+    }
+
+    getCompleteOrganizationChart = async() => {
+        const {
+            organizationChartMethods,
+            companyId
+        } = this.props;
+        await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId');
+    }
+
     render () {
 
         const { 
@@ -178,14 +200,40 @@ class OrganizationChart extends React.Component {
                     cargando,
                     error
                 }
-            }, companyId } = this.props
+            },
+            areaReducer: {
+                list_areas
+            }, 
+            companyId 
+        } = this.props
 
         return(
             <div>
                 <ul className="list-inline mb-4">
-                <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">mis indicadores</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
-                <li className="list-inline-item "><small className="font-weight-bold">Organigrama</small></li>
-            </ul>
+                    <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">mis indicadores</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
+                    <li className="list-inline-item "><small className="font-weight-bold">Organigrama</small></li>
+                </ul>
+                {
+                    list_areas
+                        && 
+                        <div>
+                            <div>
+                                filtrar por areas o departamentos
+                            </div>
+                            <ul>
+                                <li className="pointer" onClick={() => this.getCompleteOrganizationChart()}>General</li>
+                                {
+                                    list_areas.map(area => {
+                                        return <li className="pointer" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
+                                            {area.Name}
+                                        </li>
+                                    })
+                                }
+                            </ul>
+                        </div>
+
+                }
+               
                 {
                     cargando 
                         ? 
@@ -220,11 +268,12 @@ class OrganizationChart extends React.Component {
         )
     }
 }
-const mapStateToProps = ({organizationChartReducer}) => {
-    return {organizationChartReducer}
+const mapStateToProps = ({organizationChartReducer, areaReducer}) => {
+    return {organizationChartReducer, areaReducer}
 }
 
 const mapDispatchToProps = {
     ...organizationChartActions,
+    ...areaActions
 }
 export default connect(mapStateToProps, mapDispatchToProps)(OrganizationChart);

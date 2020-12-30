@@ -26,7 +26,8 @@ import {
   AdminCompanyPages,
   AdminPositionsPages,
   AdminOrganizationChart,
-  AdminPersonalDetail
+  AdminPersonalDetail,
+  AdminArea
 }from './pages/admin'
 
 /* Imports de Páginas de usario */
@@ -67,8 +68,11 @@ function App() {
           <Route  exact path="/admin-dashboard/company/:companyId/employees" component={AdminPersonalDetail.ListOfPersonDetails}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/create-personal-detail" component={AdminPersonalDetail.CreatePersonDetail}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/update-personal-detail/:personalDetailId" component={AdminPersonalDetail.UpdatePersonDetail}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/areas" component={AdminArea.ListOfAreas}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/create-area" component={AdminArea.CreateArea}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/update-area/:areaId" component={AdminArea.UpdateArea}></Route>
 
-          AdminPersonalDetail
+         
           {/* <Route  exact path="/admin-dashboard/company/:companyId/organization-chart" component={OrganizationChart}></Route> */}
 
           <Route  exact path="/admin-dashboard/product/:productId/:section" component={AdminProductPages.EditProduct}></Route>

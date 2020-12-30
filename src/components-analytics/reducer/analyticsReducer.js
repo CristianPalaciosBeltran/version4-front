@@ -8,7 +8,8 @@ import {
     ANALYTICS_COUNT_ADMINS,
     ANALYTICS_COUNT_COMPANIES,
     ANALYTICS_COUNT_POSITIONS,
-    ANALYTICS_COUNT_PERSONAL_DETAILS
+    ANALYTICS_COUNT_PERSONAL_DETAILS,
+    ANALYTICS_COUNT_AREAS
   } from "./analyticsTypes";
   
   const INITIAL_STATE = {
@@ -22,7 +23,8 @@ import {
     count_admins: 0,
     count_companies: 0,
     count_positions: 0,
-    count_personal_details: 0
+    count_personal_details: 0,
+    count_areas: 0
   };
   
   const reducer = (state = INITIAL_STATE, action) => {
@@ -101,7 +103,7 @@ import {
           count_admins: action.payload,
         };
       case ANALYTICS_COUNT_COMPANIES:
-        debugger
+      
         return {
           ...state,
           api_actions: {
@@ -112,7 +114,7 @@ import {
           count_companies: action.payload,
         };
       case ANALYTICS_COUNT_POSITIONS:
-        debugger
+      
         return {
           ...state,
           api_actions: {
@@ -123,7 +125,7 @@ import {
           count_positions: action.payload,
         };
       case ANALYTICS_COUNT_PERSONAL_DETAILS:
-        debugger
+      
         return {
           ...state,
           api_actions: {
@@ -132,6 +134,17 @@ import {
             error: "",
           },
           count_personal_details: action.payload,
+        };
+      case ANALYTICS_COUNT_AREAS:
+      
+        return {
+          ...state,
+          api_actions: {
+            ...state.api_actions,
+            cargando: false,
+            error: "",
+          },
+          count_areas: action.payload,
         };
       default:
         return { ...state };

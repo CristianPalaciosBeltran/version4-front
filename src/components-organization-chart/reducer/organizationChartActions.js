@@ -8,10 +8,11 @@ import {
     GetOrganizationChart,
     GetOrganizationChartChild,
     GetOrganizationChartByCompanyId,
+    GetOrganizationChartByArea,
     PutOrganizationChart,
     PostOrganizationChart,
     DeleteOrganizationChart
-  } from "./organizationChartTypes";
+ } from "./organizationChartTypes";
   
   import { errorHandler } from "../../components-api/ConfigApi";
   
@@ -56,6 +57,9 @@ import {
 
         case "GetOrganizationChartByCompanyId":
             answer = await GetOrganizationChartByCompanyId(data);
+            break;
+        case "GetOrganizationChartByArea":
+            answer = await GetOrganizationChartByArea(data);
             break;
 
         case "PutOrganizationChart":

@@ -25,7 +25,8 @@ import {
       PositionChartId: 0,
       OrganizationChart1: [],
       Position: {},
-      PersonalDetail: {}
+      PersonalDetail: {},
+      Area: {}
     },
     child: {
         Id: 0,
@@ -108,7 +109,9 @@ import {
             PositionChartId: 0,
             OrganizationChart1: [],
             Position:{},
-            PersonalDetail:{}
+            PersonalDetail:{},
+            Area: {}
+
           },
           child: {
             Id: 0,
@@ -121,7 +124,9 @@ import {
             PositionChartId: 0,
             OrganizationChart1: [],
             Position:{},
-            PersonalDetail:{}
+            PersonalDetail:{},
+            Area: {}
+
           },
           validations: {
             PositionId: "",
@@ -149,7 +154,9 @@ import {
             PositionChartId: action.payload.PositionChartId,
             OrganizationChart1: action.payload.OrganizationChart1,
             Position: action.payload.Position,
-            PersonalDetail: action.payload.PersonalDetail
+            PersonalDetail: action.payload.PersonalDetail,
+            Area: {}
+
           },
           validations: {
             PositionId: "",
@@ -177,7 +184,8 @@ import {
             AreasId: action.payload.AreasId,
             PositionChartId: action.payload.PositionChartId,
             OrganizationChart1: action.payload.OrganizationChart1,
-            Position: action.payload.Position
+            Position: action.payload.Position,
+            Area: action.payload.Area
           },
           validations: {
             PositionId: "",
@@ -186,7 +194,6 @@ import {
           },
           list_organization_chart: [],
         };
-  
   
       case ORGANIZATION_CHARTS_LIST:
         return {
