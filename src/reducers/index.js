@@ -11,6 +11,7 @@ import companyReducer from '../components-company/reducer/companyReducer'
 import positionReducer from '../components-position/reducer/positionReducer'
 import organizationChartReducer from '../components-organization-chart/reducer/organizationChartReducer'
 import personalDetailReducer from '../components-personal-detail/reducer/personalDetailReducer'
+import areaReducer from '../components-area/reducer/areaReducer'
 
 // Components que tienen que ver con producto.
 import categoryReducer from '../components-category/reducer/categoryReducer'
@@ -46,6 +47,7 @@ export default combineReducers({
     categoryProductReducer,
     productReducer,
     productDetailReducer,
+    areaReducer,
     // Componentes que tienen que ver con cursos.
     courseReducer,
     sectionReducer,

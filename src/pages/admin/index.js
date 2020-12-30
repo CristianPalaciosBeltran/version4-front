@@ -7,6 +7,7 @@ import * as ComponentCompany from './Company'
 import * as ComponentPositions from './Position'
 import * as ComponentOrganizationChart from './OrganizationChart'
 import * as ComponentPersonalDetail from './PersonalDetail'
+import * as ComponentArea from './Area'
 
 
 export const AdminUsersPages = ComponentUsers;
@@ -18,6 +19,7 @@ export const AdminCompanyPages = ComponentCompany;
 export const AdminPositionsPages = ComponentPositions;
 export const AdminOrganizationChart = ComponentOrganizationChart;
 export const AdminPersonalDetail = ComponentPersonalDetail;
+export const AdminArea = ComponentArea;
 
 
 
