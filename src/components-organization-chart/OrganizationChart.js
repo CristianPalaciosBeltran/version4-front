@@ -10,6 +10,7 @@ import { Card,  CardBody, CardTitle, CardSubtitle,
     ModalFooter
 } from 'reactstrap'
 import {ReadPosition} from '../components-position'
+import {ApiResponses} from '../components-api'
 import {connect} from 'react-redux'
 import * as organizationChartActions from './reducer/organizationChartActions'
 
@@ -170,7 +171,14 @@ class OrganizationChart extends React.Component {
 
     render () {
 
-        const { organizationChartReducer:{data: {Id}}, companyId } = this.props
+        const { 
+            organizationChartReducer:{
+                data: {Id},
+                api_actions: {
+                    cargando,
+                    error
+                }
+            }, companyId } = this.props
 
         return(
             <div>
@@ -179,24 +187,35 @@ class OrganizationChart extends React.Component {
                 <li className="list-inline-item "><small className="font-weight-bold">Organigrama</small></li>
             </ul>
                 {
+                    cargando 
+                        ? 
+                            <ApiResponses.Loader activate={true}/> 
+                        :
+                    error 
+                        ? 
+                            <ApiResponses.Error message={error} />
+                        :
                     Id 
-                        ? <Tree
-                            lineWidth={'2px'}
-                            lineColor={'gray'}
-                            lineBorderRadius={'10px'}
-                            label={<StyledNode>
-                            <h1>Compañia</h1>
-                            </StyledNode>}
-                        >
-                            {
-                                // this.state.tree
-                                this.createOrganigrama(this.props.organizationChartReducer.data)
-                            }
-                        </Tree>
-                        : <FaIcons.FaPlusCircle className="" onClick={this.createOrigin}/>
-                }
-                
-                
+                        ? 
+                            <Tree
+                                lineWidth={'2px'}
+                                lineColor={'gray'}
+                                lineBorderRadius={'10px'}
+                                label={
+                                    <StyledNode>
+                                        <h1>Compañia</h1>
+                                    </StyledNode>
+                                }
+                            >
+                                {
+                                    // this.state.tree
+                                    this.createOrganigrama(this.props.organizationChartReducer.data)
+                                }
+                            </Tree>
+                        : 
+                            <FaIcons.FaPlusCircle className="" onClick={this.createOrigin}/>
+                        
+                } 
             </div>
         )
     }
