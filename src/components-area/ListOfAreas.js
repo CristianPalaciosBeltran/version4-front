@@ -37,8 +37,8 @@ const ListOfAreas = ({ title='Areas y departamentos', create='/create-area'}) =>
             </ul>
             <TableFilter 
                 title={title}
-                titlesTable={["#",'Nombre', 'Tipo' ,'Acciones']}
-                propertiesTable={['Id','Name', 'Type']}
+                titlesTable={['Nombre', 'Tipo' ,'Acciones']}
+                propertiesTable={['Name', 'Type']}
                 hrefCreate={`/admin-dashboard/company/${companyId}${create}`}
                 bodyTable={list_areas}
                 loading={cargando}
