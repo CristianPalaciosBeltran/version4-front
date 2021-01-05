@@ -37,8 +37,8 @@ const ListOfPositions = ({ title='Puestos', create='/create-position'}) => {
             </ul>
             <TableFilter 
                 title={title}
-                titlesTable={["#",'Puesto','Acciones']}
-                propertiesTable={['Id','Name']}
+                titlesTable={['Puesto','Acciones']}
+                propertiesTable={['Name']}
                 hrefCreate={`/admin-dashboard/company/${companyId}${create}`}
                 bodyTable={list_positions}
                 loading={cargando}

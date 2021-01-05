@@ -37,8 +37,8 @@ const ListOfPersonalDetails = ({ title='Empleados', create='/create-personal-det
             </ul>
             <TableFilter 
                 title={title}
-                titlesTable={["#",'Nombre','Acciones']}
-                propertiesTable={['Id','Name']}
+                titlesTable={['Nombre', 'Apellido Paterno','Apellido Materno','Acciones']}
+                propertiesTable={['Name', 'LastName', 'SecondLastName']}
                 hrefCreate={`/admin-dashboard/company/${companyId}${create}`}
                 bodyTable={list_personal_details}
                 loading={cargando}
