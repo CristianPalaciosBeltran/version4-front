@@ -7,10 +7,14 @@ import { Card,  CardBody, CardTitle, CardSubtitle,
     Modal,
     ModalHeader,
     ModalBody,
-    ModalFooter
+    ModalFooter,
+    FormGroup,
+    Label,
+    Input
 } from 'reactstrap'
 import {ReadPosition} from '../components-position'
 import {ApiResponses} from '../components-api'
+import {Inputs} from '../config-components'
 import {connect} from 'react-redux'
 import * as organizationChartActions from './reducer/organizationChartActions'
 import * as areaActions from '../components-area/reducer/areaActions'
@@ -89,7 +93,6 @@ export const CardNode = ({positionId,name, employee, area, addChild, updateNode,
  
 class OrganizationChart extends React.Component {
 
-    
     constructor(props) {
         super(props)
         
@@ -98,7 +101,8 @@ class OrganizationChart extends React.Component {
           value: ''
         }
       }
-    async componentDidMount() {
+
+      async componentDidMount() {
         const {
             organizationChartMethods,
             areaMethods,
@@ -239,33 +243,44 @@ class OrganizationChart extends React.Component {
                     Id 
                         ? 
                             <ScrollContainer innerRef={this.container} className="scroll-container">
-                                <Tree
-                                    
+                                <Tree  
                                     lineWidth={'2px'}
                                     lineColor={'gray'}
                                     lineBorderRadius={'10px'}
                                     label={
                                         <StyledNode>
                                             {
-                    list_areas
-                        && 
-                        <div>
-                            <div>
-                                filtrar por areas
-                            </div>
-                            <ul>
-                                <li className="pointer pb-3" onClick={() => this.getCompleteOrganizationChart()}>General</li>
-                                {
-                                    list_areas.map(area => {
-                                        return <li className="pointer pb-3" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
-                                            {area.Name}
-                                        </li>
-                                    })
-                                }
-                            </ul>
-                        </div>
-
-                }
+                                                list_areas
+                                                    && 
+                                                    <div>
+                                                        {/* <div>
+                                                            filtrar por areas
+                                                        </div>
+                                                        <ul>
+                                                            <li className="pointer pb-3" onClick={() => this.getCompleteOrganizationChart()}>General</li>
+                                                            {
+                                                                list_areas.map(area => {
+                                                                    return <li className="pointer pb-3" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
+                                                                        {area.Name}
+                                                                    </li>
+                                                                })
+                                                            }
+                                                        </ul> */}
+                                                        <FormGroup>
+                                                            <Label for="exampleSelect">Select</Label>
+                                                            <Input type="select" name="select" id="exampleSelect">
+                                                            <option>1</option>
+                                                            {
+                                                                list_areas.map(area => {
+                                                                    return <option className="pointer pb-3" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
+                                                                        {area.Name}
+                                                                    </option>
+                                                                })
+                                                            }
+                                                            </Input>
+                                                        </FormGroup>
+                                                    </div>
+                                            }
                                         </StyledNode>
                                     }
                                 >
