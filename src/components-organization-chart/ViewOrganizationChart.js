@@ -16,7 +16,7 @@ import * as organizationChartActions from './reducer/organizationChartActions'
 import * as areaActions from '../components-area/reducer/areaActions'
 
 import * as FaIcons from "react-icons/fa"
-import ScrollContainer from 'react-indiana-drag-scroll'
+
 
 const StyledNode = styled.div`
   padding: 5px;
@@ -87,17 +87,11 @@ export const CardNode = ({positionId,name, employee, area, addChild, updateNode,
   }
 
  
-class OrganizationChart extends React.Component {
+class ViewOrganizationChart extends React.Component {
 
-    
-    constructor(props) {
-        super(props)
-        
-        this.container  = React.createRef();
-        this.state = {
-          value: ''
-        }
-      }
+    state = {
+        tree: ''
+    }
     async componentDidMount() {
         const {
             organizationChartMethods,
@@ -106,13 +100,7 @@ class OrganizationChart extends React.Component {
         } = this.props;
         await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId');
         companyId && await areaMethods({companyId: companyId}, 'GetAreasByCompanyIdTaken')
-   
-        const element = this.container.current;
-        debugger
-        if (element) {
-            element.scrollTop = (element.scrollHeight - element.clientWidth) / 2;
-            element.scrollLeft = (element.scrollWidth - element.clientHeight) / 2;
-        }
+      
     }
 
     createOrganigrama =  (organigrama) => {
@@ -221,11 +209,30 @@ class OrganizationChart extends React.Component {
 
         return(
             <div>
-                <ul className="list-inline m-4">
+                <ul className="list-inline mb-4">
                     <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
                     <li className="list-inline-item "><small className="font-weight-bold">Organigrama</small></li>
                 </ul>
-                
+                {
+                    list_areas
+                        && 
+                        <div>
+                            <div>
+                                filtrar por areas o departamentos
+                            </div>
+                            <ul>
+                                <li className="pointer" onClick={() => this.getCompleteOrganizationChart()}>General</li>
+                                {
+                                    list_areas.map(area => {
+                                        return <li className="pointer" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
+                                            {area.Name}
+                                        </li>
+                                    })
+                                }
+                            </ul>
+                        </div>
+
+                }
                
                 {
                     cargando 
@@ -238,43 +245,21 @@ class OrganizationChart extends React.Component {
                         :
                     Id 
                         ? 
-                            <ScrollContainer innerRef={this.container} className="scroll-container">
-                                <Tree
-                                    
-                                    lineWidth={'2px'}
-                                    lineColor={'gray'}
-                                    lineBorderRadius={'10px'}
-                                    label={
-                                        <StyledNode>
-                                            {
-                    list_areas
-                        && 
-                        <div>
-                            <div>
-                                filtrar por areas
-                            </div>
-                            <ul>
-                                <li className="pointer pb-3" onClick={() => this.getCompleteOrganizationChart()}>General</li>
-                                {
-                                    list_areas.map(area => {
-                                        return <li className="pointer pb-3" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
-                                            {area.Name}
-                                        </li>
-                                    })
+                            <Tree
+                                lineWidth={'2px'}
+                                lineColor={'gray'}
+                                lineBorderRadius={'10px'}
+                                label={
+                                    <StyledNode>
+                                        <h1>Compañia</h1>
+                                    </StyledNode>
                                 }
-                            </ul>
-                        </div>
-
-                }
-                                        </StyledNode>
-                                    }
-                                >
-                                    {
-                                        // this.state.tree
-                                        this.createOrganigrama(this.props.organizationChartReducer.data)
-                                    }
-                                </Tree>
-                            </ScrollContainer>
+                            >
+                                {
+                                    // this.state.tree
+                                    this.createOrganigrama(this.props.organizationChartReducer.data)
+                                }
+                            </Tree>
                         : 
                             <FaIcons.FaPlusCircle className="" onClick={this.createOrigin}/>
                         
@@ -291,4 +276,4 @@ const mapDispatchToProps = {
     ...organizationChartActions,
     ...areaActions
 }
-export default connect(mapStateToProps, mapDispatchToProps)(OrganizationChart);
+export default connect(mapStateToProps, mapDispatchToProps)(ViewOrganizationChart);

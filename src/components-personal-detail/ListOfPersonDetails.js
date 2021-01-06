@@ -32,7 +32,7 @@ const ListOfPersonalDetails = ({ title='Empleados', create='/create-personal-det
     return(
         <>
             <ul className="list-inline mb-4">
-                <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">mis indicadores</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
+                <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
                 <li className="list-inline-item "><small className="font-weight-bold">Empleados</small></li>
             </ul>
             <TableFilter 

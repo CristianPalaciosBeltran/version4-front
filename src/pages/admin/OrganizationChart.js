@@ -1,15 +1,16 @@
 import {OrganizationChart, UpdateChild} from '../../components-organization-chart'
 import {useParams, useHistory} from 'react-router-dom'
 import {AdminDashboardPages} from './'
+import {NavbarAdmin} from '../../config-components/Navbars'
 
 export const OrgainaztionChart = () => {
     const {companyId} = useParams();
     const history = useHistory();
     return (
         <>
-            <AdminDashboardPages.TemplateDashboardAdmin>
+             <NavbarAdmin />
                 <OrganizationChart companyId={companyId} history={history}/>
-            </AdminDashboardPages.TemplateDashboardAdmin>
+           
         </>
     )
 }
