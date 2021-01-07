@@ -155,7 +155,7 @@ import {
             OrganizationChart1: action.payload.OrganizationChart1,
             Position: action.payload.Position,
             PersonalDetail: action.payload.PersonalDetail,
-            Area: {}
+            Area: action.payload.Area
 
           },
           validations: {
