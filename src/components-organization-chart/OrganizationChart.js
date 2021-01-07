@@ -19,9 +19,13 @@ import {Inputs} from '../config-components'
 import {connect} from 'react-redux'
 import * as organizationChartActions from './reducer/organizationChartActions'
 import * as areaActions from '../components-area/reducer/areaActions'
-
 import * as FaIcons from "react-icons/fa"
 import ScrollContainer from 'react-indiana-drag-scroll'
+import bem from 'easy-bem'
+import './style.css'
+const cn = bem('scrollbars-example')
+const COLS = 20
+const ROWS = 20
 
 const StyledNode = styled.div`
   padding: 5px;
@@ -104,10 +108,6 @@ class OrganizationChart extends React.Component {
         }
       }
 
-      state = {
-          area: 1
-      }
-
       async componentDidMount() {
         const {
             organizationChartMethods,
@@ -117,9 +117,15 @@ class OrganizationChart extends React.Component {
         await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId');
         companyId && await areaMethods({companyId: companyId}, 'GetAreasByCompanyIdTaken')
    
+       
+        this.centerDiagram();
+    }
+
+    
+    centerDiagram = () => {
         const element = this.container.current;
         if (element) {
-            element.scrollTop = (element.scrollHeight - element.clientWidth) / 2;
+            //element.scrollTop = (element.scrollHeight - element.clientWidth) / 2;
             element.scrollLeft = (element.scrollWidth - element.clientHeight) / 2;
         }
     }
@@ -208,7 +214,8 @@ class OrganizationChart extends React.Component {
             await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId') :
             await organizationChartMethods({companyId, areaId: value},'GetOrganizationChartByArea');
 
-        this.setState({...this.state, area: value})
+        this.centerDiagram();
+       
     }
 
     getCompleteOrganizationChart = async() => {
@@ -236,11 +243,12 @@ class OrganizationChart extends React.Component {
         } = this.props
 
         return(
-            <div>
+            <div >
                 <ul className="list-inline m-4">
                     <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
-                    <li className="list-inline-item "><small className="font-weight-bold">Organigrama</small></li>
+                    <li className="list-inline-item "><small className="font-weight-bold">Organigrama <FaIcons.FaChevronRight className="ml-1" /></small></li>
                     <li className="list-inline-item ">
+                    
                         <Col>
                             <FormGroup>
                                 <Input type="select" name="select" id="exampleSelect" onChange={(e) => this.getOrganizationChartByArea(e)}>
@@ -272,23 +280,26 @@ class OrganizationChart extends React.Component {
                         :
                     Id 
                         ? 
-                            <ScrollContainer innerRef={this.container} className="scroll-container">
-                                <Tree  
-                                    lineWidth={'2px'}
-                                    lineColor={'gray'}
-                                    lineBorderRadius={'10px'}
-                                    label={
-                                        <StyledNode>
-                                           <h1>{this.props.organizationChartReducer.data.Area?.Name ? this.props.organizationChartReducer.data.Area?.Name : 'General'}</h1>
-                                        </StyledNode>
-                                    }
-                                >
-                                    {
-                                        // this.state.tree
-                                        this.createOrganigrama(this.props.organizationChartReducer.data)
-                                    }
-                                </Tree>
-                            </ScrollContainer>
+                            <div className={cn()}>
+                                <ScrollContainer
+                              
+                                 innerRef={this.container}>
+                            	    <Tree  
+                            	        lineWidth={'2px'}
+                            	        lineColor={'gray'}
+                            	        lineBorderRadius={'10px'}
+                            	        label={
+                            	            <StyledNode>
+                            	               <h1>{this.props.organizationChartReducer.data.Area?.Name ? this.props.organizationChartReducer.data.Area?.Name : 'General'}</h1>
+                            	            </StyledNode>
+                            	        }
+                            	    >
+                            	        {
+                            	            this.createOrganigrama(this.props.organizationChartReducer.data)
+                            	        }
+                            	    </Tree>
+                            	</ScrollContainer>
+                            </div>
                         : 
                             <FaIcons.FaPlusCircle className="" onClick={this.createOrigin}/>
                         
