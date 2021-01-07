@@ -10,7 +10,8 @@ import { Card,  CardBody, CardTitle, CardSubtitle,
     ModalFooter,
     FormGroup,
     Label,
-    Input
+    Input,
+    Col
 } from 'reactstrap'
 import {ReadPosition} from '../components-position'
 import {ApiResponses} from '../components-api'
@@ -51,6 +52,7 @@ export const Modals = ({positionId, children, modalTitle, name}) => {
 
 
 export const CardNode = ({positionId,name, employee, area, addChild, updateNode,deleteChild}) => {
+    const rArea = area ? area : '';
     return(
         
         <Card>
@@ -62,9 +64,9 @@ export const CardNode = ({positionId,name, employee, area, addChild, updateNode,
                     <div className='text-dark text-start' style={{textAlign: 'start'}}>
                         {employee ? `${employee.Name} ${employee.LastName} ` :'Empleado'}
                     </div> 
-                    {area && <div className='text-dark text-start' style={{textAlign: 'start'}}>
-                       {`${area.Type}: ${area.Name}`}
-                    </div> }
+                    {rArea?.Name ? <div className='text-dark text-start' style={{textAlign: 'start'}}>
+                       {`Area: ${rArea.Name}`}
+                    </div> : ''}
                 </div>
                 <div>
                     {/* <div>
@@ -102,6 +104,10 @@ class OrganizationChart extends React.Component {
         }
       }
 
+      state = {
+          area: 1
+      }
+
       async componentDidMount() {
         const {
             organizationChartMethods,
@@ -112,7 +118,6 @@ class OrganizationChart extends React.Component {
         companyId && await areaMethods({companyId: companyId}, 'GetAreasByCompanyIdTaken')
    
         const element = this.container.current;
-        debugger
         if (element) {
             element.scrollTop = (element.scrollHeight - element.clientWidth) / 2;
             element.scrollLeft = (element.scrollWidth - element.clientHeight) / 2;
@@ -194,9 +199,16 @@ class OrganizationChart extends React.Component {
         history.push(`/admin-dashboard/company/${companyId}/organization-chart/node/${nodeId}`)
     }
 
-    getOrganizationChartByArea = async(areaId) => {
+    getOrganizationChartByArea = async(e) => {
+        debugger
+        e.preventDefault();
+        const value = e.target.value;
         const {companyId, organizationChartMethods} = this.props;
-        await organizationChartMethods({companyId, areaId},'GetOrganizationChartByArea');
+        value === 'general' ? 
+            await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId') :
+            await organizationChartMethods({companyId, areaId: value},'GetOrganizationChartByArea');
+
+        this.setState({...this.state, area: value})
     }
 
     getCompleteOrganizationChart = async() => {
@@ -228,8 +240,26 @@ class OrganizationChart extends React.Component {
                 <ul className="list-inline m-4">
                     <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
                     <li className="list-inline-item "><small className="font-weight-bold">Organigrama</small></li>
+                    <li className="list-inline-item ">
+                        <Col>
+                            <FormGroup>
+                                <Input type="select" name="select" id="exampleSelect" onChange={(e) => this.getOrganizationChartByArea(e)}>
+                                <option value='general' >General</option>
+                                {
+                                    list_areas.map(area => {
+                                      
+                                        return <option value={area.Id}>
+                                            {area.Name}
+                                        </option>
+                                    })
+                                }
+                                </Input>
+                            </FormGroup>
+                        </Col>
+                        
+                        
+                    </li>
                 </ul>
-                
                
                 {
                     cargando 
@@ -249,38 +279,7 @@ class OrganizationChart extends React.Component {
                                     lineBorderRadius={'10px'}
                                     label={
                                         <StyledNode>
-                                            {
-                                                list_areas
-                                                    && 
-                                                    <div>
-                                                        {/* <div>
-                                                            filtrar por areas
-                                                        </div>
-                                                        <ul>
-                                                            <li className="pointer pb-3" onClick={() => this.getCompleteOrganizationChart()}>General</li>
-                                                            {
-                                                                list_areas.map(area => {
-                                                                    return <li className="pointer pb-3" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
-                                                                        {area.Name}
-                                                                    </li>
-                                                                })
-                                                            }
-                                                        </ul> */}
-                                                        <FormGroup>
-                                                            <Label for="exampleSelect">Select</Label>
-                                                            <Input type="select" name="select" id="exampleSelect">
-                                                            <option>1</option>
-                                                            {
-                                                                list_areas.map(area => {
-                                                                    return <option className="pointer pb-3" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
-                                                                        {area.Name}
-                                                                    </option>
-                                                                })
-                                                            }
-                                                            </Input>
-                                                        </FormGroup>
-                                                    </div>
-                                            }
+                                           <h1>{this.props.organizationChartReducer.data.Area?.Name ? this.props.organizationChartReducer.data.Area?.Name : 'General'}</h1>
                                         </StyledNode>
                                     }
                                 >
