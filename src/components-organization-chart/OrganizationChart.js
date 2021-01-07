@@ -10,12 +10,8 @@ import { Card,  CardBody, CardTitle, CardSubtitle,
     ModalFooter,
     FormGroup,
     Label,
-<<<<<<< HEAD
-    Input
-=======
     Input,
     Col
->>>>>>> develop
 } from 'reactstrap'
 import {ReadPosition} from '../components-position'
 import {ApiResponses} from '../components-api'
@@ -283,42 +279,7 @@ class OrganizationChart extends React.Component {
                                     lineBorderRadius={'10px'}
                                     label={
                                         <StyledNode>
-<<<<<<< HEAD
-                                            {
-                                                list_areas
-                                                    && 
-                                                    <div>
-                                                        {/* <div>
-                                                            filtrar por areas
-                                                        </div>
-                                                        <ul>
-                                                            <li className="pointer pb-3" onClick={() => this.getCompleteOrganizationChart()}>General</li>
-                                                            {
-                                                                list_areas.map(area => {
-                                                                    return <li className="pointer pb-3" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
-                                                                        {area.Name}
-                                                                    </li>
-                                                                })
-                                                            }
-                                                        </ul> */}
-                                                        <FormGroup>
-                                                            <Label for="exampleSelect">Select</Label>
-                                                            <Input type="select" name="select" id="exampleSelect">
-                                                            <option>1</option>
-                                                            {
-                                                                list_areas.map(area => {
-                                                                    return <option className="pointer pb-3" key={`area-${area.Id}`} onClick={() => this.getOrganizationChartByArea(area.Id)}>
-                                                                        {area.Name}
-                                                                    </option>
-                                                                })
-                                                            }
-                                                            </Input>
-                                                        </FormGroup>
-                                                    </div>
-                                            }
-=======
                                            <h1>{this.props.organizationChartReducer.data.Area?.Name ? this.props.organizationChartReducer.data.Area?.Name : 'General'}</h1>
->>>>>>> develop
                                         </StyledNode>
                                     }
                                 >
