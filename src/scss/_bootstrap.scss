@@ -83,7 +83,7 @@ button {
     a {
         color: $dark;
         &:hover {
-            border-bottom: 5px solid $dark;
+            color: $grey;
         }
     }
     @media (max-width: $xs) {

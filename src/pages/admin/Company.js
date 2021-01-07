@@ -40,7 +40,7 @@ export const Indicators = () => {
     return (
         <>
             <AdminDashboardPages.TemplateDashboardAdmin>
-                <h2>Empresa: {TradeName}</h2>
+                <h2> {TradeName}</h2>
                 <Row className="mb-4">
                     <CompanyIndicators companyId={companyId}/>
                 </Row>
