@@ -35,7 +35,7 @@ function Landing() {
             </Container>
         </section>
 
-        <section>
+        <section className='bg-light-2'>
             <Container>
                 <Row className="py-6">
                     <Col lg="6">
@@ -100,7 +100,7 @@ function Landing() {
         <section className="py-7">
             <Container>
                 <div className="w-75 mx-auto text-center mb-5">
-                    <button className="display-4 font-weight-bold">
+                    <button className="display-4 font-weight-bold mb-3">
                         <AWhatsapp 
                             phone='+525533333279' 
                             message={`Hola, Quiero más información`} 
