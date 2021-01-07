@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.e00ff39e.chunk.css",
-    "main.js": "/static/js/main.aec6eb45.chunk.js",
-    "main.js.map": "/static/js/main.aec6eb45.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.6bb4f11f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.6bb4f11f.js.map",
+    "main.css": "/static/css/main.92a21d72.chunk.css",
+    "main.js": "/static/js/main.3cdbd28d.chunk.js",
+    "main.js.map": "/static/js/main.3cdbd28d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b87393a2.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b87393a2.js.map",
     "static/css/2.20aa2d7b.chunk.css": "/static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.f806cf71.chunk.js": "/static/js/2.f806cf71.chunk.js",
-    "static/js/2.f806cf71.chunk.js.map": "/static/js/2.f806cf71.chunk.js.map",
-    "static/js/3.9bad43fa.chunk.js": "/static/js/3.9bad43fa.chunk.js",
-    "static/js/3.9bad43fa.chunk.js.map": "/static/js/3.9bad43fa.chunk.js.map",
+    "static/js/2.776ae96e.chunk.js": "/static/js/2.776ae96e.chunk.js",
+    "static/js/2.776ae96e.chunk.js.map": "/static/js/2.776ae96e.chunk.js.map",
+    "static/js/3.3e61bbec.chunk.js": "/static/js/3.3e61bbec.chunk.js",
+    "static/js/3.3e61bbec.chunk.js.map": "/static/js/3.3e61bbec.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.20aa2d7b.chunk.css.map": "/static/css/2.20aa2d7b.chunk.css.map",
-    "static/css/main.e00ff39e.chunk.css.map": "/static/css/main.e00ff39e.chunk.css.map",
-    "static/js/2.f806cf71.chunk.js.LICENSE.txt": "/static/js/2.f806cf71.chunk.js.LICENSE.txt",
+    "static/css/main.92a21d72.chunk.css.map": "/static/css/main.92a21d72.chunk.css.map",
+    "static/js/2.776ae96e.chunk.js.LICENSE.txt": "/static/js/2.776ae96e.chunk.js.LICENSE.txt",
     "static/media/Jesus.7acb2fb5.jpg": "/static/media/Jesus.7acb2fb5.jpg",
     "static/media/cristian.319f1962.jpg": "/static/media/cristian.319f1962.jpg",
     "static/media/descripciones.25a448ed.jpeg": "/static/media/descripciones.25a448ed.jpeg",
@@ -29,10 +29,10 @@
     "static/media/vscode.a1907119.svg": "/static/media/vscode.a1907119.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6bb4f11f.js",
+    "static/js/runtime-main.b87393a2.js",
     "static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.f806cf71.chunk.js",
-    "static/css/main.e00ff39e.chunk.css",
-    "static/js/main.aec6eb45.chunk.js"
+    "static/js/2.776ae96e.chunk.js",
+    "static/css/main.92a21d72.chunk.css",
+    "static/js/main.3cdbd28d.chunk.js"
   ]
 }
