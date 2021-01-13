@@ -19,6 +19,7 @@ import {
       DateModified:'',
       Name:'',
       Description: "",
+      Description2: "",
       CompanyId:'',
       Objective:'',
       Knowledge:'',
@@ -27,6 +28,7 @@ import {
     validations: {
       Name: "",
       Description:'',
+      Description2: "",
       Objective:'',
       Knowledge:'',
       Salary:''
@@ -91,6 +93,7 @@ import {
             DateModified:'',
             Name:'',
             Description: "",
+            Description2: "",
             CompanyId:'',
             Objective:'',
             Knowledge:'',
@@ -99,6 +102,7 @@ import {
           validations: {
             Name: "",
             Description:'',
+            Description2: "",
             Objective:'',
             Knowledge:'',
             Salary:''
@@ -119,6 +123,7 @@ import {
             DateModified: action.payload.DateModified,
             Name: action.payload.Name,
             Description: action.payload.Description,
+            Description2: action.payload.Description2,
             CompanyId: action.payload.CompanyId,
             Objective: action.payload.Objective,
             Knowledge: action.payload.Knowledge,
@@ -127,6 +132,7 @@ import {
           validations: {
             Name: action.payload.Name ? true : '',
             Description: action.payload.Description ? true : '',
+            Description2: action.payload.Description2 ? true : '',
             Objective: action.payload.Objective ? true: '',
             Knowledge: action.payload.Knowledge ? action.payload.Knowledge: '',
             Salary: action.payload.Salary ? true: ''

@@ -100,14 +100,15 @@ function Landing() {
         <section className="py-7">
             <Container>
                 <div className="w-75 mx-auto text-center mb-5">
-                    <button className="display-4 font-weight-bold mb-3">
+                    <p className="lead text-muted">Dedícate a producir y vender, mientras nosotros organizamos tu empresa.</p>
+                    <button className="btn btn-primary">
                         <AWhatsapp 
                             phone='+525533333279' 
                             message={`Hola, Quiero más información`} 
-                            className="text-dark"
+                            className="text-white"
                         >Contáctanos </AWhatsapp>
                     </button>
-                    <p className="lead text-muted">Dedícate a producir y vender, mientras nosotros organizamos tu empresa.</p>
+                    
                 </div>
             </Container>
         </section>

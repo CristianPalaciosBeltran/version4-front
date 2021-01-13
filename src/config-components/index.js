@@ -8,6 +8,7 @@ import * as ComponentNotFound from './NotFound'
 import * as ComponentRegularExpressions from './RegularExpressions'
 import * as ComponentTabs from './Tabs'
 import * as ComponentLogos from './Logos'
+import * as ComponentLists from './Lists'
 import {A as Anchor, AWhatsapp as AnchorWhatsapp} from './ExternalLinks'
 
 export const Logos = ComponentLogos;
@@ -18,6 +19,7 @@ export const Inputs = ComponentInputs;
 export const Modals = ComponentModals;
 export const Navbars = ComponentNavbars;
 export const NotFound = ComponentNotFound;
+export const Lists = ComponentLists;
 export const RegularExpressions = ComponentRegularExpressions;
 export const Tabs = ComponentTabs;
 export const A = Anchor;

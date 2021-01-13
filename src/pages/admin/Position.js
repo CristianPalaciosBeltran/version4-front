@@ -1,4 +1,4 @@
-import {Position, ListOfPositions as Positions, ListOfResponsabilities} from '../../components-position'
+import {Position, ListOfPositions as Positions, ListFromPositions} from '../../components-position'
 import {useSelector} from 'react-redux'
 import {useHistory, useParams} from 'react-router-dom'
 import {
@@ -11,7 +11,7 @@ export const ListOfPositions = ({reDirect, history}) =>{
     const { data: {TradeName}} = companyReducer
     return (
         <AdminDashboardPages.TemplateDashboardAdmin>
-        <h2>Empresa: {TradeName}</h2>
+        <h2> {TradeName}</h2>
 
             <Positions reDirect={reDirect} history={history} />
         </AdminDashboardPages.TemplateDashboardAdmin>
@@ -37,7 +37,9 @@ export const CreatePosition = () => {
                         <Card className="border-0">
                             <CardBody className="card-body">
                                 <h5 className="font-weight-bold mb-3">Responsabilidades</h5>
-                                <ListOfResponsabilities />      
+                                <ListFromPositions.ListOfResponsabilities /> 
+                                <h5 className="font-weight-bold mb-3">Descripciones</h5>
+                                <ListFromPositions.ListOfDescriptions />     
                             </CardBody>
                         </Card>
                     </Col>
@@ -66,7 +68,9 @@ export const UpdatePosition = () => {
                         <Card className="border-0">
                             <CardBody className="card-body">
                                 <h5 className="font-weight-bold mb-3">Responsabilidades</h5>
-                                <ListOfResponsabilities />
+                                <ListFromPositions.ListOfResponsabilities />
+                                <h5 className="font-weight-bold mb-3">Descripciones</h5>
+                                <ListFromPositions.ListOfDescriptions />
                                 
                             </CardBody>
                         </Card>

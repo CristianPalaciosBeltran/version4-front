@@ -33,6 +33,9 @@ const StyledNode = styled.div`
   display: inline-block;
 `;
 
+
+
+
 export const Modals = ({positionId, children, modalTitle, name}) => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
@@ -42,7 +45,7 @@ export const Modals = ({positionId, children, modalTitle, name}) => {
         <Modal isOpen={modal} toggle={toggle} >
           <ModalHeader toggle={toggle}>{modalTitle}</ModalHeader>
           <ModalBody>
-            <h3>{name}</h3>
+            <h3>{name}</h3> 
             <ReadPosition positionId={positionId} />
           </ModalBody>
           {/* <ModalFooter>

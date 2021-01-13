@@ -13,7 +13,7 @@ export const ListOfAreas = ({reDirect, history}) =>{
     const { data: {TradeName}} = companyReducer
     return (
         <TemplateDashboardAdmin>
-        <h2>Empresa: {TradeName}</h2>
+        <h2>{TradeName}</h2>
 
             <Areas reDirect={reDirect} history={history} />
         </TemplateDashboardAdmin>
@@ -61,7 +61,7 @@ export const UpdateArea = () => {
                     <Col lg="6">
                         <Card className="border-0">
                             <CardBody className="card-body">
-                                <h5 className="font-weight-bold mb-3">Actualiza esta area</h5>
+                                <h5 className="font-weight-bold mb-3">Actualiza esta Area</h5>
                                 <Area areaId={areaId} companyId={companyId} history={history} reDirect={`/admin-dashboard/company/${companyId}/areas`} />
                             </CardBody>
                         </Card>
