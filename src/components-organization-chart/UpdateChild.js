@@ -124,17 +124,17 @@ class OrganizationChart extends Component {
             >
                 <InputText 
                     classLabel='font-weight-bold'
-                    textLabel='Selecciona un puesto'
+                    textLabel='Selecciona un Puesto'
                     isMandatory=''
                     classMandatory=''
                     inputType='select'
                     inputName={'PositionId'}
-                    placeHolder={'Selecciona un puesto'}
+                    placeHolder={'Selecciona un Puesto'}
                     inputValue={PositionId}
                     onChange={organizationChartHandleChange}
                     RE={RE_EMPTY}
                     validateRE={validations.PositionId}
-                    optionPlaceHolder={'Selecciona un puesto'}
+                    optionPlaceHolder={'Selecciona un Puesto'}
                     options={list_positions}
                 /> 
                 <InputText 
@@ -144,27 +144,27 @@ class OrganizationChart extends Component {
                     classMandatory=''
                     inputType='select'
                     inputName={'PersonDetailId'}
-                    placeHolder={'Selecciona un empleado'}
+                    placeHolder={'Selecciona un Empleado'}
                     inputValue={PersonDetailId}
                     onChange={organizationChartHandleChange}
                     RE={RE_EMPTY}
                     validateRE={validations.PersonDetailId}
-                    optionPlaceHolder={'Selecciona un empleado'}
+                    optionPlaceHolder={'Selecciona un Empleado'}
                     options={list_personal_details}
                 /> 
                 <InputText 
                     classLabel='font-weight-bold'
-                    textLabel='Selecciona un area'
+                    textLabel='Selecciona un Area'
                     isMandatory=''
                     classMandatory=''
                     inputType='select'
                     inputName={'AreasId'}
-                    placeHolder={'Selecciona una area o departamento'}
+                    placeHolder={'Selecciona una Area o Departamento'}
                     inputValue={AreasId}
                     onChange={organizationChartHandleChange}
                     RE={RE_EMPTY}
                     validateRE={validations.AreasId}
-                    optionPlaceHolder={'Selecciona una area o departamento'}
+                    optionPlaceHolder={'Selecciona una Area o Departamento'}
                     options={list_areas}
                 /> 
             </Form1>

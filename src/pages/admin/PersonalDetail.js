@@ -14,7 +14,7 @@ export const ListOfPersonDetails = ({reDirect, history}) =>{
     const { data: {TradeName}} = companyReducer
     return (
         <TemplateDashboardAdmin>
-            <h2>Empresa: {TradeName}</h2>
+            <h2> {TradeName}</h2>
             <PersonDetails reDirect={reDirect} history={history} />
         </TemplateDashboardAdmin>
     )

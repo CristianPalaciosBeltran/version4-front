@@ -27,7 +27,7 @@ export const Navbars = () => {
   return (
       <Navbar expand="md" className="fixed-top bg-white border-bottom">
         <Container>
-        {/* <NavbarBrand href="/" className="text-dark font-weight-bold">Version 4</NavbarBrand> */}
+        {/* <NavbarBrand href="/" className="text className='text-primary'-dark font-weight-bold">VERSION 4</NavbarBrand> */}
         <Logo />
         <NavbarToggler onClick={toggle}><FaIcons.FaBars className="lead" /></NavbarToggler>
         <Collapse isOpen={isOpen} navbar>
@@ -51,7 +51,7 @@ export const NavbarAdmin = () => {
   return (
       <Navbar light className="bg-white" expand="md">
         <Container>
-        <NavbarBrand href="/admin-dashboard" className="text-dark">Version 4</NavbarBrand>
+        <NavbarBrand href="/admin-dashboard" className='text-primary'>VERSION 4</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -80,7 +80,7 @@ export const User = () => {
   return (
       <Navbar color="light" light expand="md">
         <Container>
-        <NavbarBrand href="/user-dashboard">Version 4</NavbarBrand>
+        <NavbarBrand className='text-primary' href="/user-dashboard">VERSION 4</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>

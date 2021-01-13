@@ -24,6 +24,7 @@ class Position extends Component {
                 DateCreated,
                 Name,
                 Description,
+                Description2,
                 CompanyId,
                 Objective,
                 Knowledge,
@@ -36,6 +37,7 @@ class Position extends Component {
             DateCreated: DateCreated ? DateCreated : '0001-01-01T05:50:06.7199222-04:00',
             Name: Name ? Name : '',
             Description: Description ? Description : '',
+            Description2: Description2 ? Description2 : '',
             CompanyId: CompanyId ? CompanyId : companyId,
             Objective: Objective ? Objective : '',
             Knowledge: Knowledge ? Knowledge : '',
@@ -78,6 +80,7 @@ class Position extends Component {
                     Id, 
                     Name,
                     Description,
+                    Description2,
                     Objective,
                     Salary
                 },
@@ -132,12 +135,24 @@ class Position extends Component {
                     classMandatory=''
                     inputType='textarea'
                     inputName={'Description'}
-                    placeHolder={'Introduce la descripción del puesto'}
+                    placeHolder={'Introduce las responsabilidades del puesto'}
                     inputValue={Description}
                     onChange={positionHandleChange}
-                    maxLength={500}
                     RE={RE_EMPTY}
                     validateRE={validations.Description}
+                />
+                <InputText 
+                    classLabel='font-weight-bold'
+                    textLabel='Descriptivo'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='textarea'
+                    inputName={'Description2'}
+                    placeHolder={'Introduce información'}
+                    inputValue={Description2}
+                    onChange={positionHandleChange}
+                    RE={RE_EMPTY}
+                    validateRE={validations.Description2}
                 />
                 <InputText 
                     classLabel='font-weight-bold'

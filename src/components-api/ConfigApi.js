@@ -143,7 +143,7 @@ export const axios_api = async (
 export const signOff = (e) => {
   e.preventDefault();
   setLocalStorage();
-  window.open(`https://version4-front.azurewebsites.net`, "_self");
+  window.open(`/`, "_self");
 };
 
 // Metodo para manejar las rutas del api

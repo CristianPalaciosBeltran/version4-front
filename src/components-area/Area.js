@@ -116,12 +116,12 @@ class Area extends Component {
                     classMandatory=''
                     inputType='select'
                     inputName={'Type'}
-                    placeHolder={'Selecciona el tipo de area'}
+                    placeHolder={'Selecciona el tipo de Area'}
                     inputValue={Type}
                     onChange={areaHandleChange}
                     RE={RE_EMPTY}
                     validateRE={validations.Type}
-                    optionPlaceHolder={'Selecciona el tipo de area'}
+                    optionPlaceHolder={'Selecciona el tipo de Area'}
                     options={[
                         {Id:'Area',Name:'Area'},
                         {Id:'Departamento',Name:'Departamento'}
