@@ -31,7 +31,10 @@ import {
 }from './pages/admin'
 
 /* Imports de Páginas de usario */
-import {DashboardUserPage} from './pages/user'
+import {
+  DashboardUserPage,
+  UserOrganizationChart
+} from './pages/user'
 
 import {OrganizationChart} from './components-organization-chart'
 
@@ -83,6 +86,7 @@ function App() {
 
           {/* Páginas para dashboard de usuarios */}
           <Route  exact path="/user-dashboard" component={DashboardUserPage}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/organization-chart" component={UserOrganizationChart.OrgainaztionChart}></Route>
 
           <Route  exact path="/organigrama-prueba" component={OrganizationChart}></Route>
 

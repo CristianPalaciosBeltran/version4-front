@@ -1,12 +1,13 @@
 import React from 'react'
 import {useHistory, useParams, Link} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 import {
     Row, Col,Card, CardBody
 } from 'reactstrap'
-import {useSelector} from 'react-redux'
 import {ListOfPersonDetails as PersonDetails, PersonDetail} from '../../components-personal-detail'
 import {TemplateDashboardAdmin} from './Dashboard'
 import * as FaIcons from "react-icons/fa"
+import {JobDetails} from '../templates'
 
 
 export const ListOfPersonDetails = ({reDirect, history}) =>{
@@ -40,6 +41,7 @@ export const CreatePersonDetail = () => {
                             </CardBody>
                         </Card>
                     </Col>
+                    {/* <JobDetails.CreateJobDetail personalDetailId={personalDetailId}/> */}
                 </Row>
             </TemplateDashboardAdmin>
         </>
@@ -49,6 +51,8 @@ export const CreatePersonDetail = () => {
 export const UpdatePersonDetail = () => {
     const {companyId, personalDetailId} = useParams();
     const history = useHistory();
+
+    
     return (
         <>
             <TemplateDashboardAdmin>
@@ -57,7 +61,7 @@ export const UpdatePersonDetail = () => {
                     <li className="list-inline-item "><small className="font-weight-bold"> Actualizar Empleado</small></li>
                 </ul>
                 <Row>
-                    <Col lg="6">
+                    <Col lg="6" className='mb-5'>
                         <Card className="border-0">
                             <CardBody className="card-body">
                                 <h5 className="font-weight-bold mb-3">Actualiza este Empleado</h5>
@@ -65,8 +69,10 @@ export const UpdatePersonDetail = () => {
                             </CardBody>
                         </Card>
                     </Col>
+                    <JobDetails.CreateJobDetail personalDetailId={personalDetailId}/>
                 </Row>
             </TemplateDashboardAdmin>
         </>
     )
 }
+

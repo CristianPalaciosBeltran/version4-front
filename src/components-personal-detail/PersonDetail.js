@@ -176,7 +176,7 @@ class PersonDetail extends Component {
                     RE={RE_EMPTY}
                     validateRE={validations.Birthdate}
                 />
-                <InputText 
+                {/* <InputText 
                     classLabel='font-weight-bold'
                     textLabel='Genero'
                     isMandatory=''
@@ -189,6 +189,24 @@ class PersonDetail extends Component {
                     maxLength={25}
                     RE={RE_EMPTY}
                     validateRE={validations.Gender}
+                /> */}
+                <InputText 
+                    classLabel='font-weight-bold'
+                    textLabel='Sexo'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='select'
+                    inputName={'Gender'}
+                    placeHolder={'Selecciona el Sexo'}
+                    inputValue={Gender}
+                    onChange={personalDetailHandleChange}
+                    RE={RE_EMPTY}
+                    validateRE={validations.Gender}
+                    optionPlaceHolder={'Selecciona el Sexo'}
+                    options={[
+                        {Id:'M',Name:'M'},
+                        {Id:'F',Name:'F'}
+                    ]}
                 />
             </Form1>
             </>

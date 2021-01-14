@@ -143,7 +143,7 @@ class Position extends Component {
                 />
                 <InputText 
                     classLabel='font-weight-bold'
-                    textLabel='Descriptivo'
+                    textLabel='Competencias'
                     isMandatory=''
                     classMandatory=''
                     inputType='textarea'
