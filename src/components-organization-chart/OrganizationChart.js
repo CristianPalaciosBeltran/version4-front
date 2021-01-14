@@ -242,13 +242,13 @@ class OrganizationChart extends React.Component {
             areaReducer: {
                 list_areas
             }, 
-            companyId 
+            hrefBase
         } = this.props
 
         return(
             <div >
                 <ul className="list-inline m-4">
-                    <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
+                    <li className="list-inline-item"><small><Link to={`${hrefBase}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
                     <li className="list-inline-item "><small className="font-weight-bold">Organigrama <FaIcons.FaChevronRight className="ml-1" /></small></li>
                     <li className="list-inline-item ">
                     

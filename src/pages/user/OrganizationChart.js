@@ -1,15 +1,14 @@
 import {OrganizationChart, UpdateChild} from '../../components-organization-chart'
 import {useParams, useHistory} from 'react-router-dom'
-import {AdminDashboardPages} from './'
-import {NavbarAdmin} from '../../config-components/Navbars'
+import {DashboardUserTemplate} from './'
 
 export const OrgainaztionChart = () => {
-    const {companyId} = useParams();
     const history = useHistory();
     return (
         <>
-            <NavbarAdmin />
-            <OrganizationChart companyId={companyId} history={history} hrefBase={`/admin-dashboard/company/${companyId}`}/>
+            <DashboardUserTemplate>
+                <OrganizationChart companyId={3} history={history} hrefBase={'/user-dashboard'}/>
+            </DashboardUserTemplate>
         </>
     )
 }
@@ -20,9 +19,9 @@ export const UpdateCurrent = () => {
 
     return (
         <>
-            <AdminDashboardPages.TemplateDashboardAdmin>
+            <DashboardUserTemplate>
                 <UpdateChild history={history} companyId={companyId} nodeId={nodeId} reDirect={`/admin-dashboard/company/${companyId}/organization-chart`}/>
-            </AdminDashboardPages.TemplateDashboardAdmin>
+            </DashboardUserTemplate>
         </>
     )
 }

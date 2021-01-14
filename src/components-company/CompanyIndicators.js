@@ -40,28 +40,28 @@ class Indicators extends Component {
                 title: 'Organigrama',
                 number: 'Ver',
                 icon: <FaIcons.FaDiceD6 className="mr-2" />,
-                href: `/admin-dashboard/company/${this.props.companyId}/organization-chart`
+                href: `/${this.props.hrefBase}/company/${this.props.companyId}/organization-chart`
             },            
             {
                 id: '1-p',
                 title: 'Puestos',
                 number:  cargando ? <Loader activate={cargando}></Loader> : count_positions,
                 icon: <FaIcons.FaUserAlt className="mr-2" />,
-                href: `/admin-dashboard/company/${this.props.companyId}/positions`
+                href: `/${this.props.hrefBase}/company/${this.props.companyId}/positions`
             },
             {
                 id: '2-p',
                 title: 'Empleados',
                 number: cargando ? <Loader activate={cargando}></Loader> : count_personal_details,
                 icon: <FaIcons.FaDiceD6 className="mr-2" />,
-                href: `/admin-dashboard/company/${this.props.companyId}/employees`
+                href: `/${this.props.hrefBase}/company/${this.props.companyId}/employees`
             }, 
             {
                 id: '4-p',
                 title: 'Areas',
                 number: cargando ? <Loader activate={cargando}></Loader> : count_areas,
                 icon: <FaIcons.FaDiceD6 className="mr-2" />,
-                href: `/admin-dashboard/company/${this.props.companyId}/areas`
+                href: `/${this.props.hrefBase}/company/${this.props.companyId}/areas`
             },      
         ] 
         return(

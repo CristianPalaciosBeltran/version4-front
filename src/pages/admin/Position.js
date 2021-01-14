@@ -69,7 +69,7 @@ export const UpdatePosition = () => {
                             <CardBody className="card-body">
                                 <h5 className="font-weight-bold mb-3">Responsabilidades</h5>
                                 <ListFromPositions.ListOfResponsabilities />
-                                <h5 className="font-weight-bold mb-3">Descripciones</h5>
+                                <h5 className="font-weight-bold mb-3">Competencias</h5>
                                 <ListFromPositions.ListOfDescriptions />
                                 
                             </CardBody>

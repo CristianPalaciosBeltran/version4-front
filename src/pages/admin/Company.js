@@ -6,6 +6,8 @@ import {
 } from 'reactstrap'
 import {AdminDashboardPages} from './'
 
+import {Company as CompanyTemplate} from '../templates'
+
 export const ListOfCompanies = ({reDirect, history}) =>{
     return (
         <Companies reDirect={reDirect} history={history} />
@@ -40,10 +42,11 @@ export const Indicators = () => {
     return (
         <>
             <AdminDashboardPages.TemplateDashboardAdmin>
-                <h2> {TradeName}</h2>
-                <Row className="mb-4">
-                    <CompanyIndicators companyId={companyId}/>
-                </Row>
+                <CompanyTemplate.Indicators 
+                    companyName={TradeName} 
+                    companyId={companyId} 
+                    hrefBase={'admin-dashboard'}
+                />
             </AdminDashboardPages.TemplateDashboardAdmin>
         </>
     )

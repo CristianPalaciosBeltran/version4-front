@@ -1,12 +1,12 @@
 import {
-    PERSONAL_DETAIL_CARGANDO,
-    PERSONAL_DETAIL_ERROR,
-    PERSONAL_DETAIL_HANDLE_CHANGE,
-    PERSONAL_DETAIL_CLEAN_STATE,
-    PERSONAL_DETAIL_CRUD,
-    PERSONAL_DETAILS_LIST,
-    PERSONAL_DETAIL_HANDLE_VALIDATION
-  } from "./personalDetailTypes";
+    JOB_DETAIL_CARGANDO,
+    JOB_DETAIL_ERROR,
+    JOB_DETAIL_HANDLE_CHANGE,
+    JOB_DETAIL_CLEAN_STATE,
+    JOB_DETAIL_CRUD,
+    JOB_DETAILS_LIST,
+    JOB_DETAIL_HANDLE_VALIDATION
+  } from "./jobDetailTypes";
   
   const INITIAL_STATE = {
     api_actions: {
@@ -17,28 +17,28 @@ import {
       Id: 0,
       DateCreated:'',
       DateModified:'',
-      Name:'',
-      LastName: "",
-      SecondLastName:'',
-      CompanyId:'',
-      RFC:'',
-      Birthdate:'',
-      Gender:''
+      PersonDetailId:'',
+      DateAdmission: "",
+      Contract:'',
+      Benefits:'',
+      IntegratedSalary:'',
+      DailySalary:'',
+      Type:''
     },
     validations: {
-      Name: "",
-      LastName:'',
-      SecondLastName:'',
-      RFC:'',
-      Birthdate:'',
-      Gender:''
+        DateAdmission: "",
+        Contract:'',
+        Benefits:'',
+        IntegratedSalary:'',
+        DailySalary:'',
+        Type:''
     },
-    list_personal_details: [],
+    list_job_details: [],
   };
   
   const Reducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-      case PERSONAL_DETAIL_CARGANDO:
+      case JOB_DETAIL_CARGANDO:
         return {
           ...state,
           api_actions: {
@@ -47,7 +47,7 @@ import {
             error: "",
           },
         };
-      case PERSONAL_DETAIL_ERROR:
+      case JOB_DETAIL_ERROR:
         return {
           ...state,
           api_actions: {
@@ -56,7 +56,7 @@ import {
             error: action.payload,
           },
         };
-      case PERSONAL_DETAIL_HANDLE_CHANGE:
+      case JOB_DETAIL_HANDLE_CHANGE:
         return {
           ...state,
           data: {
@@ -70,7 +70,7 @@ import {
             [action.payload.e.name]: action.payload.isInvalid,
           },
         };
-      case PERSONAL_DETAIL_HANDLE_VALIDATION:
+      case JOB_DETAIL_HANDLE_VALIDATION:
         
         return {
           ...state,
@@ -79,7 +79,7 @@ import {
             [action.payload.name]: action.payload.isInvalid,
           },
         };
-      case PERSONAL_DETAIL_CLEAN_STATE:
+      case JOB_DETAIL_CLEAN_STATE:
         return {
           ...state,
           api_actions: {
@@ -91,25 +91,26 @@ import {
             Id: 0,
             DateCreated:'',
             DateModified:'',
-            Name:'',
-            LastName: "",
-            SecondLastName:'',
-            CompanyId:'',
-            RFC:'',
-            Birthdate:'',
-            Gender:''
+            PersonDetailId:'',
+            DateAdmission:'',
+            Contract:'',
+            Benefits:'',
+            IntegratedSalary:'',
+            DailySalary:'',
+            Type:''
           },
           validations: {
-            Name: "",
-            LastName:'',
-            SecondLastName:'',
-            RFC:'',
-            Birthdate:'',
-            Gender:''
+              DateAdmission: "",
+              Contract:'',
+              Benefits:'',
+              IntegratedSalary:'',
+              DailySalary:'',
+              Type:''
           },
-          list_personal_details: [],
+          list_job_details: [],
         };
-      case PERSONAL_DETAIL_CRUD:
+      case JOB_DETAIL_CRUD:
+        
         return {
           ...state,
           api_actions: {
@@ -121,26 +122,27 @@ import {
             Id: action.payload.Id,
             DateCreated: action.payload.DateCreated,
             DateModified: action.payload.DateModified,
-            Name: action.payload.Name,
-            LastName:  action.payload.LastName,
-            SecondLastName: action.payload.SecondLastName,
-            CompanyId: action.payload.CompanyId,
-            RFC: action.payload.RFC,
-            Birthdate: action.payload.Birthdate?.slice(0, 10),
-            Gender:action.payload.Gender 
+            PersonDetailId: action.payload.PersonDetailId,
+            DateAdmission: action.payload.DateAdmission?.slice(0, 10),
+            Contract: action.payload.Contract,
+            Benefits: action.payload.Benefits,
+            IntegratedSalary: action.payload.IntegratedSalary,
+            DailySalary: action.payload.DailySalary,
+            Type: action.payload.Type
           },
           validations: {
-            Name: action.payload.Name ? true : '',
-            LastName: action.payload.LastName ? true : '',
-            SecondLastName: action.payload.SecondLastName ? true : '',
-            RFC: action.payload.RFC ? true : '',
-            Birthdate: action.payload.Birthdate ? true : '',
-            Gender: action.payload.Gender ? true : ''
+              DateAdmission: action.payload.DateAdmission ? true : '',
+              Contract: action.payload.Contract ? true : '',
+              Benefits: action.payload.Benefits ? true : '',
+              IntegratedSalary: action.payload.IntegratedSalary ? true : '',
+              DailySalary: action.payload.DailySalary ? true : '',
+              Type: action.payload.Type ? true : ''
           },
-          list_personal_details: [],
+          
+          list_job_details: [],
         };
   
-      case PERSONAL_DETAILS_LIST:
+      case JOB_DETAILS_LIST:
         return {
           ...state,
           api_actions: {
@@ -148,7 +150,7 @@ import {
             cargando: false,
             error: "",
           },
-          list_personal_details: action.payload,
+          list_job_details: action.payload,
         };
   
       case "personal_detail_put":
