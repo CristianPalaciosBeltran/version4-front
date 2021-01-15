@@ -35,7 +35,10 @@ import {
   DashboardUserPage,
   UserOrganizationChart,
   UserListOfPositionPage,
-  UserCreatePosition
+  UserCreatePosition,
+  UserListOfPersonDetails,
+  UserCreatePersonDetail,
+  UserUpdatePersonDetail
 } from './pages/user'
 
 import {OrganizationChart} from './components-organization-chart'
@@ -72,7 +75,7 @@ function App() {
           <Route  exact path="/admin-dashboard/company/:companyId/organization-chart/node/:nodeId" component={AdminOrganizationChart.UpdateCurrent}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/employees" component={AdminPersonalDetail.ListOfPersonDetails}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/create-personal-detail" component={AdminPersonalDetail.CreatePersonDetail}></Route>
-          <Route  exact path="/admin-dashboard/company/:companyId/update-personal-detail/:personalDetailId" component={AdminPersonalDetail.CreatePersonDetail}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/update-personal-detail/:personalDetailId" component={AdminPersonalDetail.UpdatePersonDetail}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/areas" component={AdminArea.ListOfAreas}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/create-area" component={AdminArea.CreateArea}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/update-area/:areaId" component={AdminArea.UpdateArea}></Route>
@@ -92,6 +95,9 @@ function App() {
           <Route  exact path="/user-dashboard/company/:companyId/positions" component={UserListOfPositionPage}></Route>
           <Route  exact path="/user-dashboard/company/:companyId/create-position" component={UserCreatePosition}></Route>
           <Route  exact path="/user-dashboard/company/:companyId/update-position/:positionId" component={UserCreatePosition}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/employees" component={UserListOfPersonDetails}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/create-personal-detail" component={UserCreatePersonDetail}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/update-personal-detail/:personalDetailId" component={UserUpdatePersonDetail}></Route>
 
           <Route  exact path="/organigrama-prueba" component={OrganizationChart}></Route>
 

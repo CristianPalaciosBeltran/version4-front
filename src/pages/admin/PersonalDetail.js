@@ -4,11 +4,11 @@ import {TemplateDashboardAdmin} from './Dashboard'
 import { PersonDetail as TemplatesPersonalDetail} from '../templates'
 
 
-export const ListOfPersonDetails = ({reDirect, history}) =>{
+export const ListOfPersonDetails = () =>{
     
     return (
         <TemplateDashboardAdmin>
-            <TemplatesPersonalDetail.ListOfPersonDetails reDirect={reDirect} history={history} />
+            <TemplatesPersonalDetail.ListOfPersonDetails redirectUser='/admin-dashboard' />
         </TemplateDashboardAdmin>
     )
 }
@@ -18,7 +18,18 @@ export const CreatePersonDetail = () => {
     return (
         <>
             <TemplateDashboardAdmin>
-                <TemplatesPersonalDetail.CreatePersonDetail />  
+                <TemplatesPersonalDetail.CreatePersonDetail redirectUser='/admin-dashboard'/>  
+            </TemplateDashboardAdmin>
+        </>
+    )
+}
+
+export const UpdatePersonDetail = () => {
+
+    return (
+        <>
+            <TemplateDashboardAdmin>
+                <TemplatesPersonalDetail.CreatePersonDetail redirectUser='/admin-dashboard'/>  
             </TemplateDashboardAdmin>
         </>
     )

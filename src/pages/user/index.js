@@ -1,12 +1,18 @@
 import React from 'react' 
 import {Row} from 'reactstrap'
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import {Container} from 'reactstrap'
 import {Navbars} from '../../config-components'
-import {Company, Position as TemplatePosition} from '../templates'
+import {
+    Company, 
+    Position as TemplatePosition, 
+    PersonDetail as TemplatesPersonalDetail
+} from '../templates'
 import * as ComponentsOrganizatioChart from './OrganizationChart'
 import * as FaIcons from "react-icons/fa"
+import { } from '../templates'
+
 
 export const DashboardUserTemplate = ({children}) => {
     return(
@@ -62,6 +68,34 @@ export const UserCreatePosition = () =>{
                         reDirect='/user-dashboard/company/companyId/positions'
                     />
                 </Row>
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserListOfPersonDetails = () =>{
+    return (
+        <DashboardUserTemplate>
+            <TemplatesPersonalDetail.ListOfPersonDetails redirectUser='/user-dashboard' />
+        </DashboardUserTemplate>
+    )
+}
+
+export const UserCreatePersonDetail = () => {
+    return (
+        <>
+            <DashboardUserTemplate>
+                <TemplatesPersonalDetail.CreatePersonDetail redirectUser='/user-dashboard'/>  
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserUpdatePersonDetail = () => {
+    return (
+        <>
+            <DashboardUserTemplate>
+                <TemplatesPersonalDetail.CreatePersonDetail redirectUser='/user-dashboard'/>  
             </DashboardUserTemplate>
         </>
     )
