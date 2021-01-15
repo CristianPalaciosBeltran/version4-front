@@ -52,7 +52,7 @@ export const InputText = ({forName,
     const rInputId = inputId ? inputId : '';
     const rPlaceHolder = placeHolder ? placeHolder : '';
     const rInputValue = inputValue ? inputValue : '';
-    const rMaxLength = maxLength ? maxLength : 500;
+    const rMaxLength = maxLength ? maxLength : 524288;
     const rMinLength = minLength ? minLength : 0;
     const rRE = RE ? RE : '';
 
