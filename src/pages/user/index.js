@@ -105,7 +105,7 @@ export const UserUpdatePersonDetail = () => {
 export const UserListOfAreas = () =>{
     return (
         <DashboardUserTemplate>
-            <TemplateArea.ListOfAreas redirectUser={'/admin-dashboard'} />
+            <TemplateArea.ListOfAreas redirectUser={'/user-dashboard'} />
         </DashboardUserTemplate>
     )
 }
@@ -114,7 +114,7 @@ export const UserCreateArea = () => {
     return (
         <>
             <DashboardUserTemplate>
-                <TemplateArea.CreateArea  redirectUser='/admin-dashboard' ></TemplateArea.CreateArea>
+                <TemplateArea.CreateArea  redirectUser='/user-dashboard' ></TemplateArea.CreateArea>
             </DashboardUserTemplate>
         </>
     )
@@ -124,7 +124,7 @@ export const UserUpdateArea = () => {
     return (
         <>
             <DashboardUserTemplate>
-                <TemplateArea.CreateArea  redirectUser='/admin-dashboard' ></TemplateArea.CreateArea>
+                <TemplateArea.CreateArea  redirectUser='/user-dashboard' ></TemplateArea.CreateArea>
             </DashboardUserTemplate>
         </>
     )
