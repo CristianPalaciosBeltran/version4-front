@@ -1,4 +1,4 @@
-import {OrganizationChart, UpdateChild} from '../../components-organization-chart'
+import {OrganizationChart, UpdateChild, ViewOrganizationChart} from '../../components-organization-chart'
 import {useParams, useHistory} from 'react-router-dom'
 import {AdminDashboardPages} from './'
 import {NavbarAdmin} from '../../config-components/Navbars'
@@ -9,7 +9,7 @@ export const OrgainaztionChart = () => {
     return (
         <>
             <NavbarAdmin />
-            <OrganizationChart companyId={companyId} history={history} hrefBase={`/admin-dashboard/company/${companyId}`}/>
+            <ViewOrganizationChart companyId={companyId} history={history} hrefBase={`/admin-dashboard/company/${companyId}`}/>
         </>
     )
 }
