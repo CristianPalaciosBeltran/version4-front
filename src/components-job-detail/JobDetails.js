@@ -156,7 +156,20 @@ class JobDetail extends Component {
                         {Id:'CC',Name:'CC'}
                     ]}
                 />
-                
+                <InputText 
+                    classLabel='font-weight-bold'
+                    textLabel='Salario Diario'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='number'
+                    inputName={'DailySalary'}
+                    placeHolder={'Introduce un salario'}
+                    inputValue={DailySalary}
+                    onChange={jobDetailHandleChange}
+                    maxLength={50}
+                    RE={RE_EMPTY}
+                    validateRE={validations.DailySalary}
+                />
                 <InputText 
                     classLabel='font-weight-bold'
                     textLabel='Salario Integrado'
@@ -173,17 +186,40 @@ class JobDetail extends Component {
                 />
                 <InputText 
                     classLabel='font-weight-bold'
-                    textLabel='Salario Diario'
+                    textLabel='Prestaciones'
                     isMandatory=''
                     classMandatory=''
-                    inputType='number'
-                    inputName={'DailySalary'}
-                    placeHolder={'Introduce un salario'}
-                    inputValue={DailySalary}
+                    inputType='select'
+                    inputName={'Benefits'}
+                    placeHolder={'Selecciona el tipo de Prestaciones'}
+                    inputValue={Benefits}
                     onChange={jobDetailHandleChange}
-                    maxLength={50}
                     RE={RE_EMPTY}
-                    validateRE={validations.DailySalary}
+                    validateRE={validations.Benefits}
+                    optionPlaceHolder={'Selecciona el tipo de Prestaciones'}
+                    options={[
+                        {Id:'LFT',Name:'LFT'},
+                        {Id:'CC',Name:'CC'}
+                    ]}
+                />
+
+                <InputText 
+                    classLabel='font-weight-bold'
+                    textLabel='Puesto'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='select'
+                    inputName={'Type'}
+                    placeHolder={'Selecciona el tipo de Puesto'}
+                    inputValue={Type}
+                    onChange={jobDetailHandleChange}
+                    RE={RE_EMPTY}
+                    validateRE={validations.Type}
+                    optionPlaceHolder={'Selecciona el tipo de Puesto'}
+                    options={[
+                        {Id:'S',Name:'S'},
+                        {Id:'C',Name:'C'}
+                    ]}
                 />
             </Form1>
             </>
