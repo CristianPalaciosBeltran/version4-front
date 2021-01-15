@@ -38,7 +38,10 @@ import {
   UserCreatePosition,
   UserListOfPersonDetails,
   UserCreatePersonDetail,
-  UserUpdatePersonDetail
+  UserUpdatePersonDetail,
+  UserListOfAreas,
+  UserCreateArea,
+  UserUpdateArea
 } from './pages/user'
 
 import {OrganizationChart} from './components-organization-chart'
@@ -98,6 +101,9 @@ function App() {
           <Route  exact path="/user-dashboard/company/:companyId/employees" component={UserListOfPersonDetails}></Route>
           <Route  exact path="/user-dashboard/company/:companyId/create-personal-detail" component={UserCreatePersonDetail}></Route>
           <Route  exact path="/user-dashboard/company/:companyId/update-personal-detail/:personalDetailId" component={UserUpdatePersonDetail}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/areas" component={UserListOfAreas}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/create-area" component={UserCreateArea}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/update-area/:areaId" component={UserUpdateArea}></Route>
 
           <Route  exact path="/organigrama-prueba" component={OrganizationChart}></Route>
 

@@ -7,7 +7,8 @@ import {Navbars} from '../../config-components'
 import {
     Company, 
     Position as TemplatePosition, 
-    PersonDetail as TemplatesPersonalDetail
+    PersonDetail as TemplatesPersonalDetail,
+    Area as TemplateArea
 } from '../templates'
 import * as ComponentsOrganizatioChart from './OrganizationChart'
 import * as FaIcons from "react-icons/fa"
@@ -96,6 +97,34 @@ export const UserUpdatePersonDetail = () => {
         <>
             <DashboardUserTemplate>
                 <TemplatesPersonalDetail.CreatePersonDetail redirectUser='/user-dashboard'/>  
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserListOfAreas = () =>{
+    return (
+        <DashboardUserTemplate>
+            <TemplateArea.ListOfAreas redirectUser={'/admin-dashboard'} />
+        </DashboardUserTemplate>
+    )
+}
+
+export const UserCreateArea = () => {
+    return (
+        <>
+            <DashboardUserTemplate>
+                <TemplateArea.CreateArea  redirectUser='/admin-dashboard' ></TemplateArea.CreateArea>
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserUpdateArea = () => {
+    return (
+        <>
+            <DashboardUserTemplate>
+                <TemplateArea.CreateArea  redirectUser='/admin-dashboard' ></TemplateArea.CreateArea>
             </DashboardUserTemplate>
         </>
     )

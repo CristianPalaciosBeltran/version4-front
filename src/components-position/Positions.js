@@ -162,12 +162,12 @@ class Position extends Component {
                 />
                 <InputText 
                     classLabel='font-weight-bold'
-                    textLabel='Sueldo'
+                    textLabel='Puntos'
                     isMandatory=''
                     classMandatory=''
                     inputType='number'
                     inputName={'Salary'}
-                    placeHolder={'Introduce un sueldo'}
+                    placeHolder={'Introduce puntos'}
                     inputValue={Salary}
                     onChange={positionHandleChange}
                     maxLength={50}
