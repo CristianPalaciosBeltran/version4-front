@@ -11,7 +11,7 @@ import * as areaActions from './reducer/areaActions'
 // Icons
 import * as FaIcons from "react-icons/fa"
 
-const ListOfAreas = ({ title='Areas y departamentos', create='/create-area'}) => {
+const ListOfAreas = ({ title='Areas y departamentos', redirectUser, create='/create-area'}) => {
     const areaReducer = useSelector(state => state.areaReducer)
     const dispatch = useDispatch();
     const history = useHistory(); 
@@ -21,7 +21,7 @@ const ListOfAreas = ({ title='Areas y departamentos', create='/create-area'}) =>
     }, [dispatch, companyId])
     
     const getArea = (areaId) => {
-        history.push(`/admin-dashboard/company/${companyId}/update-area/${areaId}`)
+        history.push(`${redirectUser}/company/${companyId}/update-area/${areaId}`)
     }
 
     const {
@@ -32,14 +32,14 @@ const ListOfAreas = ({ title='Areas y departamentos', create='/create-area'}) =>
     return(
         <>
             <ul className="list-inline mb-4">
-                <li className="list-inline-item"><small><Link to={`/admin-dashboard/company/${companyId}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
+                <li className="list-inline-item"><small><Link to={`${redirectUser}/company/${companyId}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
                 <li className="list-inline-item "><small className="font-weight-bold">Puestos</small></li>
             </ul>
             <TableFilter 
                 title={title}
                 titlesTable={['Nombre', 'Tipo' ,'Acciones']}
                 propertiesTable={['Name', 'Type']}
-                hrefCreate={`/admin-dashboard/company/${companyId}${create}`}
+                hrefCreate={`${redirectUser}/company/${companyId}${create}`}
                 bodyTable={list_areas}
                 loading={cargando}
                 error={error}
