@@ -3,11 +3,12 @@ import {useParams, useHistory} from 'react-router-dom'
 import {DashboardUserTemplate} from './'
 
 export const OrgainaztionChart = () => {
+    const {companyId} = useParams();
     const history = useHistory();
     return (
         <>
             <DashboardUserTemplate>
-                <OrganizationChart companyId={3} history={history} hrefBase={'/user-dashboard'}/>
+                <OrganizationChart companyId={companyId} history={history} hrefBase={`/user-dashboard/company/${companyId}`}/>
             </DashboardUserTemplate>
         </>
     )
@@ -20,7 +21,7 @@ export const UpdateCurrent = () => {
     return (
         <>
             <DashboardUserTemplate>
-                <UpdateChild history={history} companyId={companyId} nodeId={nodeId} reDirect={`/admin-dashboard/company/${companyId}/organization-chart`}/>
+                <UpdateChild history={history} companyId={companyId} nodeId={nodeId} reDirect={`/user-dashboard/company/${companyId}/organization-chart`}/>
             </DashboardUserTemplate>
         </>
     )

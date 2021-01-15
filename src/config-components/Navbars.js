@@ -1,5 +1,6 @@
 // Imports de react.
 import React, { useState } from 'react';
+import {useParams} from 'react-router-dom'
 import {
   Container,
   Collapse,
@@ -77,10 +78,11 @@ export const NavbarAdmin = () => {
 export const User = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const {companyId} = useParams();
   return (
       <Navbar color="light" light expand="md">
         <Container>
-        <NavbarBrand className='text-primary' href="/user-dashboard">VERSION 4</NavbarBrand>
+        <NavbarBrand className='text-primary' href={`/user-dashboard/company/${companyId}`}>VERSION 4</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>

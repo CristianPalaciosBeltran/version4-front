@@ -71,6 +71,12 @@ class Position extends Component {
         }
     }
 
+    componentWillUnmount(){
+        const {positionCleanState} = this.props;
+        positionCleanState()
+
+    }
+
     render(){
         const {
             positionHandleValidation,
