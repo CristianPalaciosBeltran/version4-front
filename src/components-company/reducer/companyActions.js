@@ -8,7 +8,8 @@ import {
     GetCompany,
     PutCompany,
     PostCompany,
-    DeleteCompany
+    DeleteCompany,
+    GetCompaniesByUser
   } from "./companyTypes";
   
   import { errorHandler } from "../../components-api/ConfigApi";
@@ -42,6 +43,9 @@ import {
       switch (method) {
         case "GetCompanies":
           answer = await GetCompanies(); 
+          break;
+        case "GetCompaniesByUser":
+          answer = await GetCompaniesByUser(); 
           break;
 
         case "GetCompany":

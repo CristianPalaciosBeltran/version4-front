@@ -1,8 +1,19 @@
 import React from 'react' 
+import {Row} from 'reactstrap'
+import {useSelector} from 'react-redux'
+import { useParams, Link } from 'react-router-dom'
 import {Container} from 'reactstrap'
 import {Navbars} from '../../config-components'
-import {Company} from '../templates'
+import {
+    Company, 
+    Position as TemplatePosition, 
+    PersonDetail as TemplatesPersonalDetail,
+    Area as TemplateArea
+} from '../templates'
 import * as ComponentsOrganizatioChart from './OrganizationChart'
+import * as FaIcons from "react-icons/fa"
+import { } from '../templates'
+
 
 export const DashboardUserTemplate = ({children}) => {
     return(
@@ -18,10 +29,102 @@ export const DashboardUserTemplate = ({children}) => {
 }
 
 export const DashboardUserPage = () => {
+    const companyReducer = useSelector(state => state.companyReducer)
+    const {companyId} = useParams();
+    const { data: {TradeName}} = companyReducer
     return (
         <>
             <DashboardUserTemplate>
-                <Company.Indicators companyName={'Teresita'} companyId={3} hrefBase={'user-dashboard'}/>
+                <Company.Indicators companyName={TradeName} companyId={companyId} hrefBase={'user-dashboard'}/>
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserListOfPositionPage = () =>{
+    return (
+        <>
+            <DashboardUserTemplate>
+                <TemplatePosition.ListOfPositions 
+                    reDirect={`/user-dashboard/company/companyId/update-position/positionId`}
+                    reDirectBase='/user-dashboard/company/companyId'
+                    reDirectCreate='/user-dashboard/company/companyId/create-position'
+                />
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserCreatePosition = () =>{
+    const {companyId} = useParams();
+    return (
+        <>
+            <DashboardUserTemplate>
+            <ul className="list-inline mb-4">
+                <li className="list-inline-item"><small><Link to={`/user-dashboard/company/${companyId}/positions`} className="text-muted">Posiciones</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
+                <li className="list-inline-item "><small className="font-weight-bold">Puestos</small></li>
+            </ul>
+                <Row>
+                    <TemplatePosition.CreatePosition 
+                        reDirect='/user-dashboard/company/companyId/positions'
+                    />
+                </Row>
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserListOfPersonDetails = () =>{
+    return (
+        <DashboardUserTemplate>
+            <TemplatesPersonalDetail.ListOfPersonDetails redirectUser='/user-dashboard' />
+        </DashboardUserTemplate>
+    )
+}
+
+export const UserCreatePersonDetail = () => {
+    return (
+        <>
+            <DashboardUserTemplate>
+                <TemplatesPersonalDetail.CreatePersonDetail redirectUser='/user-dashboard'/>  
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserUpdatePersonDetail = () => {
+    return (
+        <>
+            <DashboardUserTemplate>
+                <TemplatesPersonalDetail.CreatePersonDetail redirectUser='/user-dashboard'/>  
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserListOfAreas = () =>{
+    return (
+        <DashboardUserTemplate>
+            <TemplateArea.ListOfAreas redirectUser={'/admin-dashboard'} />
+        </DashboardUserTemplate>
+    )
+}
+
+export const UserCreateArea = () => {
+    return (
+        <>
+            <DashboardUserTemplate>
+                <TemplateArea.CreateArea  redirectUser='/admin-dashboard' ></TemplateArea.CreateArea>
+            </DashboardUserTemplate>
+        </>
+    )
+}
+
+export const UserUpdateArea = () => {
+    return (
+        <>
+            <DashboardUserTemplate>
+                <TemplateArea.CreateArea  redirectUser='/admin-dashboard' ></TemplateArea.CreateArea>
             </DashboardUserTemplate>
         </>
     )

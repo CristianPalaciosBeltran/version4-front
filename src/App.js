@@ -33,7 +33,15 @@ import {
 /* Imports de Páginas de usario */
 import {
   DashboardUserPage,
-  UserOrganizationChart
+  UserOrganizationChart,
+  UserListOfPositionPage,
+  UserCreatePosition,
+  UserListOfPersonDetails,
+  UserCreatePersonDetail,
+  UserUpdatePersonDetail,
+  UserListOfAreas,
+  UserCreateArea,
+  UserUpdateArea
 } from './pages/user'
 
 import {OrganizationChart} from './components-organization-chart'
@@ -65,7 +73,7 @@ function App() {
           <Route  exact path="/admin-dashboard/company/:companyId" component={AdminCompanyPages.Indicators}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/positions" component={AdminPositionsPages.ListOfPositions}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/create-position" component={AdminPositionsPages.CreatePosition}></Route>
-          <Route  exact path="/admin-dashboard/company/:companyId/update-position/:positionId" component={AdminPositionsPages.UpdatePosition}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/update-position/:positionId" component={AdminPositionsPages.CreatePosition}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/organization-chart" component={AdminOrganizationChart.OrgainaztionChart}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/organization-chart/node/:nodeId" component={AdminOrganizationChart.UpdateCurrent}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/employees" component={AdminPersonalDetail.ListOfPersonDetails}></Route>
@@ -85,8 +93,17 @@ function App() {
           <Route exact path="/player/watch-class/:productId/:courseId" component={AdminCoursesPages.WhatchCourse}/>
 
           {/* Páginas para dashboard de usuarios */}
-          <Route  exact path="/user-dashboard" component={DashboardUserPage}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId" component={DashboardUserPage}></Route>
           <Route  exact path="/user-dashboard/company/:companyId/organization-chart" component={UserOrganizationChart.OrgainaztionChart}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/positions" component={UserListOfPositionPage}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/create-position" component={UserCreatePosition}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/update-position/:positionId" component={UserCreatePosition}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/employees" component={UserListOfPersonDetails}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/create-personal-detail" component={UserCreatePersonDetail}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/update-personal-detail/:personalDetailId" component={UserUpdatePersonDetail}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/areas" component={UserListOfAreas}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/create-area" component={UserCreateArea}></Route>
+          <Route  exact path="/user-dashboard/company/:companyId/update-area/:areaId" component={UserUpdateArea}></Route>
 
           <Route  exact path="/organigrama-prueba" component={OrganizationChart}></Route>
 

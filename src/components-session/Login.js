@@ -8,10 +8,12 @@ import {InputEmail, InputPassword, Form1} from '../config-components/Inputs'
 // Imports de actions.
 import { connect } from "react-redux";
 import * as loginActions from "./reducer-login/loginActions";
+import * as companyActions from "../components-company/reducer/companyActions";
 class LoginForm extends Component {
   ActionLogin = async () => {
     const {
       loginMethods,
+      companyMethods,
       loginReducer: {
         data: { grant_type, username, password },
       },
@@ -27,7 +29,10 @@ class LoginForm extends Component {
         window.open(`/admin-dashboard`, "_self");
       }
       if (localStorage.getItem("role") === "User") {
-        window.open(`/user-dashboard`, "_self");
+        await companyMethods('', 'GetCompaniesByUser')
+        const { list_companies} = this.props.companyReducer;
+        debugger
+        window.open(`/user-dashboard/company/${list_companies[0].Id}`, "_self");
       }
       if (!localStorage.getItem("role")) {
         window.open(`/`, "_self");
@@ -80,12 +85,13 @@ class LoginForm extends Component {
     );
   }
 }
-const mapStateToProps = ({ loginReducer }) => {
-  return { loginReducer };
+const mapStateToProps = ({ loginReducer, companyReducer }) => {
+  return { loginReducer, companyReducer };
 };
 
 const mapDispatchToProps = {
   ...loginActions,
+  ...companyActions
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

@@ -65,7 +65,8 @@ class PersonDetail extends Component {
             await this.sendAction('PostPersonalDetail')
         }
         if(this.props.personalDetailReducer.data.Id){
-            reDirect && history.push(`${reDirect}`)
+            debugger
+            reDirect && history.push(`${reDirect}/${this.props.personalDetailReducer.data.Id}`)
             setModal && setModal();
             personalDetailCleanState()
         }
