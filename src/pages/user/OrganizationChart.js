@@ -1,4 +1,4 @@
-import {OrganizationChart, UpdateChild} from '../../components-organization-chart'
+import {ViewOrganizationChart, UpdateChild} from '../../components-organization-chart'
 import {useParams, useHistory} from 'react-router-dom'
 import {DashboardUserTemplate} from './'
 
@@ -8,7 +8,7 @@ export const OrgainaztionChart = () => {
     return (
         <>
             <DashboardUserTemplate>
-                <OrganizationChart companyId={companyId} history={history} hrefBase={`/user-dashboard/company/${companyId}`}/>
+                <ViewOrganizationChart companyId={companyId} history={history} hrefBase={`/user-dashboard/company/${companyId}`}/>
             </DashboardUserTemplate>
         </>
     )

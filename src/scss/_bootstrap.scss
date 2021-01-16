@@ -158,6 +158,10 @@ button {
     border-radius: 1rem;
 }
 
+.card-left {
+    border-left: 4px solid $primary;
+}
+
 .table {
     border-collapse: collapse;
     border-radius: 1em;
