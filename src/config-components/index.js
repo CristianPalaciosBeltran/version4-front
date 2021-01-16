@@ -9,6 +9,7 @@ import * as ComponentRegularExpressions from './RegularExpressions'
 import * as ComponentTabs from './Tabs'
 import * as ComponentLogos from './Logos'
 import * as ComponentLists from './Lists'
+import * as ComponentCollapse from './Collapse'
 import {A as Anchor, AWhatsapp as AnchorWhatsapp} from './ExternalLinks'
 
 export const Logos = ComponentLogos;
@@ -22,5 +23,6 @@ export const NotFound = ComponentNotFound;
 export const Lists = ComponentLists;
 export const RegularExpressions = ComponentRegularExpressions;
 export const Tabs = ComponentTabs;
+export const Collapse = ComponentCollapse
 export const A = Anchor;
 export const AWhatsapp = AnchorWhatsapp;

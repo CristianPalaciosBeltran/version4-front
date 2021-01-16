@@ -1,38 +1,25 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
-import styled from 'styled-components'
-import { Tree, TreeNode } from 'react-organizational-chart';
-import { Card,  CardBody, CardTitle, CardSubtitle,
-    Button,
+
+import { 
+    Card, 
+    CardBody, 
     Modal,
     ModalHeader,
     ModalBody,
-    ModalFooter,
     FormGroup,
-    Label,
     Input,
     Col
 } from 'reactstrap'
 import {ReadPosition} from '../components-position'
 import {ApiResponses} from '../components-api'
-import {Inputs} from '../config-components'
 import {connect} from 'react-redux'
 import * as organizationChartActions from './reducer/organizationChartActions'
 import * as areaActions from '../components-area/reducer/areaActions'
 import * as FaIcons from "react-icons/fa"
 
-import bem from 'easy-bem'
+import {Collapse} from '../config-components'
 import './style.css'
-
-
-const StyledNode = styled.div`
-  padding: 5px;
-  border-radius: 8px;
-  display: inline-block;
-`;
-
-
-
 
 export const Modals = ({positionId, children, modalTitle, name}) => {
     const [modal, setModal] = useState(false);
@@ -64,7 +51,7 @@ export const CardNode = ({positionId,name, employee, area, addChild, updateNode,
             <CardBody className=' d-flex justify-content-between'>
                 <div className={'mr-5 '}>
                     <div className='font-weight-bold  mb-2' style={{textAlign: 'start'}}>
-                        {name}
+                        <FaIcons.FaSquare className="mr-1 text-muted" />{name}
                     </div>
                     <div className='text-dark text-start' style={{textAlign: 'start'}}>
                         {employee ? `${employee.Name} ${employee.LastName} ` :'Empleado'}
@@ -74,9 +61,7 @@ export const CardNode = ({positionId,name, employee, area, addChild, updateNode,
                     </div> : ''}
                 </div>
                 <div>
-                    {/* <div>
-                        <FaIcons.FaPlusCircle className="text-secondary" onClick={addChild}/>
-                    </div> */}
+                    
                     <div>
                         <Modals positionId={positionId} modalTitle={name} name={name} >
                             <FaIcons.FaEye  className="text-secondary" />
@@ -135,10 +120,8 @@ class OrganizationChart extends React.Component {
         let OrganizationChart1 = organigrama?.OrganizationChart1
         if(OrganizationChart1?.length === 0 || OrganizationChart1 === undefined || !OrganizationChart1){
             
-            return <TreeNode 
-                label={
-                <StyledNode>
-                    <CardNode 
+            return <div>
+                    <Collapse.Node 
                         positionId = {organigrama?.Position?.Id}
                         name={organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
                         employee = { organigrama.PersonalDetail}
@@ -147,31 +130,37 @@ class OrganizationChart extends React.Component {
                         deleteChild={() => this.deleteChild(organigrama?.Id)}
                         updateNode={() => this.updateNode(organigrama?.Id)}
                     />
-                </StyledNode>
-                }
-            />
+            </div>
         }
         
-        return <TreeNode 
-            label={
-                <StyledNode>
-                    <CardNode 
-                        positionId = {organigrama?.Position?.Id}
-                        name = {organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
-                        employee = { organigrama.PersonalDetail}
-                        area = { organigrama.Area}
-                        addChild={() => this.addChild(organigrama?.Id)}
-                        updateNode={() => this.updateNode(organigrama?.Id)}
-                    />
-                </StyledNode>
-            }
+        return <Collapse.Node
+            positionId = {organigrama?.Position?.Id}
+            labelButton={organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'}
+            employee = { organigrama.PersonalDetail}
+            area = { organigrama.Area}
+            addChild={() => this.addChild(organigrama?.Id)}
+            updateNode={() => this.updateNode(organigrama?.Id)}
         >
+                    {/* <Collapse.Node>
+                    	<CardNode 
+                    	    positionId = {organigrama?.Position?.Id}
+                    	    name = {organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
+                    	    employee = { organigrama.PersonalDetail}
+                    	    area = { organigrama.Area}
+                    	    addChild={() => this.addChild(organigrama?.Id)}
+                    	    updateNode={() => this.updateNode(organigrama?.Id)}
+                    	/>
+                    </Collapse.Node> */}
+               
             {
-                OrganizationChart1.map((child) => {           
-                    return this.createOrganigrama(child)
+                OrganizationChart1.map((child) => {  
+                             
+                    return <>
+                    	{this.createOrganigrama(child)}
+                    </>
                 })
             }
-        </TreeNode>
+        </Collapse.Node>
     }
 
     createOrigin = async () => {
@@ -245,7 +234,7 @@ class OrganizationChart extends React.Component {
 
         return(
             <div >
-                Va a cambiar todo!
+               
                 <ul className="list-inline m-4">
                     <li className="list-inline-item"><small><Link to={`${hrefBase}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
                     <li className="list-inline-item "><small className="font-weight-bold">Organigrama <FaIcons.FaChevronRight className="ml-1" /></small></li>
@@ -283,10 +272,8 @@ class OrganizationChart extends React.Component {
                     Id 
                         ? 
                              
-                            <div >
-                                <StyledNode>
-                                    <h1>{this.props.organizationChartReducer.data.Area?.Name ? this.props.organizationChartReducer.data.Area?.Name : 'General'}</h1>
-                                </StyledNode>
+                            <div className='container'> 
+                                <h1>{this.props.organizationChartReducer.data.Area?.Name ? this.props.organizationChartReducer.data.Area?.Name : 'General'}</h1>
                                 {
                                     this.createOrganigrama(this.props.organizationChartReducer.data)
                                 }

@@ -1,8 +1,39 @@
 import React, { useState } from 'react';
-import { Collapse } from 'reactstrap';
+import { 
+  Collapse, 
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Card, 
+  CardBody 
+} from 'reactstrap';
+import {ReadPosition} from '../components-position'
 
 // FontAwesome Icons
 import * as FaIcons from "react-icons/fa"
+
+export const Modals = ({positionId, children, modalTitle, name}) => {
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+  return (
+    <>
+      <span role="button" onClick={toggle}>{children}</span>
+      <Modal isOpen={modal} toggle={toggle} >
+        <ModalHeader toggle={toggle}>{modalTitle}</ModalHeader>
+        <ModalBody>
+          <h3>{name}</h3> 
+          <ReadPosition positionId={positionId} />
+        </ModalBody>
+        {/* <ModalFooter>
+          <Button color="danger" onClick={toggle}>Quitar puesto</Button>{' '}
+          <Button color="primary" onClick={toggle}>Cerrar</Button>
+        </ModalFooter> */}
+      </Modal>
+    </>
+  );
+}
+
+
 
 const CollapseSection = ({
   title = 'Sección',
@@ -47,3 +78,59 @@ const CollapseSection = ({
 }
 
 export default CollapseSection;
+
+
+
+export const Node = ({children, area, labelButton, employee, addChild, updateNode,deleteChild, positionId, name}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+  const rArea = area ? area : '';
+  return (
+    <div>
+      <Card className='card-left mb-2'>
+        <CardBody>
+          <div className={'mr-5'}>
+            <small>
+            {rArea?.Name ? <div className='text-dark text-start' style={{textAlign: 'start'}}>
+                       {`Area: ${rArea.Name}`}
+                    </div> : ''}
+            </small>
+            <div className='d-flex my-2'>
+            	<div></div>
+            	<div onClick={toggle} className='font-weight-bold  mb-2 pointer mr-5' style={{textAlign: 'start'}}>
+            	  {!isOpen ? <FaIcons.FaChevronCircleRight  className="mr-1  text-muted" /> : <FaIcons.FaChevronCircleDown className="mr-1 text-primary" /> }{labelButton}
+            	</div>
+              <div className='text-dark text-start mr-5' style={{textAlign: 'start'}}>
+                {employee ? `${employee.Name} ${employee.LastName} ` :'Empleado'}
+              </div> 
+              <div className='mr-2'>
+                  <Modals positionId={positionId} modalTitle={name} name={name} >
+                      <FaIcons.FaEye  className="text-secondary" />
+                  </Modals>
+              </div>
+              <div className='mr-2'>
+                  <FaIcons.FaUserEdit className="text-secondary" onClick={updateNode}/>
+              </div>
+              <div className='mr-2'>
+                  <FaIcons.FaPlusCircle className="text-secondary" onClick={addChild}/>
+              </div>
+              <div className='mr-2'>
+                  {deleteChild && <FaIcons.FaMinusCircle className='text-secondary' onClick={deleteChild}/>}
+              </div>
+                
+            </div>
+            <Collapse isOpen={isOpen}>
+              
+                {children}
+               
+            </Collapse>
+          </div>
+          
+        </CardBody>
+      </Card>
+      
+    </div>
+  );
+}
+

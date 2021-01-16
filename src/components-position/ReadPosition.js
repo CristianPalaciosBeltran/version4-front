@@ -22,11 +22,11 @@ const ReadPosition = ({positionId}) => {
     return (
         <div>
             <div className='mb-2'>
-                <div className={'text-dark'}>Objetivo:</div>
+                <div className={'font-weight-bold'}>Objetivo:</div>
                 <div className={'text-muted'}>{Objective}</div>
             </div>
             <div className='mb-2'>
-                <div className={'text-dark'}>Responsabilidades:</div>
+                <div className={'font-weight-bold'}>Responsabilidades:</div>
                 <ul>
                     {arrayDeCadenas.map(item => {
                         return (
@@ -37,8 +37,8 @@ const ReadPosition = ({positionId}) => {
                 </ul>
             </div>
             <div className='mb-4'>
-                <div className={'text-dark'}>Sueldo:</div>
-                <div className={'text-muted'}>${Salary}</div>
+                <div className={'text-dark'}>Puntos:</div>
+                <div className={'text-muted'}>{Salary ? Salary: 0}</div>
             </div>
             
         </div>
