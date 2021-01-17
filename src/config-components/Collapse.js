@@ -88,9 +88,9 @@ export const Node = ({children, area, labelButton, employee, addChild, updateNod
   const rArea = area ? area : '';
   return (
     <div>
-      <Card className='card-left mb-2'>
-        <CardBody>
-          <div className={'mr-5'}>
+      <Card className='card-left mb-2 mr-0 pr-0'>
+        <CardBody className='mr-0 pr-0'>
+          <div className={'mr-0'}>
             <small>
             {rArea?.Name ? <div className='text-dark text-start' style={{textAlign: 'start'}}>
                        {`Area: ${rArea.Name}`}
@@ -102,7 +102,7 @@ export const Node = ({children, area, labelButton, employee, addChild, updateNod
             	  {!isOpen ? <FaIcons.FaChevronCircleRight  className="mr-1  text-muted" /> : <FaIcons.FaChevronCircleDown className="mr-1 text-primary" /> }{labelButton}
             	</div>
               <div className='text-dark text-start mr-5' style={{textAlign: 'start'}}>
-                {employee ? `${employee.Name} ${employee.LastName} ` :'Empleado'}
+                {employee ? employee :'Empleado'}
               </div> 
               <div className='mr-2'>
                   <Modals positionId={positionId} modalTitle={name} name={name} >

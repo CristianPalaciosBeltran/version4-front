@@ -16,17 +16,11 @@ import {
     },
     data: {
       Id: 0,
-      DateCreated:'',
-      DateModified:'',
-      PositionId:0,
-      CompanyId: 0,
-      PersonDetailId:0,
-      AreasId: 0,
-      PositionChartId: 0,
-      OrganizationChart1: [],
-      Position: {},
-      PersonalDetail: {},
-      Area: {}
+      CompanyId:0,
+      PositionCharId:0,
+      PositionName:'',
+      PersonName: '',
+      ChartTree1:[],
     },
     child: {
         Id: 0,
@@ -136,6 +130,7 @@ import {
           list_organization_chart: [],
         };
       case ORGANIZATION_CHART_CRUD:
+        debugger
         return {
           ...state,
           api_actions: {
@@ -145,18 +140,11 @@ import {
           },
           data: {
             Id: action.payload.Id,
-            DateCreated: action.payload.DateCreated,
-            DateModified: action.payload.DateModified,
-            PositionId:action.payload.PositionId,
             CompanyId: action.payload.CompanyId,
-            PersonDetailId:action.payload.PersonDetailId,
-            AreasId: action.payload.AreasId,
-            PositionChartId: action.payload.PositionChartId,
-            OrganizationChart1: action.payload.OrganizationChart1,
-            Position: action.payload.Position,
-            PersonalDetail: action.payload.PersonalDetail,
-            Area: action.payload.Area
-
+            PositionCharId:action.payload.PositionCharId,
+            PositionName:action.payload.PositionName,
+            PersonName: action.payload.PersonName,
+            ChartTree1: action.payload.ChartTree1,
           },
           validations: {
             PositionId: "",

@@ -33,7 +33,7 @@ const ListOfAreas = ({ title='Areas y departamentos', redirectUser, create='/cre
         <>
             <ul className="list-inline mb-4">
                 <li className="list-inline-item"><small><Link to={`${redirectUser}/company/${companyId}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
-                <li className="list-inline-item "><small className="font-weight-bold">Puestos</small></li>
+                <li className="list-inline-item "><small className="font-weight-bold">Posiciones</small></li>
             </ul>
             <TableFilter 
                 title={title}

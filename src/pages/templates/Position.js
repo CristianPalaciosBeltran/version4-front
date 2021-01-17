@@ -20,7 +20,7 @@ export const ListOfPositions = ({reDirect, reDirectBase, reDirectCreate,  histor
             <h2> {TradeName}</h2>
             <ul className="list-inline mb-4">
                 <li className="list-inline-item"><small><Link to={reDirectBase.replace('companyId', companyId)} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
-                <li className="list-inline-item "><small className="font-weight-bold">Puestos</small></li>
+                <li className="list-inline-item "><small className="font-weight-bold">Posiciones</small></li>
             </ul>
             <Positions reDirect={reDirect} create={reDirectCreate}  history={history} />
         </>

@@ -42,6 +42,7 @@ import {
     });
     try {
       let answer;
+     
       switch (method) {
         case "GetOrganizationCharts":
             answer = await GetOrganizationCharts(); 
@@ -57,6 +58,9 @@ import {
 
         case "GetOrganizationChartByCompanyId":
             answer = await GetOrganizationChartByCompanyId(data);
+            let padre = answer.res.data.filter(child => child.PositionCharId == null);
+            let createTree = tree(padre[0], answer.res.data )
+            answer.res.data = createTree
             break;
         case "GetOrganizationChartByArea":
             answer = await GetOrganizationChartByArea(data);
@@ -91,3 +95,17 @@ import {
     }
   };
   
+
+  const tree = (padre, hijos) => {
+      
+      let children = hijos.filter(child => child.PositionCharId == padre.Id);
+      if(!children || children?.length === 0 || children === undefined ){
+        return padre;
+      }
+
+      padre.ChartTree1 = children.map(child => {
+        return tree(child, hijos);
+      })
+
+      return padre;
+  }

@@ -8,7 +8,7 @@ import {TableFilter} from '../config-components/Filter'
 // Imports de actions.
 import * as positionActions from './reducer/positionActions'
 
-const ListOfPositions = ({ title='Puestos', reDirect='', create='/create-position'}) => {
+const ListOfPositions = ({ title='Posiciones', reDirect='', create='/create-position'}) => {
     const positionReducer = useSelector(state => state.positionReducer)
     const dispatch = useDispatch();
     const history = useHistory(); 

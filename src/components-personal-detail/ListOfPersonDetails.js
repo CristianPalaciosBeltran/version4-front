@@ -11,7 +11,7 @@ import * as personalDetailActions from './reducer/personalDetailActions'
 // Icons
 import * as FaIcons from "react-icons/fa"
 
-const ListOfPersonalDetails = ({ title='Empleados', redirectUser, create='/create-personal-detail'}) => {
+const ListOfPersonalDetails = ({ title='Colaboradores', redirectUser, create='/create-personal-detail'}) => {
     const personalDetailReducer = useSelector(state => state.personalDetailReducer)
     const dispatch = useDispatch();
     const history = useHistory(); 
@@ -33,7 +33,7 @@ const ListOfPersonalDetails = ({ title='Empleados', redirectUser, create='/creat
         <>
             <ul className="list-inline mb-4">
                 <li className="list-inline-item"><small><Link to={`${redirectUser}/company/${companyId}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
-                <li className="list-inline-item "><small className="font-weight-bold">Empleados</small></li>
+                <li className="list-inline-item "><small className="font-weight-bold">Colaboradores</small></li>
             </ul>
             <TableFilter 
                 title={title}
