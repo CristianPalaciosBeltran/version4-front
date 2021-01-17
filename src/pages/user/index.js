@@ -62,7 +62,7 @@ export const UserCreatePosition = () =>{
             <DashboardUserTemplate>
             <ul className="list-inline mb-4">
                 <li className="list-inline-item"><small><Link to={`/user-dashboard/company/${companyId}/positions`} className="text-muted">Posiciones</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
-                <li className="list-inline-item "><small className="font-weight-bold">Puestos</small></li>
+                <li className="list-inline-item "><small className="font-weight-bold">Posiciones</small></li>
             </ul>
                 <Row>
                     <TemplatePosition.CreatePosition 

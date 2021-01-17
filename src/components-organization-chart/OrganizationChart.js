@@ -134,15 +134,15 @@ class OrganizationChart extends React.Component {
     }
 
     createOrganigrama =  (organigrama) => {
-        let OrganizationChart1 = organigrama?.OrganizationChart1
-        if(OrganizationChart1?.length === 0 || OrganizationChart1 === undefined || !OrganizationChart1){
+        let ChartTree1 = organigrama?.ChartTree1
+        if(ChartTree1?.length === 0 || ChartTree1 === undefined || !ChartTree1){
             
             return <TreeNode 
                 label={
                 <StyledNode>
                     <CardNode 
-                        positionId = {organigrama?.Position?.Id}
-                        name={organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
+                        positionId = {''}
+                        name={organigrama.PositionName} 
                         employee = { organigrama.PersonalDetail}
                         area = { organigrama.Area}
                         addChild={() => this.addChild(organigrama?.Id)}
@@ -158,9 +158,9 @@ class OrganizationChart extends React.Component {
             label={
                 <StyledNode>
                     <CardNode 
-                        positionId = {organigrama?.Position?.Id}
-                        name = {organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
-                        employee = { organigrama.PersonalDetail}
+                        positionId = {''}
+                        name = {organigrama.PositionName} 
+                        employee = { organigrama.PersonName}
                         area = { organigrama.Area}
                         addChild={() => this.addChild(organigrama?.Id)}
                         updateNode={() => this.updateNode(organigrama?.Id)}
@@ -169,7 +169,7 @@ class OrganizationChart extends React.Component {
             }
         >
             {
-                OrganizationChart1.map((child) => {           
+                ChartTree1.map((child) => {           
                     return this.createOrganigrama(child)
                 })
             }

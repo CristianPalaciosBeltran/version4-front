@@ -77,7 +77,7 @@ function Landing() {
                     <Col lg="6" className="d-flex">
                         <div className="align-self-center p-4">
                             <h2 className="display-4 font-weight-bold mb-4">Procesos<span className="text-primary">.</span></h2>
-                            <p className="text-muted mb-4">Tener definidos los puestos de tu empresa es indispensable para crecer en un mercado cada vez más competitivo. </p>
+                            <p className="text-muted mb-4">Tener definidos las posiciones de tu empresa es indispensable para crecer en un mercado cada vez más competitivo. </p>
                            
                         </div>
                     </Col>

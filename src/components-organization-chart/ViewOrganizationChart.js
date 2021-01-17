@@ -1,17 +1,12 @@
-import React, {useState} from 'react'
+import React  from 'react'
 import {Link} from 'react-router-dom'
 
 import { 
-    Card, 
-    CardBody, 
-    Modal,
-    ModalHeader,
-    ModalBody,
     FormGroup,
     Input,
     Col
 } from 'reactstrap'
-import {ReadPosition} from '../components-position'
+
 import {ApiResponses} from '../components-api'
 import {connect} from 'react-redux'
 import * as organizationChartActions from './reducer/organizationChartActions'
@@ -21,68 +16,6 @@ import * as FaIcons from "react-icons/fa"
 import {Collapse} from '../config-components'
 import './style.css'
 
-export const Modals = ({positionId, children, modalTitle, name}) => {
-    const [modal, setModal] = useState(false);
-    const toggle = () => setModal(!modal);
-    return (
-      <>
-        <span role="button" onClick={toggle}>{children}</span>
-        <Modal isOpen={modal} toggle={toggle} >
-          <ModalHeader toggle={toggle}>{modalTitle}</ModalHeader>
-          <ModalBody>
-            <h3>{name}</h3> 
-            <ReadPosition positionId={positionId} />
-          </ModalBody>
-          {/* <ModalFooter>
-            <Button color="danger" onClick={toggle}>Quitar puesto</Button>{' '}
-            <Button color="primary" onClick={toggle}>Cerrar</Button>
-          </ModalFooter> */}
-        </Modal>
-      </>
-    );
-  }
-
-
-export const CardNode = ({positionId,name, employee, area, addChild, updateNode,deleteChild}) => {
-    const rArea = area ? area : '';
-    return(
-        
-        <Card>
-            <CardBody className=' d-flex justify-content-between'>
-                <div className={'mr-5 '}>
-                    <div className='font-weight-bold  mb-2' style={{textAlign: 'start'}}>
-                        <FaIcons.FaSquare className="mr-1 text-muted" />{name}
-                    </div>
-                    <div className='text-dark text-start' style={{textAlign: 'start'}}>
-                        {employee ? `${employee.Name} ${employee.LastName} ` :'Empleado'}
-                    </div> 
-                    {rArea?.Name ? <div className='text-dark text-start' style={{textAlign: 'start'}}>
-                       {`Area: ${rArea.Name}`}
-                    </div> : ''}
-                </div>
-                <div>
-                    
-                    <div>
-                        <Modals positionId={positionId} modalTitle={name} name={name} >
-                            <FaIcons.FaEye  className="text-secondary" />
-                        </Modals>
-                    </div>
-                    <div>
-                        <FaIcons.FaUserEdit className="text-secondary" onClick={updateNode}/>
-                    </div>
-                    <div>
-                        <FaIcons.FaPlusCircle className="text-secondary" onClick={addChild}/>
-                    </div>
-                    <div>
-                        {deleteChild && <FaIcons.FaMinusCircle className='text-secondary' onClick={deleteChild}/>}
-                    </div>
-                </div>
-            </CardBody>
-        </Card>
-    )
-  }
-
- 
 class OrganizationChart extends React.Component {
 
     constructor(props) {
@@ -117,14 +50,14 @@ class OrganizationChart extends React.Component {
     }
 
     createOrganigrama =  (organigrama) => {
-        let OrganizationChart1 = organigrama?.OrganizationChart1
-        if(OrganizationChart1?.length === 0 || OrganizationChart1 === undefined || !OrganizationChart1){
+        let ChartTree1 = organigrama?.ChartTree1
+        if(ChartTree1?.length === 0 || ChartTree1 === undefined || !ChartTree1){
             
             return <div>
                     <Collapse.Node 
-                        positionId = {organigrama?.Position?.Id}
-                        name={organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
-                        employee = { organigrama.PersonalDetail}
+                        positionId = {'organigrama?.Position?.Id'}
+                        labelButton={organigrama.PositionName}
+                        employee = { organigrama.PersonName}
                         area = { organigrama.Area}
                         addChild={() => this.addChild(organigrama?.Id)}
                         deleteChild={() => this.deleteChild(organigrama?.Id)}
@@ -134,26 +67,15 @@ class OrganizationChart extends React.Component {
         }
         
         return <Collapse.Node
-            positionId = {organigrama?.Position?.Id}
-            labelButton={organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'}
-            employee = { organigrama.PersonalDetail}
+            positionId = {'organigrama?.Position?.Id'}
+            labelButton={organigrama.PositionName}
+            employee = { organigrama.PersonName}
             area = { organigrama.Area}
             addChild={() => this.addChild(organigrama?.Id)}
             updateNode={() => this.updateNode(organigrama?.Id)}
         >
-                    {/* <Collapse.Node>
-                    	<CardNode 
-                    	    positionId = {organigrama?.Position?.Id}
-                    	    name = {organigrama?.Position?.Name ? organigrama?.Position?.Name : 'Sin puesto'} 
-                    	    employee = { organigrama.PersonalDetail}
-                    	    area = { organigrama.Area}
-                    	    addChild={() => this.addChild(organigrama?.Id)}
-                    	    updateNode={() => this.updateNode(organigrama?.Id)}
-                    	/>
-                    </Collapse.Node> */}
-               
             {
-                OrganizationChart1.map((child) => {  
+                ChartTree1.map((child) => {  
                              
                     return <>
                     	{this.createOrganigrama(child)}
