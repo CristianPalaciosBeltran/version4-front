@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom'
 import { 
     FormGroup,
     Input,
-    Col
+    Col,
+    DropdownItem
 } from 'reactstrap'
 
 import {ApiResponses} from '../components-api'
@@ -13,7 +14,7 @@ import * as organizationChartActions from './reducer/organizationChartActions'
 import * as areaActions from '../components-area/reducer/areaActions'
 import * as FaIcons from "react-icons/fa"
 
-import {Collapse} from '../config-components'
+import {Collapse, DropDowns} from '../config-components'
 import './style.css'
 
 class OrganizationChart extends React.Component {
@@ -125,8 +126,8 @@ class OrganizationChart extends React.Component {
     }
 
     getOrganizationChartByArea = async(e) => {
-        e.preventDefault();
-        const value = e.target.value;
+        //e.preventDefault();
+        const value = e//e.target.value;
         const {companyId, organizationChartMethods} = this.props;
         value === 'general' ? 
             await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId') :
@@ -169,27 +170,17 @@ class OrganizationChart extends React.Component {
                     <li className="list-inline-item"><small><Link to={`${hrefBase}`} className="text-muted">Inicio</Link> <FaIcons.FaChevronRight className="ml-1" /></small></li>
                     <li className="list-inline-item "><small className="font-weight-bold">Organigrama <FaIcons.FaChevronRight className="ml-1" /></small></li>
                     <li className="list-inline-item ">
-                    
-                        <Col>
-                            <FormGroup>
-                                <Input type="select" name="select" id="exampleSelect" onChange={(e) => this.getOrganizationChartByArea(e)}>
-                                <option value='general' >General</option>
+                        <DropDowns.DropDownActions labelButton='Areas'>
+                                <DropdownItem onClick={() => this.getOrganizationChartByArea('general')}>General</DropdownItem>
                                 {
                                     list_areas.map(area => {
-                                      
-                                        return <option value={area.Id}>
-                                            {area.Name}
-                                        </option>
+                                        
+                                        return <DropdownItem onClick={() => this.getOrganizationChartByArea(area.Id)}>{area.Name}</DropdownItem>
                                     })
                                 }
-                                </Input>
-                            </FormGroup>
-                        </Col>
-                        
-                        
+                        </DropDowns.DropDownActions>
                     </li>
                 </ul>
-               
                 {
                     cargando 
                         ? 
@@ -203,7 +194,7 @@ class OrganizationChart extends React.Component {
                         ? 
                              
                             <div className='m-4'> 
-                                {/* <h1>{this.props.organizationChartReducer.data.Area?.Name ? this.props.organizationChartReducer.data.Area?.Name : 'General'}</h1> */}
+                                <h1>{this.props.organizationChartReducer.data.Area ? this.props.organizationChartReducer.data.Area : 'General'}</h1>
                                 {
                                     this.createOrganigrama(this.props.organizationChartReducer.data, true)
                                 }
