@@ -7,22 +7,21 @@ import {
   Card, 
   CardBody 
 } from 'reactstrap';
-import {ReadPosition} from '../components-position'
+import {ReadChild} from '../components-organization-chart'
 
 // FontAwesome Icons
 import * as FaIcons from "react-icons/fa"
 
-export const Modals = ({positionId, children, modalTitle, name}) => {
+export const Modals = ({positionChartId, children}) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   return (
     <>
       <span role="button" onClick={toggle}>{children}</span>
       <Modal isOpen={modal} toggle={toggle} >
-        <ModalHeader toggle={toggle}>{modalTitle}</ModalHeader>
+        <ModalHeader toggle={toggle}>Información</ModalHeader>
         <ModalBody>
-          <h3>{name}</h3> 
-          <ReadPosition positionId={positionId} />
+          <ReadChild positionChartId={positionChartId} />
         </ModalBody>
         {/* <ModalFooter>
           <Button color="danger" onClick={toggle}>Quitar puesto</Button>{''}
@@ -81,7 +80,7 @@ export default CollapseSection;
 
 
 
-export const Node = ({children, area, labelButton, employee, addChild, updateNode,deleteChild, positionId, name}) => {
+export const Node = ({children, area, labelButton, employee, addChild, updateNode,deleteChild, positionId, name, positionChartId}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -105,7 +104,7 @@ export const Node = ({children, area, labelButton, employee, addChild, updateNod
                 {employee ? employee :'Empleado'}
               </div> 
               <div className='mr-2'>
-                  <Modals positionId={positionId} modalTitle={name} name={name} >
+                  <Modals positionChartId={positionChartId} modalTitle={name} name={name} >
                       <FaIcons.FaEye  className="text-secondary" />
                   </Modals>
               </div>

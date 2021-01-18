@@ -6,6 +6,7 @@ import {
     ORGANIZATION_CHART_HANDLE_VALIDATION, 
     GetOrganizationCharts,
     GetOrganizationChart,
+    GetPositionFromOrganization,
     GetOrganizationChartChild,
     GetOrganizationChartByCompanyId,
     GetOrganizationChartByArea,
@@ -36,9 +37,9 @@ import {
     });
   };
   
-  export const organizationChartMethods = (data, method) => async (dispatch) => {
+  export const organizationChartMethods = (data, method, loading = '') => async (dispatch) => {
     dispatch({
-      type: ORGANIZATION_CHART_CARGANDO,
+      type:!loading ? ORGANIZATION_CHART_CARGANDO : loading,
     });
     try {
       let answer;
@@ -52,13 +53,17 @@ import {
             answer = await GetOrganizationChart(data);
             break;
 
+        case "GetPositionFromOrganization":
+            answer = await GetPositionFromOrganization(data);
+            break;
+
         case "GetOrganizationChartChild":
             answer = await GetOrganizationChartChild(data);
             break;
 
         case "GetOrganizationChartByCompanyId":
             answer = await GetOrganizationChartByCompanyId(data);
-            let padre = answer.res.data.filter(child => child.PositionCharId == null);
+            let padre = answer.res.data.filter(child => child.PositionChartId == null);
             let createTree = tree(padre[0], answer.res.data )
             answer.res.data = createTree
             break;
@@ -98,7 +103,7 @@ import {
 
   const tree = (padre, hijos) => {
       
-      let children = hijos.filter(child => child.PositionCharId == padre.Id);
+      let children = hijos.filter(child => child.PositionChartId == padre.Id);
       if(!children || children?.length === 0 || children === undefined ){
         return padre;
       }

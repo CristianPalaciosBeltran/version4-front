@@ -44,12 +44,13 @@ class OrganizationChart extends Component {
             }},
             companyId
         } = this.props
+        debugger
         const model = {
             Id : Id ? Id : 0,
             DateCreated: DateCreated ? DateCreated : '0001-01-01T05:50:06.7199222-04:00',
-            PositionId: PositionId ? PositionId : '',
-            PersonDetailId: PersonDetailId ? PersonDetailId : '',
-            PositionChartId: PositionChartId ? PositionChartId : '',
+            PositionId: PositionId ? Number(PositionId) : '',
+            PersonDetailId: PersonDetailId ?  Number(PersonDetailId) : '',
+            PositionChartId: PositionChartId ?  Number(PositionChartId) : '',
             CompanyId: CompanyId ? CompanyId : companyId,
             AreasId: AreasId ? AreasId : ''
         }
