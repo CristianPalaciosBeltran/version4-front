@@ -2,12 +2,8 @@ import React, { useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
-import Tab1 from '../img/tab-1.png'
-import Tab2 from '../img/tab-2.png'
-
-
-const Example = (props) => {
-  const [activeTab, setActiveTab] = useState('1');
+export const Tabs = ({children1, children2, children3, tab="1"}) => {
+  const [activeTab, setActiveTab] = useState(tab);
 
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
@@ -21,7 +17,7 @@ const Example = (props) => {
             className={classnames({ active: activeTab === '1' })}
             onClick={() => { toggle('1'); }}
           >
-            Ventas en línea
+            Posición
           </NavLink>
         </NavItem>
         <NavItem>
@@ -29,34 +25,43 @@ const Example = (props) => {
             className={classnames({ active: activeTab === '2' })}
             onClick={() => { toggle('2'); }}
           >
-            Web Apps
+            Personal
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className={classnames({ active: activeTab === '3' })}
+            onClick={() => { toggle('3'); }}
+          >
+            Laboral
           </NavLink>
         </NavItem>
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
             <Row>
-                <Col lg="7" className="d-flex">
+                <Col lg="12" className="d-flex">
                     <div className="align-self-center">
-                        <h3 className="font-weight-bold mb-3">Somos expertos en la creación de páginas web atractivas que aumentan las ventas en línea.</h3>
-                        <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis tempus dui. Mauris nisl velit, vulputate eu dapibus vitae.</p>
+                      {children1}
                     </div>
-                </Col>
-                <Col lg="5" className="text-center">
-                    <img src={Tab1} className="img-fluid" alt="Aumenta tus ventas en línea" />
                 </Col>
             </Row>
         </TabPane>
         <TabPane tabId="2">
             <Row>
-                <Col lg="7" className="d-flex">
+                <Col lg="12" className="d-flex">
                     <div className="align-self-center">
-                        <h3 className="font-weight-bold mb-3">Desarrollamos tu proyecto con las mejores y más recientes tecnologias.</h3>
-                        <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis tempus dui. Mauris nisl velit, vulputate eu dapibus vitae.</p>
+                    {children2}
                     </div>
                 </Col>
-                <Col lg="5" className="text-center">
-                    <img src={Tab2} className="img-fluid" alt="Aplicaciones web modernas" />
+            </Row>
+        </TabPane>
+        <TabPane tabId="3">
+            <Row>
+                <Col lg="12" className="d-flex">
+                    <div className="align-self-center">
+                    {children3}
+                    </div>
                 </Col>
             </Row>
         </TabPane>
@@ -64,5 +69,3 @@ const Example = (props) => {
     </div>
   );
 }
-
-export default Example;

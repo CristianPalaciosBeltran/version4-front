@@ -8,11 +8,12 @@ import {
   CardBody 
 } from 'reactstrap';
 import {ReadChild} from '../components-organization-chart'
+import {Tabs} from '../config-components'
 
 // FontAwesome Icons
 import * as FaIcons from "react-icons/fa"
 
-export const Modals = ({positionChartId, children}) => {
+export const Modals = ({positionChartId, children, tab}) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   return (
@@ -21,7 +22,7 @@ export const Modals = ({positionChartId, children}) => {
       <Modal isOpen={modal} toggle={toggle} >
         <ModalHeader toggle={toggle}>Información</ModalHeader>
         <ModalBody>
-          <ReadChild positionChartId={positionChartId} />
+          <ReadChild positionChartId={positionChartId} tab={tab} />
         </ModalBody>
         {/* <ModalFooter>
           <Button color="danger" onClick={toggle}>Quitar puesto</Button>{''}
@@ -80,8 +81,22 @@ export default CollapseSection;
 
 
 
-export const Node = ({children, area, labelButton, employee, addChild, updateNode,deleteChild, positionId, name, positionChartId}) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const Node = ({
+  isFirst, 
+  children,
+  area,
+  labelButton,
+  employee,
+  addChild,
+  updateNode,
+  deleteChild,
+  positionId,
+  name,
+  positionChartId,
+  watchChild,
+  isOpenAux = false
+}) => {
+  const [isOpen, setIsOpen] = useState(isOpenAux);
 
   const toggle = () => setIsOpen(!isOpen);
   const rArea = area ? area : '';
@@ -97,16 +112,29 @@ export const Node = ({children, area, labelButton, employee, addChild, updateNod
             </small>
             <div className='d-flex my-2'>
             	<div></div>
-            	<div onClick={toggle} className='font-weight-bold  mb-2 pointer mr-5' style={{textAlign: 'start'}}>
-            	  {!isOpen ? <FaIcons.FaChevronCircleRight  className="mr-1  text-muted" /> : <FaIcons.FaChevronCircleDown className="mr-1 text-primary" /> }{labelButton}
+            	<div onClick={toggle} className='font-weight-bold  mb-2 pointer mr-2' style={{textAlign: 'start'}}>
+                {
+                  !isOpen ? 
+                    <FaIcons.FaChevronCircleRight  className="mr-1  text-muted" /> : 
+                    <FaIcons.FaChevronCircleDown className="mr-1 text-primary" /> 
+                }
             	</div>
+                <div  className='text-dark font-weight-bold text-start  mr-5' style={{textAlign: 'start'}}>
+                  <Modals positionChartId={positionChartId} tab={"1"} modalTitle={name} name={name} >
+                    {labelButton}
+                  </Modals>
+                </div>
               <div className='text-dark text-start mr-5' style={{textAlign: 'start'}}>
-                {employee ? employee :'Empleado'}
+                <Modals positionChartId={positionChartId} tab={"2"} modalTitle={name} name={name} >
+                  {employee ? employee :'Empleado'}
+                </Modals>
               </div> 
               <div className='mr-2'>
-                  <Modals positionChartId={positionChartId} modalTitle={name} name={name} >
-                      <FaIcons.FaEye  className="text-secondary" />
-                  </Modals>
+                {
+                  isFirst !== null ?
+                  <FaIcons.FaEye  className="text-secondary" onClick={watchChild} /> : 
+                  ''
+                }
               </div>
               <div className='mr-2'>
                   <FaIcons.FaUserEdit className="text-secondary" onClick={updateNode}/>

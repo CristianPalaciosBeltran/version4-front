@@ -36,7 +36,6 @@ import {
   };
   
   const Reducer = (state = INITIAL_STATE, action) => {
-    debugger
     switch (action.type) {
       case ORGANIZATION_CHART_CARGANDO:
         return {

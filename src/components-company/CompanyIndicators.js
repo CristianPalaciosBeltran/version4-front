@@ -60,7 +60,7 @@ class Indicators extends Component {
                 id: '4-p',
                 title: 'Areas',
                 number: cargando ? <Loader activate={cargando}></Loader> : count_areas,
-                icon: <FaIcons.FaSquare className="mr-2" />,
+                icon: <FaIcons.FaBuromobelexperte className="mr-2" />,
                 href: `/${this.props.hrefBase}/company/${this.props.companyId}/areas`
             },      
         ] 
