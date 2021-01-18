@@ -25,7 +25,7 @@ export const Modals = ({positionId, children, modalTitle, name}) => {
           <ReadPosition positionId={positionId} />
         </ModalBody>
         {/* <ModalFooter>
-          <Button color="danger" onClick={toggle}>Quitar puesto</Button>{' '}
+          <Button color="danger" onClick={toggle}>Quitar puesto</Button>{''}
           <Button color="primary" onClick={toggle}>Cerrar</Button>
         </ModalFooter> */}
       </Modal>
