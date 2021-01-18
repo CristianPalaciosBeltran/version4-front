@@ -26,6 +26,14 @@ export const GetOrganizationChart = async(data)=> {
       );
     return {res:answer, type: ORGANIZATION_CHART_CRUD};
 }
+export const GetPositionFromOrganization = async(data)=> {
+    const  answer = await axios_api(
+        `api/PositionFromOrganization?positionChartId=${data.positionChartId}`,
+        true,
+        "get"
+      );
+    return {res:answer, type: ORGANIZATION_CHART_CHILD};
+}
 
 export const GetOrganizationChartChild = async(data)=> {
     const  answer = await axios_api(

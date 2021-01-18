@@ -55,7 +55,8 @@ class OrganizationChart extends React.Component {
             
             return <div>
                     <Collapse.Node 
-                        positionId = {'organigrama?.Position?.Id'}
+                        positionChartId={organigrama.Id}
+                        positionId = {organigrama.PositionId}
                         labelButton={organigrama.PositionName}
                         employee = { organigrama.PersonName}
                         area = { organigrama.Area}
@@ -67,7 +68,8 @@ class OrganizationChart extends React.Component {
         }
         
         return <Collapse.Node
-            positionId = {'organigrama?.Position?.Id'}
+            positionChartId={organigrama.Id}
+            positionId = {organigrama.PositionId}
             labelButton={organigrama.PositionName}
             employee = { organigrama.PersonName}
             area = { organigrama.Area}
