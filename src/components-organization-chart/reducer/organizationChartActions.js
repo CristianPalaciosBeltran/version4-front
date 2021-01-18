@@ -68,8 +68,18 @@ import {
             answer.res.data = createTree
             break;
         case "GetOrganizationChartByArea":
-            answer = await GetOrganizationChartByArea(data);
+            //answer = await GetOrganizationChartByArea(data);
+            answer = await GetOrganizationChartByCompanyId(data);
+            let area = answer.res.data.filter(child => child.AreasId === Number(data.areaId));
+            let createTreeByArea = tree(area[0], answer.res.data )
+            answer.res.data = createTreeByArea
             break;
+        case "GetOrganizationChartByFatherPosition":
+          answer = await GetOrganizationChartByCompanyId(data);
+          let fatherPosition = answer.res.data.filter(child => child.Id === Number(data.positionChartId));
+          let createTreeByFatherPosition = tree(fatherPosition[0], answer.res.data )
+          answer.res.data = createTreeByFatherPosition
+          break;
 
         case "PutOrganizationChart":
           answer = await PutOrganizationChart(data);

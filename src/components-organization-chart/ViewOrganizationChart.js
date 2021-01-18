@@ -49,7 +49,7 @@ class OrganizationChart extends React.Component {
         }
     }
 
-    createOrganigrama =  (organigrama) => {
+    createOrganigrama =  (organigrama, isOpenAux = false) => {
         let ChartTree1 = organigrama?.ChartTree1
         if(ChartTree1?.length === 0 || ChartTree1 === undefined || !ChartTree1){
             
@@ -63,6 +63,8 @@ class OrganizationChart extends React.Component {
                         addChild={() => this.addChild(organigrama?.Id)}
                         deleteChild={() => this.deleteChild(organigrama?.Id)}
                         updateNode={() => this.updateNode(organigrama?.Id)}
+                        watchChild={() => this.watchChild(organigrama.PositionChartId)}
+                        isOpenAux={isOpenAux}
                     />
             </div>
         }
@@ -75,6 +77,9 @@ class OrganizationChart extends React.Component {
             area = { organigrama.Area}
             addChild={() => this.addChild(organigrama?.Id)}
             updateNode={() => this.updateNode(organigrama?.Id)}
+            watchChild={() => this.watchChild(organigrama.PositionChartId)}
+            isFirst={organigrama.PositionChartId}
+            isOpenAux={isOpenAux}
         >
             {
                 ChartTree1.map((child) => {  
@@ -120,16 +125,17 @@ class OrganizationChart extends React.Component {
     }
 
     getOrganizationChartByArea = async(e) => {
-        debugger
         e.preventDefault();
         const value = e.target.value;
         const {companyId, organizationChartMethods} = this.props;
         value === 'general' ? 
             await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId') :
             await organizationChartMethods({companyId, areaId: value},'GetOrganizationChartByArea');
+    }
 
-        this.centerDiagram();
-       
+    watchChild = async(positionChartId) => {
+        const {companyId, organizationChartMethods} = this.props;
+        await organizationChartMethods({companyId,positionChartId},'GetOrganizationChartByFatherPosition');
     }
 
     getCompleteOrganizationChart = async() => {
@@ -196,10 +202,10 @@ class OrganizationChart extends React.Component {
                     Id 
                         ? 
                              
-                            <div className='container'> 
-                                <h1>{this.props.organizationChartReducer.data.Area?.Name ? this.props.organizationChartReducer.data.Area?.Name : 'General'}</h1>
+                            <div className='m-4'> 
+                                {/* <h1>{this.props.organizationChartReducer.data.Area?.Name ? this.props.organizationChartReducer.data.Area?.Name : 'General'}</h1> */}
                                 {
-                                    this.createOrganigrama(this.props.organizationChartReducer.data)
+                                    this.createOrganigrama(this.props.organizationChartReducer.data, true)
                                 }
                             </div>
                             	
