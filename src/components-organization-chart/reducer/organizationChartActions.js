@@ -63,22 +63,30 @@ import {
 
         case "GetOrganizationChartByCompanyId":
             answer = await GetOrganizationChartByCompanyId(data);
-            let padre = answer.res.data.filter(child => child.PositionChartId == null);
-            let createTree = tree(padre[0], answer.res.data )
-            answer.res.data = createTree
+            if(answer.res.data.length > 0){
+              let padre = answer.res.data.filter(child => child.PositionChartId == null);
+              let createTree = tree(padre[0], answer.res.data )
+              answer.res.data = createTree
+            }
+            
             break;
         case "GetOrganizationChartByArea":
             //answer = await GetOrganizationChartByArea(data);
             answer = await GetOrganizationChartByCompanyId(data);
-            let area = answer.res.data.filter(child => child.AreasId === Number(data.areaId));
-            let createTreeByArea = tree(area[0], answer.res.data )
-            answer.res.data = createTreeByArea
+
+            if(answer.res.data.length > 0){
+              let area = answer.res.data.filter(child => child.AreasId === Number(data.areaId));
+              let createTreeByArea = tree(area[0], answer.res.data )
+              answer.res.data = createTreeByArea
+            }
             break;
         case "GetOrganizationChartByFatherPosition":
           answer = await GetOrganizationChartByCompanyId(data);
-          let fatherPosition = answer.res.data.filter(child => child.Id === Number(data.positionChartId));
-          let createTreeByFatherPosition = tree(fatherPosition[0], answer.res.data )
-          answer.res.data = createTreeByFatherPosition
+          if(answer.res.data.length > 0){
+            let fatherPosition = answer.res.data.filter(child => child.Id === Number(data.positionChartId));
+            let createTreeByFatherPosition = tree(fatherPosition[0], answer.res.data )
+            answer.res.data = createTreeByFatherPosition
+          }
           break;
 
         case "PutOrganizationChart":
