@@ -28,9 +28,12 @@ class JobDetail extends Component {
                 Benefits,
                 IntegratedSalary,
                 DailySalary,
-                Type
+                Type,
+                CompanyId
+
             }},
-            personalDetailId
+            personalDetailId,
+            companyId
         } = this.props
         const model = {
             Id : Id ? Id : 0,
@@ -41,8 +44,10 @@ class JobDetail extends Component {
             Benefits: Benefits ? Benefits : '',
             IntegratedSalary: IntegratedSalary ? IntegratedSalary : '',
             DailySalary: DailySalary ? DailySalary : '',
-            Type: Type ? Type : ''
+            Type: Type ? Type : '',
+            CompanyId: CompanyId ? CompanyId : companyId
         }
+        
         await jobDetailMethods(model, action);
     }
 

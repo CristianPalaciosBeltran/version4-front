@@ -23,7 +23,8 @@ import {
       Benefits:'',
       IntegratedSalary:'',
       DailySalary:'',
-      Type:''
+      Type:'',
+      CompanyId:''
     },
     validations: {
         DateAdmission: "",
@@ -97,7 +98,9 @@ import {
             Benefits:'',
             IntegratedSalary:'',
             DailySalary:'',
-            Type:''
+            Type:'',
+            CompanyId:''
+
           },
           validations: {
               DateAdmission: "",
@@ -128,7 +131,8 @@ import {
             Benefits: action.payload.Benefits,
             IntegratedSalary: action.payload.IntegratedSalary,
             DailySalary: action.payload.DailySalary,
-            Type: action.payload.Type
+            Type: action.payload.Type,
+            CompanyId: action.payload.CompanyId
           },
           validations: {
               DateAdmission: action.payload.DateAdmission ? true : '',
@@ -153,7 +157,8 @@ import {
           list_job_details: action.payload,
         };
   
-      case "personal_detail_put":
+      case "job_detail_put":
+        debugger
         return {
           ...state,
           api_actions: {

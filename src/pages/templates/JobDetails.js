@@ -10,7 +10,7 @@ import { JobDetails} from '../../components-job-detail'
 
 
 export const CreateJobDetail = ({ reDirect=''}) => {
-    const {personalDetailId} = useParams();
+    const {personalDetailId, companyId} = useParams();
     const history = useHistory();
 
     const jobDetailReducer = useSelector(state => state.jobDetailReducer);
@@ -22,7 +22,7 @@ export const CreateJobDetail = ({ reDirect=''}) => {
                 <Card className="border-0">
                     <CardBody className="card-body">
                         <h5 className="font-weight-bold mb-3">{!Id ? 'Crea Información Laboral del Empleado' : 'Actualiza Información Laboral del Empleado'}</h5>
-                        <JobDetails personalDetailId={personalDetailId} history={history} reDirect={reDirect} />
+                        <JobDetails companyId={companyId} personalDetailId={personalDetailId} history={history} reDirect={reDirect} />
                     </CardBody>
                 </Card>
             </Col>
@@ -31,7 +31,7 @@ export const CreateJobDetail = ({ reDirect=''}) => {
 }
 
 export const UpdateJobDetail = ({reDirect=''}) => {
-    const {personalDetailId} = useParams();
+    const {personalDetailId, companyId} = useParams();
     const history = useHistory();
     return (
         <>            
@@ -39,7 +39,7 @@ export const UpdateJobDetail = ({reDirect=''}) => {
                 <Card className="border-0">
                     <CardBody className="card-body">
                         <h5 className="font-weight-bold mb-3">Actualiza Información Laboral del Empleado</h5>
-                        <JobDetails personalDetailId={personalDetailId}  history={history} reDirect={reDirect} />
+                        <JobDetails companyId={companyId} personalDetailId={personalDetailId}  history={history} reDirect={reDirect} />
                     </CardBody>
                 </Card>
             </Col>
