@@ -24,6 +24,7 @@ import {
       CompanyId:0,
       PositionChartId:0,
       PositionName:'',
+      Objective:'',
       PersonName: '',
       ChartTree1:[],
     },
@@ -97,6 +98,7 @@ import {
             CompanyId:0,
             PositionChartId:0,
             PositionName:'',
+            Objective:'',
             PersonName: '',
             ChartTree1:[],
 
@@ -128,6 +130,7 @@ import {
             CompanyId: action.payload.CompanyId,
             PositionChartId:action.payload.PositionChartId,
             PositionName:action.payload.PositionName,
+            Objective: action.payload.Objective,
             PersonName: action.payload.PersonName,
             ChartTree1: action.payload.ChartTree1,
           },

@@ -40,6 +40,10 @@ const ReadChild = ({positionChartId, tab}) => {
                             <div className={'text-muted'}>{read_child.PositionName}</div>
                         </div>
                         <div className='mb-2'>
+                            <div className={'font-weight-bold'}>Objetivo:</div>
+                            <div className={'text-muted'}>{read_child.Objective}</div>
+                        </div>
+                        <div className='mb-2'>
                             <div className={'font-weight-bold'}>Responsabilidades:</div>
                             <ul>
                                 {arrayDeCadenas ? arrayDeCadenas.map(item => {
