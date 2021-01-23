@@ -31,7 +31,7 @@ const ReadChild = ({positionChartId, tab}) => {
     
     
     return (
-        <div>
+        <div className={'mb-4'}> 
             <Tabs.Tabs tab={tab}
                 children1={
                     <>
@@ -73,49 +73,51 @@ const ReadChild = ({positionChartId, tab}) => {
                 children2={
                     <>
                         <div className='mb-2'>
-                            <div className={'font-weight-bold'}>nombre:</div>
+                            <div className={'font-weight-bold'}>Nombre:</div>
                             <div className={'text-muted'}>{read_child.PersonName}</div>
                         </div>
-                        <div className='mb-2'>
+                        {/* <div className='mb-2'>
                             <div className={'font-weight-bold'}>Sexo:</div>
                             <div className={'text-muted'}>{read_child.Sexo}</div>
+                        </div> */}
+                        <div className='mb-2'>
+                            <div className={'font-weight-bold'}>Edad:</div>
+                            <div className={'text-muted'}>{ read_child.Birthdate ? Number(new Date().getFullYear()) - Number(read_child.Birthdate.substr(0,4)) : ''}</div>
                         </div>
                         <div className='mb-2'>
-                            <div className={'font-weight-bold'}>Fecha de nacimiento:</div>
-                            <div className={'text-muted'}>{read_child.Birthdate}</div>
+                            <div className={'font-weight-bold'}>Competencias:</div>
+                            <div className={'text-muted'}>{/* {read_child.Birthdate} */}</div>
                         </div>
-                        <div className='mb-2'>
+                        {/* <div className='mb-2'>
                             <div className={'font-weight-bold'}>RFC:</div>
                             <div className={'text-muted'}>{read_child.RFC}</div>
-                        </div>
+                        </div> */}
                     </>
                 }
                 children3={
                     <>
                         <div className='mb-2'>
-                            <div className={'font-weight-bold'}>Fecha de admisión:</div>
-                            <div className={'text-muted'}>{read_child.DateAdmission}</div>
+                            <div className={'font-weight-bold'}>Nombre:</div>
+                            <div className={'text-muted'}>{read_child.PersonName}</div>
                         </div>
                         <div className='mb-2'>
-                            <div className={'font-weight-bold'}>Contrato:</div>
-                            <div className={'text-muted'}>{read_child.Contract}</div>
+                            <div className={'font-weight-bold'}>Antiguedad:</div>
+                            <div className={'text-muted'}>{ read_child.DateAdmission ? Number(new Date().getFullYear()) - Number(read_child.DateAdmission.substr(0,4)) : ''}</div>
                         </div>
+                        
                         <div className='mb-2'>
-                            <div className={'font-weight-bold'}>Beneficios:</div>
+                            <div className={'font-weight-bold'}>Prestaciones:</div>
                             <div className={'text-muted'}>{read_child.Benefits}</div>
                         </div>
                         <div className='mb-2'>
-                            <div className={'font-weight-bold'}>Salario diario:</div>
-                            <div className={'text-muted'}>{read_child.DailySalary}</div>
+                            <div className={'font-weight-bold'}>Sueldo Mensual:</div>
+                            <div className={'text-muted'}>{read_child.MonthlySalary}</div>
                         </div>
                         <div className='mb-2'>
-                            <div className={'font-weight-bold'}>Salario Integrado:</div>
-                            <div className={'text-muted'}>{read_child.IntegratedSalary}</div>
+                            <div className={'font-weight-bold'}>Ingreso Total:</div>
+                            <div className={'text-muted'}>{read_child.TotalSalary}</div>
                         </div>
-                        <div className='mb-2'>
-                            <div className={'font-weight-bold'}>Tipo:</div>
-                            <div className={'text-muted'}>{read_child.Type}</div>
-                        </div>
+                        
                     </>
                 }
             ></Tabs.Tabs>  

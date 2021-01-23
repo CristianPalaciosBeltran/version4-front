@@ -20,7 +20,6 @@ import {
       Name:'',
       CompanyId:'',
       Type:'',
-     
     },
     validations: {
       Name: "",

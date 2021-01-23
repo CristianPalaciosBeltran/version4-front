@@ -24,15 +24,17 @@ import {
       IntegratedSalary:'',
       DailySalary:'',
       Type:'',
-      CompanyId:''
+      CompanyId:'',
+      AreaId:''
     },
     validations: {
-        DateAdmission: "",
-        Contract:'',
-        Benefits:'',
-        IntegratedSalary:'',
-        DailySalary:'',
-        Type:''
+      DateAdmission: "",
+      Contract:'',
+      Benefits:'',
+      IntegratedSalary:'',
+      DailySalary:'',
+      Type:'',
+      AreaId:''
     },
     list_job_details: [],
   };
@@ -99,8 +101,8 @@ import {
             IntegratedSalary:'',
             DailySalary:'',
             Type:'',
-            CompanyId:''
-
+            CompanyId:'',
+            AreaId:''
           },
           validations: {
               DateAdmission: "",
@@ -108,7 +110,8 @@ import {
               Benefits:'',
               IntegratedSalary:'',
               DailySalary:'',
-              Type:''
+              Type:'',
+              AreaId:''
           },
           list_job_details: [],
         };
@@ -132,7 +135,8 @@ import {
             IntegratedSalary: action.payload.IntegratedSalary,
             DailySalary: action.payload.DailySalary,
             Type: action.payload.Type,
-            CompanyId: action.payload.CompanyId
+            CompanyId: action.payload.CompanyId,
+            AreaId: action.payload.AreaId
           },
           validations: {
               DateAdmission: action.payload.DateAdmission ? true : '',
@@ -140,7 +144,8 @@ import {
               Benefits: action.payload.Benefits ? true : '',
               IntegratedSalary: action.payload.IntegratedSalary ? true : '',
               DailySalary: action.payload.DailySalary ? true : '',
-              Type: action.payload.Type ? true : ''
+              Type: action.payload.Type ? true : '',
+              AreaId: action.payload.AreaId ? true : '',
           },
           
           list_job_details: [],
