@@ -180,6 +180,12 @@ class OrganizationChart extends React.Component {
                                 }
                         </DropDowns.DropDownActions>
                     </li>
+                    <li>
+                    <DropDowns.DropDownActions labelButton='Edición'>
+                        <DropdownItem >Editar</DropdownItem>
+                        <DropdownItem >Vista</DropdownItem>
+                    </DropDowns.DropDownActions>
+                    </li>
                 </ul>
                 {
                     cargando 
