@@ -1,13 +1,14 @@
 
 import React from 'react'
 import {useParams, useHistory} from 'react-router-dom'
-import { CompanyIndicators, Company } from '../../components-company'
+import { CompanyIndicators, Company, ChooseCompany } from '../../components-company'
 import { Row, Col, Card, CardBody } from 'reactstrap'
 
 export const Indicators = ({companyName, companyId, hrefBase}) => {
+    debugger
     return (
         <>
-            <h2> {companyName}</h2>
+            <ChooseCompany companyId={companyId}> </ChooseCompany>
             <Row className="mb-4">
                 <CompanyIndicators companyId={companyId} hrefBase={hrefBase}/>
             </Row>
