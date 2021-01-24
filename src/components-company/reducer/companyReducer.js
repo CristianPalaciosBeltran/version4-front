@@ -29,7 +29,8 @@ import {
       TradeName: "",
       BusinessName:'',
       BusinessActivity:'',
-      fileCover: ''
+      fileCover: '',
+      UserId:'',
     },
     list_companies: [],
   };
@@ -101,7 +102,8 @@ import {
             TradeName: "",
             BusinessName:'',
             BusinessActivity:'',
-            fileCover: ''
+            fileCover: '',
+            UserId:'',
           },
           list_companies: [],
         };
@@ -129,7 +131,8 @@ import {
             TradeName: true,
             BusinessName: true,
             BusinessActivity: true,
-            fileCover: ''
+            fileCover: '',
+            UserId:'',
           },
           list_brands: [],
         };

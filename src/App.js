@@ -70,6 +70,7 @@ function App() {
           <Route  exact path="/admin-dashboard-read-admin/:userId" component={AdminUsersPages.ReadAdmin}></Route>
           { /* crud empresas */ }
           <Route  exact path="/admin-dashboard/create-company/:userId" component={AdminCompanyPages.CreateCompany}></Route>
+          <Route  exact path="/admin-dashboard/user/create-company" component={AdminCompanyPages.CreateCompany}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId" component={AdminCompanyPages.Indicators}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/positions" component={AdminPositionsPages.ListOfPositions}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/create-position" component={AdminPositionsPages.CreatePosition}></Route>
