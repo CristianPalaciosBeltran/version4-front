@@ -4,11 +4,11 @@ import {useParams, useHistory} from 'react-router-dom'
 import { CompanyIndicators, Company, ChooseCompany } from '../../components-company'
 import { Row, Col, Card, CardBody } from 'reactstrap'
 
-export const Indicators = ({companyName, companyId, hrefBase}) => {
+export const Indicators = ({user, companyId, hrefBase}) => {
     debugger
     return (
         <>
-            <ChooseCompany companyId={companyId}> </ChooseCompany>
+            <ChooseCompany user={user} companyId={companyId}> </ChooseCompany>
             <Row className="mb-4">
                 <CompanyIndicators companyId={companyId} hrefBase={hrefBase}/>
             </Row>

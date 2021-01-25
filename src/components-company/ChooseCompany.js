@@ -9,7 +9,7 @@ import {DropDowns} from '../config-components'
 import * as companyActions from './reducer/companyActions'
 import * as analyticsActions from '../components-analytics/reducer/analyticsActions'
 
-const ChooseCompany = ({ companyId }) => {
+const ChooseCompany = ({user, companyId }) => {
     const companyReducer = useSelector(state => state.companyReducer)
     const dispatch = useDispatch();
     const history = useHistory();
@@ -22,11 +22,12 @@ const ChooseCompany = ({ companyId }) => {
     } = companyReducer;
 
     const changeCompany = (id) => {
+        debugger
         dispatch(companyActions.companyMethods({Id:id},'GetCompany'))
         dispatch(analyticsActions.analyticsMethods('count_positions', {companyId:id}))
         dispatch(analyticsActions.analyticsMethods('count_personal_details', {companyId:id}))
         dispatch(analyticsActions.analyticsMethods('count_areas', {companyId:id}))
-        history.push(`/admin-dashboard/company/${id}`);
+        history.push(`${user}/${id}`);
     }
 
     let CompanyChoose = []
