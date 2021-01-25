@@ -1,6 +1,6 @@
 // Imports de react.
 import React, {Component} from 'react'
-
+import {SelectUser} from '../components-admin'
 // Imports de config-components.
 import {InputText, Form1 } from '../config-components/Inputs'
 import {RE_EMPTY } from '../config-components/RegularExpressions'
@@ -73,11 +73,16 @@ class Company extends Component {
                     TradeName,
                     BusinessName,
                     BusinessActivity, 
+                    UserId
                 },
+                users_list,
                 api_actions: {cargando, error},
                 validations,
             },
         } = this.props;
+
+       
+
         return(
             <>
             
@@ -133,6 +138,31 @@ class Company extends Component {
                     RE={RE_EMPTY}
                     validateRE={validations.BusinessActivity} 
                 />
+                {
+                    localStorage.getItem('role') === 'Admin' ? 
+                    <SelectUser
+                        UserId={UserId}
+                        onChange={companyHandleChange}
+                        validations={validations.UserId}
+                    ></SelectUser>
+                    // <InputText 
+                    //     classLabel='font-weight-bold'
+                    //     textLabel='Tipo'
+                    //     isMandatory='*'
+                    //     classMandatory=''
+                    //     inputType='select'
+                    //     inputName={'UserId'}
+                    //     placeHolder={'Selecciona un usuario'}
+                    //     inputValue={UserId}
+                    //     onChange={companyHandleChange}
+                    //     RE={RE_EMPTY}
+                    //     validateRE={validations.UserId}
+                    //     optionPlaceHolder={'Selecciona un usuario'}
+                    //     options={users_list}
+                    // />
+                    : ''
+                }
+
             </Form1>
             </>
         )

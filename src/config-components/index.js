@@ -11,6 +11,7 @@ import * as ComponentLogos from './Logos'
 import * as ComponentLists from './Lists'
 import * as ComponentCollapse from './Collapse'
 import {A as Anchor, AWhatsapp as AnchorWhatsapp} from './ExternalLinks'
+import * as ComponentListOfHistory from './ListOfHistory'
 
 export const Logos = ComponentLogos;
 export const Cards = ComponentCards;
@@ -26,3 +27,4 @@ export const Tabs = ComponentTabs;
 export const Collapse = ComponentCollapse
 export const A = Anchor;
 export const AWhatsapp = AnchorWhatsapp;
+export const ListOfHistory = ComponentListOfHistory;

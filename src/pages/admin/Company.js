@@ -1,4 +1,4 @@
-import {Company, CompanyIndicators, ListOfCompanies as Companies} from '../../components-company'
+import {Company, ListOfCompanies as Companies} from '../../components-company'
 import {useSelector} from 'react-redux'
 import {useHistory, useParams} from 'react-router-dom'
 import {
@@ -7,6 +7,8 @@ import {
 import {AdminDashboardPages} from './'
 
 import {Company as CompanyTemplate} from '../templates'
+
+import {ListOfHistory} from '../../config-components'
 
 export const ListOfCompanies = ({reDirect, history}) =>{
     return (
@@ -20,6 +22,13 @@ export const CreateCompany = () => {
     return (
         <>
             <AdminDashboardPages.TemplateDashboardAdmin>
+                <ListOfHistory.Li
+                    items={[
+                        {href: '/admin-dashboard', name: 'Inicio'},
+                        {href: '/admin-dashboard/companies', name: 'Empresas'},
+                        {href: '', name: 'Empresas', last: true},
+                    ]}
+                />
                 <Row>
                     <Col lg="6">
                         <Card className="border-0">
@@ -43,9 +52,8 @@ export const Indicators = () => {
         <>
             <AdminDashboardPages.TemplateDashboardAdmin>
                 <CompanyTemplate.Indicators 
-                    companyName={TradeName} 
+                    user={'/admin-dashboard/company'} 
                     companyId={companyId} 
-                    hrefBase={'admin-dashboard'}
                 />
             </AdminDashboardPages.TemplateDashboardAdmin>
         </>

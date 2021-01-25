@@ -5,6 +5,7 @@ import {
     COMPANY_CLEAN_STATE,
     COMPANY_HANDLE_VALIDATION, 
     GetCompanies,
+    GetCompaniesByCompanyId,
     GetCompany,
     PutCompany,
     PostCompany,
@@ -44,6 +45,10 @@ import {
         case "GetCompanies":
           answer = await GetCompanies(); 
           break;
+        case "GetCompaniesByCompanyId":
+          answer = await GetCompaniesByCompanyId(data); 
+          break;
+          
         case "GetCompaniesByUser":
           answer = await GetCompaniesByUser(); 
           break;

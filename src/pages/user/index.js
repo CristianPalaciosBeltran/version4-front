@@ -29,13 +29,11 @@ export const DashboardUserTemplate = ({children}) => {
 }
 
 export const DashboardUserPage = () => {
-    const companyReducer = useSelector(state => state.companyReducer)
     const {companyId} = useParams();
-    const { data: {TradeName}} = companyReducer
     return (
         <>
             <DashboardUserTemplate>
-                <Company.Indicators companyName={TradeName} companyId={companyId} hrefBase={'user-dashboard'}/>
+                <Company.Indicators user={`/user-dashboard/company`} companyId={companyId} hrefBase={'user-dashboard'}/>
             </DashboardUserTemplate>
         </>
     )

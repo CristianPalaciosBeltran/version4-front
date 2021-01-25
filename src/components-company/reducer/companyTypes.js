@@ -16,6 +16,15 @@ export const GetCompanies = async()=> {
       );
     return {res:answer, type: COMPANIES_LIST};
 }
+export const GetCompaniesByCompanyId = async(data)=> {
+  
+    const  answer = await axios_api(
+        `api/CompaniesByCompanyId?companyId=${data.companyId}`,
+        true,
+        "get"
+      );
+    return {res:answer, type: COMPANIES_LIST};
+}
 export const GetCompaniesByUser = async()=> {
     const  answer = await axios_api(
         `api/CompaniesByUser`,

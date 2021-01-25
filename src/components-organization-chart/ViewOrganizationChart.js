@@ -2,9 +2,6 @@ import React  from 'react'
 import {Link} from 'react-router-dom'
 
 import { 
-    FormGroup,
-    Input,
-    Col,
     DropdownItem
 } from 'reactstrap'
 

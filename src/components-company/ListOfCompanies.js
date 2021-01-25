@@ -38,7 +38,7 @@ const ListOfCompanies = ({ title='Empresas', create='/create-company'}) => {
                 title={title}
                 titlesTable={["#",'Empresa','Acciones']}
                 propertiesTable={['Id','TradeName']}
-                hrefCreate={`/admin-dashboard${create}`}
+                hrefCreate={`/admin-dashboard/user${create}`}
                 bodyTable={list_companies}
                 loading={cargando}
                 error={error}
