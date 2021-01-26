@@ -33,7 +33,7 @@ export const DashboardUserPage = () => {
     return (
         <>
             <DashboardUserTemplate>
-                <Company.Indicators user={`/user-dashboard/company`} companyId={companyId} hrefBase={'user-dashboard'}/>
+                <Company.Indicators user={`/user-dashboard/company`} companyId={companyId} hrefBase={'/user-dashboard'}/>
             </DashboardUserTemplate>
         </>
     )
