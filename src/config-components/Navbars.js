@@ -16,6 +16,8 @@ import {
   DropdownMenu
 } from 'reactstrap';
 
+import {ChooseCompany} from '../components-company'
+
 import {Logo} from './Logos'
 // Imports de components-api.
 import {signOff} from '../components-api/ConfigApi'
@@ -49,6 +51,8 @@ export const Navbars = () => {
 export const NavbarAdmin = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const {companyId} = useParams();
+
   return (
       <Navbar light className="bg-white" expand="md">
         <Container>
@@ -56,6 +60,34 @@ export const NavbarAdmin = () => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
+         
+            {companyId &&
+             <>
+             <NavItem className="mr-3" >
+                <NavLink className={"text-muted"} href={`/admin-dashboard/company/${companyId}`}>
+                <FaIcons.FaBuilding />
+              </NavLink></NavItem>
+               <NavItem className="mr-3" >
+                <NavLink className={"text-muted"} href={`/admin-dashboard/company/${companyId}/organization-chart`}>
+                <FaIcons.FaSitemap />
+              </NavLink></NavItem>
+              <NavItem className="mr-3" >
+                <NavLink className={"text-muted"} href={`/admin-dashboard/company/${companyId}/positions`}>
+                <FaIcons.FaChair  />
+              </NavLink></NavItem>
+              <NavItem className="mr-3" >
+                <NavLink className={"text-muted"} href={`/admin-dashboard/company/${companyId}/employees`}>
+                <FaIcons.FaUserFriends  />
+              </NavLink></NavItem>
+              <NavItem className="mr-3" >
+                <NavLink className={"text-muted"} href={`/admin-dashboard/company/${companyId}/areas`}>
+                <FaIcons.FaBuromobelexperte  />
+              </NavLink></NavItem>
+              <NavItem className="mr-3" >
+                <NavLink className={"text-muted"} href={`/admin-dashboard/company/${companyId}/areas`}>
+                <FaIcons.FaChartPie  />
+              </NavLink></NavItem>
+             </>}
             <NavItem className="mr-3">
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret className="text-dark">
@@ -86,6 +118,27 @@ export const User = () => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
+            <NavItem className="mr-3" >
+              <NavLink className={"text-muted"} href={`/user-dashboard/company/${companyId}/organization-chart`}>
+              <FaIcons.FaSitemap />
+            </NavLink></NavItem>
+            <NavItem className="mr-3" >
+              <NavLink className={"text-muted"} href={`/user-dashboard/company/${companyId}/positions`}>
+              <FaIcons.FaChair  />
+            </NavLink></NavItem>
+            <NavItem className="mr-3" >
+              <NavLink className={"text-muted"} href={`/user-dashboard/company/${companyId}/employees`}>
+              <FaIcons.FaUserFriends  />
+            </NavLink></NavItem>
+            <NavItem className="mr-3" >
+              <NavLink className={"text-muted"} href={`/user-dashboard/company/${companyId}/areas`}>
+              <FaIcons.FaBuromobelexperte  />
+            </NavLink></NavItem>
+            <NavItem className="mr-3" >
+              <NavLink className={"text-muted"} href={`/user-dashboard/company/${companyId}/areas`}>
+              <FaIcons.FaChartPie  />
+            </NavLink></NavItem>
+
             <NavItem className="mr-3">
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

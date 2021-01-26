@@ -54,6 +54,7 @@ export const Indicators = () => {
                 <CompanyTemplate.Indicators 
                     user={'/admin-dashboard/company'} 
                     companyId={companyId} 
+                    hrefBase={'/admin-dashboard'}
                 />
             </AdminDashboardPages.TemplateDashboardAdmin>
         </>

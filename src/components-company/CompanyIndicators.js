@@ -40,35 +40,35 @@ class Indicators extends Component {
                 title: 'Organigrama',
                 number: 'Ver',
                 icon: <FaIcons.FaSitemap className="mr-2" />,
-                href: `/${this.props.hrefBase}/company/${this.props.companyId}/organization-chart`
+                href: `${this.props.hrefBase}/company/${this.props.companyId}/organization-chart`
             },            
             {
                 id: '1-p',
                 title: 'Posiciones',
                 number:  cargando ? <Loader activate={cargando}></Loader> : count_positions,
                 icon: <FaIcons.FaChair className="mr-2" />,
-                href: `/${this.props.hrefBase}/company/${this.props.companyId}/positions`
+                href: `${this.props.hrefBase}/company/${this.props.companyId}/positions`
             },
             {
                 id: '2-p',
                 title: 'Colaboradores',
                 number: cargando ? <Loader activate={cargando}></Loader> : count_personal_details,
                 icon: <FaIcons.FaUserFriends className="mr-2" />,
-                href: `/${this.props.hrefBase}/company/${this.props.companyId}/employees`
+                href: `${this.props.hrefBase}/company/${this.props.companyId}/employees`
             }, 
             {
                 id: '4-p',
                 title: 'Areas',
                 number: cargando ? <Loader activate={cargando}></Loader> : count_areas,
                 icon: <FaIcons.FaBuromobelexperte className="mr-2" />,
-                href: `/${this.props.hrefBase}/company/${this.props.companyId}/areas`
+                href: `${this.props.hrefBase}/company/${this.props.companyId}/areas`
             },      
             {
                 id: '5-p',
                 title: 'Indicadores',
                 number: 'Ver',
                 icon: <FaIcons.FaChartPie className="mr-2" />,
-                href: `/${this.props.hrefBase}/company/${this.props.companyId}/areas`
+                href: `${this.props.hrefBase}/company/${this.props.companyId}/areas`
             },      
         ] 
         return(
