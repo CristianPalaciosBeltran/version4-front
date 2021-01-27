@@ -28,7 +28,11 @@ class PersonDetail extends Component {
                 CompanyId,
                 RFC,
                 Birthdate,
-                Gender
+                Gender,
+                Competencias,
+                IMSS,
+                CURP,
+                Status,
             }},
             companyId
         } = this.props
@@ -41,7 +45,11 @@ class PersonDetail extends Component {
             SecondLastName: SecondLastName ? SecondLastName : '',
             RFC: RFC ? RFC : '',
             Birthdate: Birthdate ? Birthdate : '',
-            Gender: Gender ? Gender : ''
+            Gender: Gender ? Gender : '',
+            Competencias: Competencias ? Competencias : '',
+            IMSS: IMSS ? IMSS : '',
+            CURP: CURP ? CURP : '',
+            Status: Status ? Status : '',
         }
         await personalDetailMethods(model, action);
     }
@@ -68,7 +76,7 @@ class PersonDetail extends Component {
             debugger
             reDirect && history.push(`${reDirect}/${this.props.personalDetailReducer.data.Id}`)
             setModal && setModal();
-            personalDetailCleanState()
+            //personalDetailCleanState()
         }
     }
 
@@ -89,7 +97,11 @@ class PersonDetail extends Component {
                     SecondLastName,
                     RFC,
                     Birthdate,
-                    Gender
+                    Gender,
+                    Competencias,
+                    IMSS,
+                    CURP,
+                    Status,
                 },
                 api_actions: {cargando, error},
                 validations,
@@ -122,6 +134,12 @@ class PersonDetail extends Component {
                     validateRE={validations.Name}
                 />
                 <InputText 
+                     xs={6}
+                     sm={6}
+                     md={6}
+                     lg={6}
+                     xl={6}
+                     classCol='pl-0 pr-1'
                     classLabel='font-weight-bold'
                     textLabel='Apellido Paterno'
                     isMandatory=''
@@ -136,6 +154,11 @@ class PersonDetail extends Component {
                     validateRE={validations.LastName}
                 />
                 <InputText 
+                    xs='6'
+                    sm='6'
+                    md='6'
+                    lg='6'
+                    xl='6'
                     classLabel='font-weight-bold'
                     textLabel='Apellido Materno'
                     isMandatory=''
@@ -149,21 +172,14 @@ class PersonDetail extends Component {
                     RE={RE_EMPTY}
                     validateRE={validations.SecondLastName}
                 />
+                
                 <InputText 
-                    classLabel='font-weight-bold'
-                    textLabel='RFC'
-                    isMandatory=''
-                    classMandatory=''
-                    inputType='text'
-                    inputName={'RFC'}
-                    placeHolder={'Introduce un sueldo'}
-                    inputValue={RFC}
-                    onChange={personalDetailHandleChange}
-                    maxLength={25}
-                    RE={RE_EMPTY}
-                    validateRE={validations.RFC}
-                />
-                <InputText 
+                     xs={8}
+                     sm={8}
+                     md={8}
+                     lg={8}
+                     xl={8}
+                     classCol='pl-0 pr-1'
                     classLabel='font-weight-bold'
                     textLabel='Fecha de Nacimiento'
                     isMandatory=''
@@ -177,21 +193,12 @@ class PersonDetail extends Component {
                     RE={RE_EMPTY}
                     validateRE={validations.Birthdate}
                 />
-                {/* <InputText 
-                    classLabel='font-weight-bold'
-                    textLabel='Genero'
-                    isMandatory=''
-                    classMandatory=''
-                    inputType='text'
-                    inputName={'Gender'}
-                    placeHolder={''}
-                    inputValue={Gender}
-                    onChange={personalDetailHandleChange}
-                    maxLength={25}
-                    RE={RE_EMPTY}
-                    validateRE={validations.Gender}
-                /> */}
                 <InputText 
+                    xs={4}
+                    sm={4}
+                    md={4}
+                    lg={4}
+                    xl={4}
                     classLabel='font-weight-bold'
                     textLabel='Sexo'
                     isMandatory=''
@@ -203,10 +210,108 @@ class PersonDetail extends Component {
                     onChange={personalDetailHandleChange}
                     RE={RE_EMPTY}
                     validateRE={validations.Gender}
-                    optionPlaceHolder={'Selecciona el Sexo'}
+                    optionPlaceHolder={' Sexo'}
                     options={[
                         {Id:'M',Name:'M'},
                         {Id:'F',Name:'F'}
+                    ]}
+                />
+                <InputText 
+                   
+                    classLabel='font-weight-bold'
+                    textLabel='Competencias'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='textarea'
+                    inputName={'Competencias'}
+                    placeHolder={'Introduce un sueldo'}
+                    inputValue={Competencias}
+                    onChange={personalDetailHandleChange}
+                   
+                    RE={RE_EMPTY}
+                    validateRE={validations.Competencias}
+                />
+                <InputText 
+                    xs={6}
+                    sm={6}
+                    md={6}
+                    lg={6}
+                    xl={6}
+                    classCol='pl-0 pr-1'
+                    classLabel='font-weight-bold'
+                    textLabel='RFC'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='text'
+                    inputName={'RFC'}
+                    placeHolder={'Introduce un rfc'}
+                    inputValue={RFC}
+                    onChange={personalDetailHandleChange}
+                    maxLength={25}
+                    RE={RE_EMPTY}
+                    validateRE={validations.RFC}
+                />
+                <InputText 
+                    xs={6}
+                    sm={6}
+                    md={6}
+                    lg={6}
+                    xl={6}
+                    classLabel='font-weight-bold'
+                    textLabel='IMSS'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='text'
+                    inputName={'IMSS'}
+                    placeHolder={'Introduce un numero'}
+                    inputValue={IMSS}
+                    onChange={personalDetailHandleChange}
+                    maxLength={25}
+                    RE={RE_EMPTY}
+                    validateRE={validations.IMSS}
+                />
+                <InputText 
+                    xs={6}
+                    sm={6}
+                    md={6}
+                    lg={6}
+                    xl={6}
+                    classCol='pl-0 pr-1'
+                    classLabel='font-weight-bold'
+                    textLabel='CURP'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='text'
+                    inputName={'CURP'}
+                    placeHolder={'Introduce una curp'}
+                    inputValue={CURP}
+                    onChange={personalDetailHandleChange}
+                    maxLength={25}
+                    RE={RE_EMPTY}
+                    validateRE={validations.CURP}
+                />
+                <InputText 
+                    xs={6}
+                    sm={6}
+                    md={6}
+                    lg={6}
+                    xl={6}
+                    classLabel='font-weight-bold'
+                    textLabel='Estatus'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='select'
+                    inputName={'Status'}
+                    placeHolder={'Selecciona un Estatus'}
+                    inputValue={Status}
+                    onChange={personalDetailHandleChange}
+                    maxLength={25}
+                    RE={RE_EMPTY}
+                    validateRE={validations.Status}
+                    optionPlaceHolder={'Selecciona un Estatus'}
+                    options={[
+                        {Id:'Activo',Name:'Activo'},
+                        {Id:'Inactivo',Name:'Inactivo'}
                     ]}
                 />
             </Form1>

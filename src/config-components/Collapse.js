@@ -94,7 +94,8 @@ export const Node = ({
   name,
   positionChartId,
   watchChild,
-  isOpenAux = false
+  isOpenAux = false,
+  mode
 }) => {
   const [isOpen, setIsOpen] = useState(isOpenAux);
 
@@ -120,14 +121,24 @@ export const Node = ({
                 }
             	</div>
                 <div  className='text-dark font-weight-bold text-start  mr-5' style={{textAlign: 'start'}}>
-                  <Modals positionChartId={positionChartId} tab={"1"} modalTitle={name} name={name} >
-                    {labelButton}
-                  </Modals>
+                  {
+                    mode === "Editar" ?
+                      <Modals positionChartId={positionChartId} tab={"1"} modalTitle={name} name={name} >
+                        {labelButton}
+                      </Modals>
+                    : labelButton
+                  }
+                  
                 </div>
               <div className='text-dark text-start mr-5' style={{textAlign: 'start'}}>
-                <Modals positionChartId={positionChartId} tab={"2"} modalTitle={name} name={name} >
-                  {employee ? employee :'Empleado'}
-                </Modals>
+                {
+                  mode === "Editar" ?
+                  <Modals positionChartId={positionChartId} tab={"2"} modalTitle={name} name={name} >
+                    {employee ? employee :'Empleado'}
+                  </Modals>
+                 : employee ? employee :'Empleado'
+                }
+                
               </div> 
               <div className='mr-2'>
                 {

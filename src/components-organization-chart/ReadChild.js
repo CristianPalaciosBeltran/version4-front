@@ -28,6 +28,12 @@ const ReadChild = ({positionChartId, tab}) => {
         arrayDeCadenas2 = read_child.Competencias.split('-');
         arrayDeCadenas2.splice(0, 1);
     } 
+
+    let arrayDeCadenas3;
+    if(read_child.CompetenciasUser){
+        arrayDeCadenas3 = read_child.CompetenciasUser.split('-');
+        arrayDeCadenas3.splice(0, 1);
+    } 
     
     
     return (
@@ -86,8 +92,44 @@ const ReadChild = ({positionChartId, tab}) => {
                         </div>
                         <div className='mb-2'>
                             <div className={'font-weight-bold'}>Competencias:</div>
-                            <div className={'text-muted'}>{/* {read_child.Birthdate} */}</div>
+                            <ul>
+                                {arrayDeCadenas3 ? arrayDeCadenas3.map(item => {
+                                    return (
+                                            <li className='text-muted'>{item}</li>
+                                        )
+                                    }    
+                                ) : 'No hay responsabilidades asignadas a este puesto.'}
+                            </ul>
                         </div>
+                        {
+                        read_child.CURP && 
+                            <div className='mb-2'>
+                                <div className={'font-weight-bold'}>CURP:</div>
+                                <div className={'text-muted'}>{read_child.CURP}</div>
+                            </div>
+                        }
+                        {
+                        read_child.IMSS && 
+                            <div className='mb-2'>
+                                <div className={'font-weight-bold'}>IMSS:</div>
+                                <div className={'text-muted'}>{read_child.IMSS}</div>
+                            </div>
+                        }
+                        {
+                        read_child.RFC && 
+                            <div className='mb-2'>
+                                <div className={'font-weight-bold'}>RFC:</div>
+                                <div className={'text-muted'}>{read_child.RFC}</div>
+                            </div>
+                        }
+                        {
+                        read_child.Status && 
+                            <div className='mb-2'>
+                                <div className={'font-weight-bold'}>Estatus:</div>
+                                <div className={'text-muted'}>{read_child.Status}</div>
+                            </div>
+                        }
+                        
                         {/* <div className='mb-2'>
                             <div className={'font-weight-bold'}>RFC:</div>
                             <div className={'text-muted'}>{read_child.RFC}</div>

@@ -21,7 +21,7 @@ class OrganizationChart extends React.Component {
         
         this.container  = React.createRef();
         this.state = {
-          value: ''
+          value: 'Editar'
         }
       }
 
@@ -47,7 +47,7 @@ class OrganizationChart extends React.Component {
         }
     }
 
-    createOrganigrama =  (organigrama, isOpenAux = false) => {
+    createOrganigrama =  (organigrama, isOpenAux = false, mode) => {
         let ChartTree1 = organigrama?.ChartTree1
         if(ChartTree1?.length === 0 || ChartTree1 === undefined || !ChartTree1){
             
@@ -63,6 +63,7 @@ class OrganizationChart extends React.Component {
                         updateNode={() => this.updateNode(organigrama?.Id)}
                         watchChild={() => this.watchChild(organigrama.PositionChartId)}
                         isOpenAux={isOpenAux}
+                        mode={mode}
                     />
             </div>
         }
@@ -78,12 +79,13 @@ class OrganizationChart extends React.Component {
             watchChild={() => this.watchChild(organigrama.PositionChartId)}
             isFirst={organigrama.PositionChartId}
             isOpenAux={isOpenAux}
+            mode={mode}
         >
             {
                 ChartTree1.map((child) => {  
                              
                     return <>
-                    	{this.createOrganigrama(child)}
+                    	{this.createOrganigrama(child, false, mode )}
                     </>
                 })
             }
@@ -144,6 +146,14 @@ class OrganizationChart extends React.Component {
         await organizationChartMethods({companyId},'GetOrganizationChartByCompanyId');
     }
 
+    EditOrganizationChart = () => {
+        this.setState({value: 'Editar'})
+    }
+
+    ViewOrganizationChart = () => {
+        this.setState({value: 'Vista'})
+    }
+
     render () {
 
         const { 
@@ -178,9 +188,9 @@ class OrganizationChart extends React.Component {
                         </DropDowns.DropDownActions>
                     </li>
                     <li>
-                    <DropDowns.DropDownActions labelButton='Edición'>
-                        <DropdownItem >Editar</DropdownItem>
-                        <DropdownItem >Vista</DropdownItem>
+                    <DropDowns.DropDownActions labelButton={this.state.value}>
+                        <DropdownItem onClick={this.EditOrganizationChart}>Editar</DropdownItem>
+                        <DropdownItem onClick={this.ViewOrganizationChart}>Vista</DropdownItem>
                     </DropDowns.DropDownActions>
                     </li>
                 </ul>
@@ -199,7 +209,7 @@ class OrganizationChart extends React.Component {
                             <div className='m-4'> 
                                 <h1>{this.props.organizationChartReducer.data.Area ? this.props.organizationChartReducer.data.Area : 'General'}</h1>
                                 {
-                                    this.createOrganigrama(this.props.organizationChartReducer.data, true)
+                                    this.createOrganigrama(this.props.organizationChartReducer.data, true, this.state.value)
                                 }
                             </div>
                             	

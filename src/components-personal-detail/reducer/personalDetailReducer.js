@@ -23,7 +23,11 @@ import {
       CompanyId:'',
       RFC:'',
       Birthdate:'',
-      Gender:''
+      Gender:'',
+      Competencias:'',
+      IMSS:'',
+      CURP:'',
+      Status:'',
     },
     validations: {
       Name: "",
@@ -31,7 +35,11 @@ import {
       SecondLastName:'',
       RFC:'',
       Birthdate:'',
-      Gender:''
+      Gender:'',
+      Competencias:'',
+      IMSS:'',
+      CURP:'',
+      Status:'',
     },
     list_personal_details: [],
   };
@@ -97,7 +105,11 @@ import {
             CompanyId:'',
             RFC:'',
             Birthdate:'',
-            Gender:''
+            Gender:'',
+            Competencias:'',
+            IMSS:'',
+            CURP:'',
+            Status:'',
           },
           validations: {
             Name: "",
@@ -105,7 +117,11 @@ import {
             SecondLastName:'',
             RFC:'',
             Birthdate:'',
-            Gender:''
+            Gender:'',
+            Competencias:'',
+            IMSS:'',
+            CURP:'',
+            Status:'',
           },
           list_personal_details: [],
         };
@@ -127,7 +143,11 @@ import {
             CompanyId: action.payload.CompanyId,
             RFC: action.payload.RFC,
             Birthdate: action.payload.Birthdate?.slice(0, 10),
-            Gender:action.payload.Gender 
+            Gender:action.payload.Gender,
+            Competencias: action.payload.Competencias,
+            IMSS: action.payload.IMSS,
+            CURP: action.payload.CURP,
+            Status: action.payload.Status,
           },
           validations: {
             Name: action.payload.Name ? true : '',
@@ -135,7 +155,11 @@ import {
             SecondLastName: action.payload.SecondLastName ? true : '',
             RFC: action.payload.RFC ? true : '',
             Birthdate: action.payload.Birthdate ? true : '',
-            Gender: action.payload.Gender ? true : ''
+            Gender: action.payload.Gender ? true : '',
+            Competencias: action.payload.Competencias ? true: '',
+            IMSS: action.payload.IMSS ? true: '',
+            CURP: action.payload.CURP ? true: '',
+            Status: action.payload.Status ? true: '',
           },
           list_personal_details: [],
         };
