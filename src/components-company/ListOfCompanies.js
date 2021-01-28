@@ -23,6 +23,10 @@ const ListOfCompanies = ({ title='Empresas', create='/create-company'}) => {
         history.push(`/admin-dashboard/company/${companyId}`)
     }
 
+    const UpdateCompany = (companyId) => {
+        history.push(`/admin-dashboard/user/upadate-company/${companyId}`)
+    }
+
     const {
         api_actions: {cargando, error},
         list_companies
@@ -44,6 +48,7 @@ const ListOfCompanies = ({ title='Empresas', create='/create-company'}) => {
                 error={error}
                 actions={[
                     {action: 'Ver Empresa', handleAction: getCompany },
+                    {action: 'Actulizar Empresa', handleAction: UpdateCompany}
                 ]}
             />
         </>

@@ -17,7 +17,7 @@ export const ListOfCompanies = ({reDirect, history}) =>{
 }
 
 export const CreateCompany = () => {
-    const {userId} = useParams();
+    const {userId, companyId} = useParams();
     const history = useHistory();
     return (
         <>
@@ -34,7 +34,7 @@ export const CreateCompany = () => {
                         <Card className="border-0">
                             <CardBody className="card-body">
                                 <h5 className="font-weight-bold mb-3">Crea una Empresa</h5>
-                                <Company userId={userId} history={history} reDirect={'/admin-dashboard/company'} />
+                                <Company companyId={companyId} userId={userId} history={history} reDirect={'/admin-dashboard/company'} />
                             </CardBody>
                         </Card>
                     </Col>
