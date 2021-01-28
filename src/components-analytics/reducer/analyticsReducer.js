@@ -9,7 +9,8 @@ import {
     ANALYTICS_COUNT_COMPANIES,
     ANALYTICS_COUNT_POSITIONS,
     ANALYTICS_COUNT_PERSONAL_DETAILS,
-    ANALYTICS_COUNT_AREAS
+    ANALYTICS_COUNT_AREAS,
+    ANALYTICS_COMPANY
   } from "./analyticsTypes";
   
   const INITIAL_STATE = {
@@ -24,7 +25,8 @@ import {
     count_companies: 0,
     count_positions: 0,
     count_personal_details: 0,
-    count_areas: 0
+    count_areas: 0,
+    analytics_company: {},
   };
   
   const reducer = (state = INITIAL_STATE, action) => {
@@ -145,6 +147,16 @@ import {
             error: "",
           },
           count_areas: action.payload,
+        };
+      case ANALYTICS_COMPANY:
+        return {
+          ...state,
+          api_actions: {
+            ...state.api_actions,
+            cargando: false,
+            error: "",
+          },
+          analytics_company: action.payload,
         };
       default:
         return { ...state };

@@ -68,7 +68,7 @@ class Indicators extends Component {
                 title: 'Indicadores',
                 number: 'Ver',
                 icon: <FaIcons.FaChartPie className="mr-2" />,
-                href: `${this.props.hrefBase}/company/${this.props.companyId}/areas`
+                href: `${this.props.hrefBase}/company/${this.props.companyId}/indicators`
             },      
         ] 
         return(

@@ -1,3 +1,4 @@
+import React from 'react'
 import {Company, ListOfCompanies as Companies} from '../../components-company'
 import {useSelector} from 'react-redux'
 import {useHistory, useParams} from 'react-router-dom'
@@ -9,6 +10,7 @@ import {AdminDashboardPages} from './'
 import {Company as CompanyTemplate} from '../templates'
 
 import {ListOfHistory} from '../../config-components'
+import AnalyticsCompany from '../../components-analytics/AnalyticsCompany'
 
 export const ListOfCompanies = ({reDirect, history}) =>{
     return (
@@ -58,5 +60,15 @@ export const Indicators = () => {
                 />
             </AdminDashboardPages.TemplateDashboardAdmin>
         </>
+    )
+}
+
+export const AnalyticsCompanyPage = () => {
+    return(
+        <AdminDashboardPages.TemplateDashboardAdmin>
+            <Row>
+                 <AnalyticsCompany></AnalyticsCompany>
+            </Row>
+        </AdminDashboardPages.TemplateDashboardAdmin>
     )
 }

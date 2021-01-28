@@ -9,7 +9,8 @@ import {
     ANALYTICS_COUNT_COMPANIES,
     ANALYTICS_COUNT_POSITIONS,
     ANALYTICS_COUNT_PERSONAL_DETAILS,
-    ANALYTICS_COUNT_AREAS
+    ANALYTICS_COUNT_AREAS,
+    ANALYTICS_COMPANY
   } from "./analyticsTypes";
   
   import { axios_api, errorHandler } from "../../components-api/ConfigApi";
@@ -27,6 +28,7 @@ import {
     try {
       let answer;
       let type;
+      debugger
       switch (method) {
         case "count_products":
             answer = await axios_api(`api/CountProducts`, true, "get");
@@ -59,6 +61,11 @@ import {
         case "count_areas":
           answer = await axios_api(`api/CountAreas?companyId=${data.companyId}`, true, "get");
           type = ANALYTICS_COUNT_AREAS;
+          break;
+        case "ANALYTICS_COMPANY":
+          
+          answer = await axios_api(`api/Analytics?companyId=${data.companyId}`, true, "get");
+          type = ANALYTICS_COMPANY;
           break;
         default:
             break

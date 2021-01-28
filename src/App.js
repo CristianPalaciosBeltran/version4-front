@@ -84,6 +84,7 @@ function App() {
           <Route  exact path="/admin-dashboard/company/:companyId/areas" component={AdminArea.ListOfAreas}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/create-area" component={AdminArea.CreateArea}></Route>
           <Route  exact path="/admin-dashboard/company/:companyId/update-area/:areaId" component={AdminArea.UpdateArea}></Route>
+          <Route  exact path="/admin-dashboard/company/:companyId/indicators" component={AdminCompanyPages.AnalyticsCompanyPage}></Route>
 
          
           {/* <Route  exact path="/admin-dashboard/company/:companyId/organization-chart" component={OrganizationChart}></Route> */}
