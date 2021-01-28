@@ -47,13 +47,13 @@ const AnalyticsCompany = () => {
         {
             id: '3-a',
             title: 'Salario Mensual',
-            number: cargando ? <Loader activate={cargando} /> :analytics_company.MonthlySalary.toFixed(2).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
+            number: cargando ? <Loader activate={cargando} /> :analytics_company.MonthlySalary?.toFixed(2).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
             icon: <FaIcons.FaMoneyBill className="mr-2" />,
         }, 
         {
             id: '4-a',
             title: 'Salario Total',
-            number: cargando ? <Loader activate={cargando} /> :analytics_company.TotalSalary.toFixed(2).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
+            number: cargando ? <Loader activate={cargando} /> :analytics_company.TotalSalary?.toFixed(2).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
             icon: <FaIcons.FaMoneyBill className="mr-2" />,
         },      
     ] 
