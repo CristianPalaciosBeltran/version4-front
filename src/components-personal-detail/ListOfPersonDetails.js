@@ -37,8 +37,8 @@ const ListOfPersonalDetails = ({ title='Colaboradores', redirectUser, create='/c
             </ul>
             <TableFilter 
                 title={title}
-                titlesTable={['Nombre', 'Apellido Paterno','Apellido Materno','Acciones']}
-                propertiesTable={['Name', 'LastName', 'SecondLastName']}
+                titlesTable={['Nombre', 'Personal', 'Laboral' ,'Acciones']}
+                propertiesTable={['CompleteName','PersonalDetailComplete',  'JobDetailComplete']}
                 hrefCreate={`${redirectUser}/company/${companyId}${create}`}
                 bodyTable={list_personal_details}
                 loading={cargando}

@@ -3,7 +3,8 @@ import {
     ORGANIZATION_CHART_ERROR,
     ORGANIZATION_CHART_HANDLE_CHANGE,
     ORGANIZATION_CHART_CLEAN_STATE,
-    ORGANIZATION_CHART_HANDLE_VALIDATION, 
+    ORGANIZATION_CHART_HANDLE_VALIDATION,
+    ORGANIZATION_CHART_ANALYTICS, 
     GetOrganizationCharts,
     GetOrganizationChart,
     GetPositionFromOrganization,
@@ -88,6 +89,11 @@ import {
             answer.res.data = createTreeByFatherPosition
           }
           break;
+        case "GetOrganizationChartAnalytics":
+          debugger
+          answer = await GetOrganizationChartByCompanyId(data);
+          answer.type = ORGANIZATION_CHART_ANALYTICS
+          break;
 
         case "PutOrganizationChart":
           answer = await PutOrganizationChart(data);
@@ -121,7 +127,7 @@ import {
 
   const tree = (padre, hijos) => {
       
-      let children = hijos.filter(child => child.PositionChartId == padre.Id);
+      let children = hijos.filter(child => child.PositionChartId === padre.Id);
       if(!children || children?.length === 0 || children === undefined ){
         return padre;
       }
@@ -131,4 +137,19 @@ import {
       })
 
       return padre;
+  }
+
+  export const treeArray = (padre, hijos, concat = []) => {
+    debugger
+    let children = hijos.filter(child => child.PositionChartId === padre.Id);
+    if(!children || children?.length === 0 || children === undefined ){
+      return  concat.push(padre);;
+    }
+    concat.push(padre);
+    //concat = concat.concat(children)
+    children.map(child => {
+      return treeArray(child, hijos, concat);
+    })
+    
+    return concat;
   }

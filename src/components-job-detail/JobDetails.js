@@ -30,9 +30,11 @@ class JobDetail extends Component {
                 Benefits,
                 TotalSalary,
                 MonthlySalary,
+                BenefitsSalary,
+                Contracts,
                 Type,
                 AreaId,
-                CompanyId
+                CompanyId,
             }},
             personalDetailId,
             companyId
@@ -44,6 +46,8 @@ class JobDetail extends Component {
             DateAdmission: DateAdmission ? DateAdmission : '',
             Contract: Contract ? Contract : '',
             Benefits: Benefits ? Benefits : '',
+            BenefitsSalary: BenefitsSalary ? BenefitsSalary : '',
+            Contracts: Contracts ? Contracts : '',
             TotalSalary: TotalSalary ? TotalSalary : '',
             MonthlySalary: MonthlySalary ? MonthlySalary : '',
             Type: Type ? Type : '',
@@ -96,6 +100,8 @@ class JobDetail extends Component {
                     TotalSalary,
                     MonthlySalary,
                     AreaId,
+                    BenefitsSalary,
+                    Contracts
                 },
                 api_actions: {cargando, error},
                 validations,
@@ -164,6 +170,20 @@ class JobDetail extends Component {
                 />
                 <InputText 
                     classLabel='font-weight-bold'
+                    textLabel='Salario con Prestaciones'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='number'
+                    inputName={'BenefitsSalary'}
+                    placeHolder={'Introduce un salario'}
+                    inputValue={BenefitsSalary}
+                    onChange={jobDetailHandleChange}
+                    maxLength={50}
+                    RE={RE_EMPTY}
+                    validateRE={validations.BenefitsSalary}
+                />
+                <InputText 
+                    classLabel='font-weight-bold'
                     textLabel='Salario Total'
                     isMandatory=''
                     classMandatory=''
@@ -192,6 +212,24 @@ class JobDetail extends Component {
                     options={[
                         {Id:'LFT',Name:'LFT'},
                         {Id:'CC',Name:'CC'}
+                    ]}
+                />
+                 <InputText 
+                    classLabel='font-weight-bold'
+                    textLabel='Tipo de contrato'
+                    isMandatory=''
+                    classMandatory=''
+                    inputType='select'
+                    inputName={'Contracts'}
+                    placeHolder={'Selecciona el tipo de Contrato'}
+                    inputValue={Contracts}
+                    onChange={jobDetailHandleChange}
+                    RE={RE_EMPTY}
+                    validateRE={validations.Contracts}
+                    optionPlaceHolder={'Selecciona el tipo de Contrato'}
+                    options={[
+                        {Id:'Sindicalizado',Name:'Sindicalizado'},
+                        {Id:'No Sindicalizado',Name:'No Sindicalizado'}
                     ]}
                 />
                 <InputText 

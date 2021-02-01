@@ -20,7 +20,6 @@ const AnalyticsCompany = () => {
     const dispatch = useDispatch();
     const analyticsReducer = useSelector(state => state.analyticsReducer);
     useEffect(() => {
-        
         dispatch(analyticsActions.analyticsMethods('ANALYTICS_COMPANY', {companyId}));
     }, [dispatch, companyId])
     

@@ -8,6 +8,7 @@ export const ORGANIZATION_CHART_CRUD = "organization_chart_crud";
 export const ORGANIZATION_CHARTS_LIST = "organization_charts_list";
 export const ORGANIZATION_CHART_HANDLE_VALIDATION = "organization_chart_handle_validation";
 export const ORGANIZATION_CHART_CHILD = 'organization_chart_child'
+export const ORGANIZATION_CHART_ANALYTICS = 'analytics_organization_chart'
 
 export const GetOrganizationCharts = async()=> {
     const  answer = await axios_api(

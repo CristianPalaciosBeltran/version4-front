@@ -11,6 +11,8 @@ import * as FaIcons from "react-icons/fa";
 
 import { Collapse, DropDowns } from "../config-components";
 import "./style.css";
+import { ChooseArea } from "../components-area";
+import AnalyticsChart from "./AnalyticsChart";
 
 class OrganizationChart extends React.Component {
   constructor(props) {
@@ -19,19 +21,22 @@ class OrganizationChart extends React.Component {
     this.container = React.createRef();
     this.state = {
       value: "Editar",
+      areaId: ''
     };
   }
 
   async componentDidMount() {
-    const { organizationChartMethods, areaMethods, companyId } = this.props;
+    const { organizationChartMethods, companyId } = this.props;
     await organizationChartMethods(
       { companyId },
       "GetOrganizationChartByCompanyId"
     );
-    companyId &&
-      (await areaMethods({ companyId: companyId }, "GetAreasByCompanyIdTaken"));
 
-    this.centerDiagram();
+    companyId &&
+      (await organizationChartMethods(
+        { companyId: companyId },
+        "GetOrganizationChartAnalytics"
+      ));
   }
 
   centerDiagram = () => {
@@ -140,19 +145,19 @@ class OrganizationChart extends React.Component {
     );
   };
 
-  getOrganizationChartByArea = async (e) => {
-    //e.preventDefault();
-    const value = e; //e.target.value;
+  getChartByArea = async (area) => {
     const { companyId, organizationChartMethods } = this.props;
-    value === "general"
+    !area.Id
       ? await organizationChartMethods(
           { companyId },
           "GetOrganizationChartByCompanyId"
         )
       : await organizationChartMethods(
-          { companyId, areaId: value },
+          { companyId, areaId: area.Id },
           "GetOrganizationChartByArea"
         );
+    
+    this.setState({ areaId: area.Id });
   };
 
   watchChild = async (positionChartId) => {
@@ -185,45 +190,13 @@ class OrganizationChart extends React.Component {
         data: { Id },
         api_actions: { cargando, error },
       },
-      areaReducer: { list_areas },
-      hrefBase,
     } = this.props;
 
     return (
       <div>
-        <ul className="list-inline m-4">
-          <li className="list-inline-item">
-            <small>
-              <Link to={`${hrefBase}`} className="text-muted">
-                Inicio
-              </Link>{" "}
-              <FaIcons.FaChevronRight className="ml-1" />
-            </small>
-          </li>
-          <li className="list-inline-item ">
-            <small className="font-weight-bold">
-              Organigrama <FaIcons.FaChevronRight className="ml-1" />
-            </small>
-          </li>
-          <li className="list-inline-item ">
-            <DropDowns.DropDownActions labelButton="Areas">
-              <DropdownItem
-                onClick={() => this.getOrganizationChartByArea("general")}
-              >
-                General
-              </DropdownItem>
-              {list_areas.map((area) => {
-                return (
-                  <DropdownItem
-                    onClick={() => this.getOrganizationChartByArea(area.Id)}
-                  >
-                    {area.Name}
-                  </DropdownItem>
-                );
-              })}
-            </DropDowns.DropDownActions>
-          </li>
-          <li>
+        <div className="m-4">
+          <div className='d-flex'>
+            <ChooseArea getChartByArea={this.getChartByArea} />
             <DropDowns.DropDownActions labelButton={this.state.value}>
               <DropdownItem onClick={this.EditOrganizationChart}>
                 Editar
@@ -232,19 +205,18 @@ class OrganizationChart extends React.Component {
                 Vista
               </DropdownItem>
             </DropDowns.DropDownActions>
-          </li>
-        </ul>
+          </div>
+          <div className="row">
+            <AnalyticsChart areaId={this.state.areaId}/>
+          </div>
+        </div>
         {cargando ? (
           <ApiResponses.Loader activate={true} />
         ) : error ? (
           <ApiResponses.Error message={error} />
         ) : Id ? (
           <div className="m-4">
-            <h1>
-              {this.props.organizationChartReducer.data.Area
-                ? this.props.organizationChartReducer.data.Area
-                : "General"}
-            </h1>
+            
             {this.createOrganigrama(
               this.props.organizationChartReducer.data,
               true,

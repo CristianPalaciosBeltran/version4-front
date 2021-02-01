@@ -1,7 +1,8 @@
-import {OrganizationChart, UpdateChild, ViewOrganizationChart} from '../../components-organization-chart'
+import { UpdateChild, ViewOrganizationChart} from '../../components-organization-chart'
 import {useParams, useHistory} from 'react-router-dom'
 import {AdminDashboardPages} from './'
 import {NavbarAdmin} from '../../config-components/Navbars'
+
 
 export const OrgainaztionChart = () => {
     const {companyId} = useParams();

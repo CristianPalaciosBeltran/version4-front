@@ -6,7 +6,8 @@ import {
     ORGANIZATION_CHART_CRUD,
     ORGANIZATION_CHARTS_LIST,
     ORGANIZATION_CHART_HANDLE_VALIDATION,
-    ORGANIZATION_CHART_CHILD
+    ORGANIZATION_CHART_CHILD,
+    ORGANIZATION_CHART_ANALYTICS
   } from "./organizationChartTypes";
   
   const INITIAL_STATE = {
@@ -34,7 +35,8 @@ import {
       AreasId:'',
     },
     list_organization_chart: [],
-    read_child: {}
+    read_child: {},
+    analytics_organization_chart: []
   };
   
   const Reducer = (state = INITIAL_STATE, action) => {
@@ -161,6 +163,17 @@ import {
             error: "",
           },
           read_child: action.payload[0],
+        };
+      case ORGANIZATION_CHART_ANALYTICS:
+        
+        return {
+          ...state,
+          api_actions: {
+            ...state.api_actions,
+            cargando: false,
+            error: "",
+          },
+          analytics_organization_chart: action.payload,
         };
   
       case "organization_chart_put":
