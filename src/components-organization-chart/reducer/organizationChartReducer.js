@@ -36,7 +36,9 @@ import {
     },
     list_organization_chart: [],
     read_child: {},
-    analytics_organization_chart: []
+    analytics_organization_chart: [],
+    total_salary: 0,
+    total_salary_area: 0
   };
   
   const Reducer = (state = INITIAL_STATE, action) => {

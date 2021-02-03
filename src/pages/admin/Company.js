@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Company, ListOfCompanies as Companies} from '../../components-company'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {useHistory, useParams} from 'react-router-dom'
 import {
     Row, Col,Card, CardBody
@@ -11,6 +11,9 @@ import {Company as CompanyTemplate} from '../templates'
 
 import {ListOfHistory} from '../../config-components'
 import AnalyticsCompany from '../../components-analytics/AnalyticsCompany'
+import { ChooseArea } from "../../components-area";
+import {AnalyticsChart} from "../../components-organization-chart"; 
+import * as organizationChartActions from '../../components-organization-chart/reducer/organizationChartActions'
 
 export const ListOfCompanies = ({reDirect, history}) =>{
     return (
@@ -64,10 +67,28 @@ export const Indicators = () => {
 }
 
 export const AnalyticsCompanyPage = () => {
+    let [areaId, setAreaId] = useState('');
+    const dispatch = useDispatch();
+    const { companyId } = useParams();
+
+    const getChartByArea = async (area) => {
+        !area.Id
+          ? dispatch(organizationChartActions.organizationChartMethods(
+              { companyId },
+              "GetOrganizationChartByCompanyId"
+            ))
+          : dispatch(organizationChartActions.organizationChartMethods(
+              { companyId, areaId: area.Id },
+              "GetOrganizationChartByArea"
+            ));
+        setAreaId(area.Id)
+    };
+   
     return(
         <AdminDashboardPages.TemplateDashboardAdmin>
+            <ChooseArea getChartByArea={getChartByArea} />
             <Row>
-                 <AnalyticsCompany></AnalyticsCompany>
+                <AnalyticsChart areaId={areaId}/>
             </Row>
         </AdminDashboardPages.TemplateDashboardAdmin>
     )

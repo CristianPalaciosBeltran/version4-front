@@ -90,7 +90,6 @@ import {
           }
           break;
         case "GetOrganizationChartAnalytics":
-          debugger
           answer = await GetOrganizationChartByCompanyId(data);
           answer.type = ORGANIZATION_CHART_ANALYTICS
           break;
@@ -140,7 +139,6 @@ import {
   }
 
   export const treeArray = (padre, hijos, concat = []) => {
-    debugger
     let children = hijos.filter(child => child.PositionChartId === padre.Id);
     if(!children || children?.length === 0 || children === undefined ){
       return  concat.push(padre);;

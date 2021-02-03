@@ -64,6 +64,7 @@ class OrganizationChart extends React.Component {
             watchChild={() => this.watchChild(organigrama.PositionChartId)}
             isOpenAux={isOpenAux}
             mode={mode}
+            totalSalary={this.props.organizationChartReducer.total_salary}
           />
         </div>
       );
@@ -71,6 +72,7 @@ class OrganizationChart extends React.Component {
 
     return (
       <Collapse.Node
+        totalSalaryUser={organigrama.TotalSalary}
         positionChartId={organigrama.Id}
         positionId={organigrama.PositionId}
         labelButton={organigrama.PositionName}
@@ -82,6 +84,8 @@ class OrganizationChart extends React.Component {
         isFirst={organigrama.PositionChartId}
         isOpenAux={isOpenAux}
         mode={mode}
+        totalSalary={this.props.organizationChartReducer.total_salary}
+        totalSalaryArea={this.props.organizationChartReducer.total_salary_area}
       >
         {ChartTree1.map((child) => {
           return <>{this.createOrganigrama(child, false, mode)}</>;
@@ -206,9 +210,7 @@ class OrganizationChart extends React.Component {
               </DropdownItem>
             </DropDowns.DropDownActions>
           </div>
-          <div className="row">
-            <AnalyticsChart areaId={this.state.areaId}/>
-          </div>
+          
         </div>
         {cargando ? (
           <ApiResponses.Loader activate={true} />

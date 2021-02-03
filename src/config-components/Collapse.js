@@ -179,6 +179,7 @@ export const Node = ({
                   </ModalPosition>
                 )}
               </div>
+             
               <div
                 className="text-dark text-start mr-5"
                 style={{ textAlign: "start" }}
@@ -198,6 +199,8 @@ export const Node = ({
                   "Empleado"
                 )}
               </div>
+              
+              
               <div className="mr-2">
                 {isFirst !== null ? (
                   <FaIcons.FaEye

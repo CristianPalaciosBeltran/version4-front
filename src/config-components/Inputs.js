@@ -108,7 +108,7 @@ export const InputText = ({forName,
                         <>
                             <option value="">{optionPlaceHolder}</option>
                             {options.map(option => {
-                                return <option key={option.Id} value={option.Id}>{option.Name} {option?.LastName ? option?.LastName : ''}</option>
+                                return <option key={option.Id} value={option.Id}>{option.Name} </option>
                             })}
                         </> 
                     }

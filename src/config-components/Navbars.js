@@ -84,7 +84,7 @@ export const NavbarAdmin = () => {
                 <FaIcons.FaBuromobelexperte  />
               </NavLink></NavItem>
               <NavItem className="mr-3" >
-                <NavLink className={"text-muted"} href={`/admin-dashboard/company/${companyId}/areas`}>
+                <NavLink className={"text-muted"} href={`/admin-dashboard/company/${companyId}/indicators`}>
                 <FaIcons.FaChartPie  />
               </NavLink></NavItem>
              </>}
